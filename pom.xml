@@ -5,7 +5,7 @@
     <packaging>jar</packaging>
     <version>1.0</version>
     <description>
-        A collection of scala and java classes for some basic natural language processing (NLP) for the Sanskrit and other Indic (kannada, telugu, etc..) languages, contributed by the open source sanskrit-coders projects and friends.
+        A collection of scala and java classes for some basic character level processing for the Sanskrit and other Indic (kannada, telugu, etc..) languages, contributed by the open source sanskrit-coders projects and friends.
         Some notable facilities:
             * Transliterate text from one script or encoding scheme to another.
             * Some grammar simulation.
@@ -13,10 +13,10 @@
     </description>
     <name>Indic transliteration scala and java library</name>
     <issueManagement>
-        <url>https://github.com/sanskrit-coders/sanskritnlpjava/issues</url>
+        <url>https://github.com/sanskrit-coders/indic-transliteration/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
-    <url>https://github.com/sanskrit-coders/sanskritnlpjava</url>
+    <url>https://github.com/sanskrit-coders/indic-transliteration</url>
 
     <licenses>
         <license>
@@ -74,22 +74,7 @@
             <artifactId>scala-library</artifactId>
             <version>2.11.8</version>
         </dependency>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-xml</artifactId>
-            <version>2.11.0-M4</version>
-        </dependency>
         <!-- Compile/runtime dependencies -->
-        <dependency>
-            <groupId>org.json4s</groupId>
-            <artifactId>json4s_2.11</artifactId>
-            <version>3.2.11</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json4s</groupId>
-            <artifactId>json4s-native_2.11</artifactId>
-            <version>3.2.11</version>
-        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -112,7 +97,7 @@
     </distributionManagement>
 
     <build>
-        <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+        <outputDirectory>${project.build.directory}/${project.build.finalName}/classes</outputDirectory>
         <plugins>
             <!-- We have scala code..-->
             <plugin>
@@ -197,3 +182,5 @@
         </plugins>
     </build>
 </project>
+
+
