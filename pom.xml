@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <version>1.1</version>
+    <version>1.2</version>
     <description>
         A collection of scala and java classes for some basic character level processing for the Sanskrit and other Indic (kannada, telugu, etc..) languages, contributed by the open source sanskrit-coders projects and friends.
         Some notable facilities:

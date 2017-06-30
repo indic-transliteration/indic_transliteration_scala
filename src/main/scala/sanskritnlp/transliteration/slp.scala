@@ -32,7 +32,7 @@ object slp extends RomanScript {
   override val romanToDevaConsonantsNoVirama = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
   override val romanToDevaContextFreeReplacements = Map(
     "M" -> "ं",  "H" -> "ः",
-    "'" -> "ऽ", "src/main" -> "॥", "." -> "।",
+    "'" -> "ऽ", ".." -> "॥", "." -> "।",
     "0" -> "०", "1"-> "१", "2"-> "२",
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "oM" -> "ॐ")

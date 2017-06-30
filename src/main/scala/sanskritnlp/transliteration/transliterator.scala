@@ -24,6 +24,9 @@ object transliterator {
       case "slp" => {
         return Some(slp)
       }
+      case "ws" => {
+        return Some(wx)
+      }
       case "optitrans" => {
         return Some(optitrans)
       }
