@@ -9,6 +9,7 @@
         Some notable facilities:
             * Transliterate text from one script or encoding scheme to another.
             * Some grammar simulation.
+        Examples: see https://github.com/sanskrit-coders/indic-transliteration
         Contributions and suggestions are invited at https://github.com/sanskrit-coders/indic-transliteration . (Sister projects there may also be of interest.)
     </description>
     <name>Indic transliteration scala and java library</name>
