@@ -35,6 +35,10 @@ Some notable facilities:
 ### Some known users
 * [stardict-sanskrit]() and sister stardict-.* projects.
 
+## Libraries in other languages
+- For python: [indic-transliteration pip](https://pypi.python.org/pypi/indic-transliteration) .
+- For Java / Scala: [indic-transliteration](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22indic-transliteration%22) maven.
+- For JS: [sanscript](https://github.com/sanskrit/sanscript.js/blob/3e109b09d0e69de1afb166ebd4d1ffb4e340a0c3/sanscript/sanscript.js) .
 
 # Contributors
 ## Setup
