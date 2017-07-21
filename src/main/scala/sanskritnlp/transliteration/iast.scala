@@ -43,6 +43,14 @@ class IastBase extends RomanScript {
   override val devaConsonantsNoViramaToRomanVirama = romanToDevaConsonantsNoVirama.map(_.swap)
   override val devaConsonantsNoViramaToRoman = devaConsonantsNoViramaToRomanVirama.mapValues(_ + aToRoman)
   override val devaConsonantsToRoman = romanToDevaConsonants.map(_.swap)
+
+  def test_isEncoding() = {
+    log info(isEncoding("Aṃkuśeśvaram").toString)
+    log info(isEncoding("Aṃkuśeśvaram").toString)
+  }
+}
+
+object iast extends IastBase {
   override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap) ++ Map("ऽ" -> "")
 
   def test_toDevanagari(): Unit = {
@@ -52,13 +60,6 @@ class IastBase extends RomanScript {
     test_toDevanagari(romanText)
   }
 
-  def test_isEncoding() = {
-    log info(isEncoding("Aṃkuśeśvaram").toString)
-    log info(isEncoding("Aṃkuśeśvaram").toString)
-  }
-}
-
-object iast extends IastBase {
 }
 
 object iastDcs extends IastBase {
@@ -68,13 +69,30 @@ object iastDcs extends IastBase {
     "0'" -> "०", "1"-> "१", "2"-> "२",
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "aum" -> "ॐ")
+  override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap)
+
+  def test_toDevanagari(): Unit = {
+    val romanText = "Asaya auṣadhiḥ granthaḥ! l2kAro'sti. nāsti les4o'pi saṃśayaḥ. Kaaṣṭhaḥ bhoḥ/ 12345" +
+      "Aṃkuśeśvaram// iḍā"
+    println("IAST Tests.")
+    test_toDevanagari(romanText)
+  }
+
 }
 
 object iastTest {
   def main(args: Array[String]): Unit = {
-//    iast.test_toDevanagari()
-//    iast.test_fromDevanagari()
+    iast.test_toDevanagari()
+    iast.test_fromDevanagari()
     iast.test_isEncoding()
+  }
+}
+
+object iastDcsTest {
+  def main(args: Array[String]): Unit = {
+    iastDcs.test_toDevanagari()
+    iastDcs.test_fromDevanagari()
+    iastDcs.test_isEncoding()
   }
 }
 

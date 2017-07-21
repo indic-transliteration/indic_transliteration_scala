@@ -60,4 +60,8 @@ object transliterator {
       }
     }
   }
+
+  def main(args: Array[String]): Unit = {
+
+  }
 }
