@@ -1,6 +1,6 @@
 package sanskritnlp.transliteration
 
-object iast extends RomanScript {
+class IastBase extends RomanScript {
   override val caseNeutral = true
   override val distinctCharacters = List("ṇ", "ṃ", "ś", "ñ", "u1", "ṣ", "ḥ", "ṭ", "ī", "ṝ", "ḍ", "ḷ", "ḹ", "ṛ", "ā", "ṅ")
   override val romanToDevaIndependentVowels = Map(
@@ -56,6 +56,18 @@ object iast extends RomanScript {
     log info(isEncoding("Aṃkuśeśvaram").toString)
     log info(isEncoding("Aṃkuśeśvaram").toString)
   }
+}
+
+object iast extends IastBase {
+}
+
+object iastDcs extends IastBase {
+  override val romanToDevaContextFreeReplacements = Map(
+    "ṃ" -> "ं",  "ḥ" -> "ः", "//" -> "॥", "/" -> "।",
+    "'" -> "ऽ", "." -> "॰",
+    "0'" -> "०", "1"-> "१", "2"-> "२",
+    "3"-> "३", "4"-> "४", "5"-> "५",
+    "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "aum" -> "ॐ")
 }
 
 object iastTest {

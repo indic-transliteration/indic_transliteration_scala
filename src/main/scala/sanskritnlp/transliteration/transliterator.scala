@@ -1,19 +1,18 @@
 package sanskritnlp.transliteration
 
-import sun.util.resources.LocaleNames
-
-import scala.collection.SetLike
+import org.slf4j.LoggerFactory
 
 /**
   * General transliteration utilities.
-  * Created by vvasuki on 2/21/16.
   */
 object transliterator {
+  val log = LoggerFactory.getLogger(getClass.getName)
   val scriptDevanAgarI = "dev"
   val scriptUnknown = null
   val codeToSchemeMap = Map(
     "hk" -> harvardKyoto,
     "iast" -> iast,
+    "iastDcs" -> iastDcs,
     "as" -> as,
     "slp" -> slp,
     "wx" -> wx,
@@ -41,21 +40,23 @@ object transliterator {
   // Transliterate among roman schemes + devanAgarI via devanAgarI.
   def transliterate(in_str: String, sourceScheme: String, destScheme: String): String = {
     // println("input string: " + in_str)
-    var schemeOpt = codeToSchemeMap.get(sourceScheme)
+    var schemeOption = codeToSchemeMap.get(sourceScheme)
     var devanAgarIout = in_str
-    if (schemeOpt.isDefined) {
-      val return_opt = schemeOpt.get.toDevanagari(in_str)
+    if (schemeOption.isDefined) {
+      val return_opt = schemeOption.get.toDevanagari(in_str)
       // println("return_opt: " + return_opt)
       devanAgarIout = return_opt
+    } else {
+      throw new IllegalArgumentException(s"Unrecognized scheme $sourceScheme")
     }
-    schemeOpt = codeToSchemeMap.get(destScheme)
-    if (schemeOpt.isDefined) {
-      return schemeOpt.get.fromDevanagari(devanAgarIout)
+    schemeOption = codeToSchemeMap.get(destScheme)
+    if (schemeOption.isDefined) {
+      return schemeOption.get.fromDevanagari(devanAgarIout)
     } else {
       if (destScheme == scriptDevanAgarI) {
         return devanAgarIout
       } else {
-        throw new IllegalArgumentException("Could not transliterate " + in_str)
+        throw new IllegalArgumentException(s"Unrecognized scheme $destScheme")
       }
     }
   }

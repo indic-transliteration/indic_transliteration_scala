@@ -214,7 +214,7 @@ trait RomanScript extends IndicScript {
   def test_toDevanagari(str_in : String) = {
     test_replaceRomanDependentVowels(str_in)
     test_replaceRomanConsonantsFollowedByVowels(str_in)
-    log.info(toDevanagari(str_in).get)
+    log.info(toDevanagari(str_in))
   }
 
   def test_fromDevanagari(str_in : String = "असय औषधिः ग्रन्थः! ॡकारो।ऽस्ति। नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५.. ॐ तत्।") = {
