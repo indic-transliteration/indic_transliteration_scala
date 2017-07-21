@@ -3,6 +3,11 @@ package sanskritnlp.transliteration
 import sanskritnlp.vyAkaraNa.devanAgarI
 
 trait IndicScript {
+  def fromDevanagari(str: String): String = null
+  def toDevanagari(str: String): String = null
+}
+
+trait NativeIndicScript extends IndicScript {
   val mapFromDevanagari: Map[Char, Char] = null
 
   val mapToDevanagari: Map[Char, Char] = null
@@ -13,9 +18,9 @@ trait IndicScript {
     return str_in.map(x => distinctCharacters.contains(x)).contains(true)
   }
 
-  def fromDevanagari(str: String): String = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
+  override def fromDevanagari(str: String): String = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
 
-  def toDevanagari(str: String) = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
+  override def toDevanagari(str: String) = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
 
   def test = {
     val devanAgarI_str = devanAgarI.allSymbols.mkString("-")
@@ -24,7 +29,7 @@ trait IndicScript {
   }
 }
 
-object kannaDa extends IndicScript{
+object kannaDa extends NativeIndicScript{
   // Unicode chars copied from kn-itrans.mim
   // http://www.koders.com/noncode/fid696F9AB94B6D1DB0A554AFA7D5E5C07F132E6CF9.aspx
   // Links for other languages *-itrans.mim are also found there.
@@ -32,14 +37,14 @@ object kannaDa extends IndicScript{
   override val mapFromDevanagari = Map(
   'अ' -> 'ಅ', 'आ' -> 'ಆ',  'इ' -> 'ಇ', 'ई' -> 'ಈ',
   'उ' -> 'ಉ', 'ऊ' -> 'ಊ',
-  'ऋ' -> 'ಋ', 'ॠ' -> 'ೠ', 'ऌ' -> 'ಌ', 'ॡ' -> 'ೡ', 
+  'ऋ' -> 'ಋ', 'ॠ' -> 'ೠ', 'ऌ' -> 'ಌ', 'ॡ' -> 'ೡ',
   'ऎ' -> 'ಎ',
   'ए' -> 'ಏ',
   'ऐ' -> 'ಐ',
   'ऒ' -> 'ಒ',
   'ओ' -> 'ಓ', 'औ' -> 'ಔ',
   'ा' -> 'ಾ',
-  'ि' -> 'ಿ', 
+  'ि' -> 'ಿ',
   'ी' -> 'ೀ',
   'ु' -> 'ು', 'ू' -> 'ೂ',
   'ृ' -> 'ೃ', 'ॄ' -> 'ೄ',
@@ -52,7 +57,7 @@ object kannaDa extends IndicScript{
   'ह' -> 'ಹ', 'य' -> 'ಯ', 'व' -> 'ವ', 'र' -> 'ರ', 'ल' -> 'ಲ',
   'ञ' -> 'ಞ',
   'ङ' -> 'ಙ',
-  'म' -> 'ಮ', 
+  'म' -> 'ಮ',
   'ण' -> 'ಣ',
   'न' -> 'ನ',
   'झ' -> 'ಝ', 'भ' -> 'ಭ',
@@ -61,7 +66,7 @@ object kannaDa extends IndicScript{
   'ड' -> 'ಡ', 'द' -> 'ದ',
   'ख' -> 'ಖ',
   'फ' -> 'ಫ', 'छ' -> 'ಛ', 'ठ' -> 'ಠ',
-  'थ' -> 'ಥ', 'च' -> 'ಚ', 'ट' -> 'ಟ', 'त' -> 'ತ', 
+  'थ' -> 'ಥ', 'च' -> 'ಚ', 'ट' -> 'ಟ', 'त' -> 'ತ',
   'क' -> 'ಕ', 'प' -> 'ಪ',
   'श' -> 'ಶ', 'ष' -> 'ಷ', 'स' -> 'ಸ',
   'ळ' -> 'ಳ', '्' -> '್', 'ं' -> 'ಂ',  'ः' -> 'ಃ',
@@ -83,7 +88,7 @@ object kannaDa extends IndicScript{
 // Produced using shrI vinod rAjan's
 // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
 
-object telugu extends IndicScript{
+object telugu extends NativeIndicScript{
 // Produced using shrI vinod rAjan's
 // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
 

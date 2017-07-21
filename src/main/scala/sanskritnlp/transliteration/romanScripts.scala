@@ -10,7 +10,7 @@ import scala.util.matching.Regex.Match
 // Point of entry: toDevanagari()
 // Read that function, and the logic will be clear.
 
-trait RomanScript {
+trait RomanScript extends IndicScript {
   val log = LoggerFactory.getLogger(this.getClass)
   val romanToDevaIndependentVowels: Map[String, String] = null
 
@@ -130,7 +130,7 @@ trait RomanScript {
     log.info("Result : " + replaceRomanConsonantsFollowedByVowels(replaceKeysLongestFirst(replaceRomanDependentVowels(str_in), romanToDevaDependentVowels)))
   }
 
-  def toDevanagari(str_in: String): Option[String] = {
+  override def toDevanagari(str_in: String): String = {
     var output = str_in
     if (caseNeutral) {
       output = output.toLowerCase
@@ -139,10 +139,10 @@ trait RomanScript {
       output = replaceRomanDependentVowels(output)
       output = replaceRomanConsonantsFollowedByVowels(output)
       output = replaceKeysLongestFirst(output, romanToDevaConsonants ++ romanToDevaContextFreeReplacements ++ romanToDevaIndependentVowels)
-      Some(output)
+      output
     } catch {
       case e: java.util.NoSuchElementException => {
-        return None
+        return str_in
       }
     }
   }
@@ -174,7 +174,7 @@ trait RomanScript {
     return  distinctCharacters.map(x => str_in.contains(x)).contains(true)
   }
 
-  def fromDevanagari(str_in: String): String = {
+  override def fromDevanagari(str_in: String): String = {
     var output = str_in
 
     output = replaceDevanagariConsonants(output)

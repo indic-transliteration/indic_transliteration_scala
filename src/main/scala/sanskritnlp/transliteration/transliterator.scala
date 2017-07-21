@@ -1,5 +1,7 @@
 package sanskritnlp.transliteration
 
+import sun.util.resources.LocaleNames
+
 import scala.collection.SetLike
 
 /**
@@ -9,30 +11,15 @@ import scala.collection.SetLike
 object transliterator {
   val scriptDevanAgarI = "dev"
   val scriptUnknown = null
-
-  def scriptFromString(schemeName: String) : Option[RomanScript] = {
-    schemeName match {
-      case "hk" => {
-        return Some(harvardKyoto)
-      }
-      case "iast" => {
-        return Some(iast)
-      }
-      case "as" => {
-        return Some(as)
-      }
-      case "slp" => {
-        return Some(slp)
-      }
-      case "ws" => {
-        return Some(wx)
-      }
-      case "optitrans" => {
-        return Some(optitrans)
-      }
-      case _ => {return None}
-    }
-  }
+  val codeToSchemeMap = Map(
+    "hk" -> harvardKyoto,
+    "iast" -> iast,
+    "as" -> as,
+    "slp" -> slp,
+    "wx" -> wx,
+    "optitrans" -> optitrans,
+    "kn" -> kannaDa
+  )
 
   // Assumes that words are space separable.
   def transliterateWordsIfIndic(in_str: String, wordSet: Set[String], sourceScheme: String, destScheme: String): String = {
@@ -54,19 +41,14 @@ object transliterator {
   // Transliterate among roman schemes + devanAgarI via devanAgarI.
   def transliterate(in_str: String, sourceScheme: String, destScheme: String): String = {
     // println("input string: " + in_str)
-    var schemeOpt = scriptFromString(sourceScheme)
+    var schemeOpt = codeToSchemeMap.get(sourceScheme)
     var devanAgarIout = in_str
     if (schemeOpt.isDefined) {
       val return_opt = schemeOpt.get.toDevanagari(in_str)
       // println("return_opt: " + return_opt)
-      if (return_opt.isEmpty) {
-        throw new IllegalArgumentException("Could not transliterate " + in_str)
-        return in_str
-      } else {
-        devanAgarIout = return_opt.get
-      }
+      devanAgarIout = return_opt
     }
-    schemeOpt = scriptFromString(destScheme)
+    schemeOpt = codeToSchemeMap.get(destScheme)
     if (schemeOpt.isDefined) {
       return schemeOpt.get.fromDevanagari(devanAgarIout)
     } else {
