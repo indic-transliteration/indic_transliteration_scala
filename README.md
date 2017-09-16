@@ -38,13 +38,18 @@ Some notable facilities:
 ## Libraries in other languages
 - For python: [indic-transliteration pip](https://pypi.python.org/pypi/indic-transliteration) .
 - For Java / Scala: [indic-transliteration](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22indic-transliteration%22) maven.
-- For JS: [sanscript](https://github.com/sanskrit/sanscript.js/blob/3e109b09d0e69de1afb166ebd4d1ffb4e340a0c3/sanscript/sanscript.js) .
+- For JS:
+  - [sanscript](https://github.com/sanskrit/sanscript.js/blob/3e109b09d0e69de1afb166ebd4d1ffb4e340a0c3/sanscript/sanscript.js) .
+  - [salita](https://github.com/mbykov/salita) - limited to a few Roman transliterations and devanAgarI.
 - PHP: [Dicrunch ](https://github.com/nareshv/aksharamukha/tree/master/diCrunch) and its use by [akSharamukhA](https://github.com/nareshv/aksharamukha/blob/master/transliterate.php) .
 
 # Contributors
 ## Setup
 * Strongly recomment Intellij Idea IDE.
-  * Just point it to the IML file and .idea/* files.
+  * Just point it to the IML file files.
+  * If it complains about missing maven dependencies:
+     * just open the *Maven projects* widget, refresh and do a full build.
+     * Also try Maven -> reimport and *synchronoze* actions in the context menu.
 * There may also be eclipse files which haven't been used in a long time.
 
 ## Deployment
