@@ -94,7 +94,7 @@ object transliterator {
           // Remove digits, abbreviation sign, svara-s
           .replaceAll("[०-९।॥॰ ॒॑]", "")
           // Collapse semi-vowel-anunAsika-s संलग्नम् सल्ँलग्नम् into m
-          .replaceAll("[[ल्य्व्]ँ]", "म्")
+          .replaceAll("[यरल]्ँ", "म्")
           // Collapse all panchama-s into m
           .replaceAll("[ङञणन]", "म")
           // Collapse anusvAra into m
@@ -103,7 +103,8 @@ object transliterator {
           .replaceAll("[ळऴ]", "ल")
           // Deal with optional forms where consonants are duplicated - like dharmma
           // Details in https://docs.google.com/spreadsheets/d/1GP8Ps_hmgCGLZPWKIVBCfQB9ZmPQOaCwTrH9OybaWaQ/edit#gid=21
-          .replaceAll("([क-हक़-य़]्)\\1+", "$1")
+          .replaceAll("([क-हक़-य़])्\\1+", "$1")
+          key = key
           .replaceAll("[कग]्ख्", "ख्")
           .replaceAll("[कग]्घ्", "घ्")
           .replaceAll("च्छ्", "छ्")

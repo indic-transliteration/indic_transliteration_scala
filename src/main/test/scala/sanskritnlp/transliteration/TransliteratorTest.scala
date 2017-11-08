@@ -3,15 +3,10 @@ package sanskritnlp.transliteration
 
 import org.scalatest.FlatSpec
 
-class SetSpec extends TransliteratorTest {
+class GetApproxDeduplicatingKeySpec extends FlatSpec {
 
-  "An empty Set" should "have size 0" in {
-    assert(Set.empty.size == 0)
+  "getApproxDeduplicatingKey" should "provide the right key" in {
+    assert(transliterator.getApproxDeduplicatingKey(text = "धर्म्म") == "धर्म")
   }
 
-  it should "produce NoSuchElementException when head is invoked" in {
-    assertThrows[NoSuchElementException] {
-      Set.empty.head
-    }
-  }
 }
