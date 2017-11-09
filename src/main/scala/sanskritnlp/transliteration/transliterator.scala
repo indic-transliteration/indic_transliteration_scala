@@ -42,13 +42,16 @@ object transliterator {
     // println("input string: " + in_str)
     var schemeOption = codeToSchemeMap.get(sourceScheme)
     var devanAgarIout = in_str
-    if (schemeOption.isDefined) {
-      val return_opt = schemeOption.get.toDevanagari(in_str)
-      // println("return_opt: " + return_opt)
-      devanAgarIout = return_opt
-    } else {
-      throw new IllegalArgumentException(s"Unrecognized scheme $sourceScheme")
+    if (sourceScheme != scriptDevanAgarI) {
+      if (schemeOption.isDefined) {
+        val return_opt = schemeOption.get.toDevanagari(in_str)
+        // println("return_opt: " + return_opt)
+        devanAgarIout = return_opt
+      } else {
+        throw new IllegalArgumentException(s"Unrecognized scheme $sourceScheme")
+      }
     }
+
     schemeOption = codeToSchemeMap.get(destScheme)
     if (schemeOption.isDefined) {
       return schemeOption.get.fromDevanagari(devanAgarIout)
