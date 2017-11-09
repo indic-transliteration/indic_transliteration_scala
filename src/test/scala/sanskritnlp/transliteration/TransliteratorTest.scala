@@ -1,13 +1,12 @@
 package sanskritnlp.transliteration
 
 
+import org.json4s._
+import org.json4s.native.Serialization
 import org.scalatest.FlatSpec
+import org.slf4j.LoggerFactory
 
 import scala.io.Source
-import org.json4s._
-import org.json4s.JsonDSL._
-import org.json4s.native.{JsonMethods, Serialization}
-import org.slf4j.LoggerFactory
 
 case class ApproxDeduplicationTests(
                            canonical_source: Option[String],

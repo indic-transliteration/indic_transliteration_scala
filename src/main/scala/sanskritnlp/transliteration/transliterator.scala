@@ -73,7 +73,7 @@ object transliterator {
     * This function attempts to succeed at [1] and [2] *almost* all the time.
     * Longer the text, probability of failing at [2] decreases, while probability of failing at [1] increases (albeit very slightly).
     *
-    * Sources of orthtographically divergent forms:
+    * Sources of orthographically divergent forms:
     *   - Phonetically sensible grammar rules
     *   - Neglect of sandhi while writing
     *   - Punctuation, spaces, avagraha-s.
@@ -91,8 +91,8 @@ object transliterator {
           .replaceAll("\\s", "")
           // Remove punctuations
           .replaceAll("\\p{P}", "")
-          // Remove digits, abbreviation sign, svara-s
-          .replaceAll("[०-९।॥॰ ॒॑]", "")
+          // Remove digits, abbreviation sign, svara-s, avagraha
+          .replaceAll("[०-९।॥॰ऽ]|[॑-॔]", "")
           // Collapse semi-vowel-anunAsika-s संलग्नम् सल्ँलग्नम् into m
           .replaceAll("[यरल]्ँ", "म्")
           // Collapse all panchama-s into m
