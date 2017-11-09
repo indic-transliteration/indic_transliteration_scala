@@ -8,20 +8,26 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/scala" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/test/scala" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/scala" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="scala-sdk-2.11.8" level="application" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.11.8" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.1" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:0.9.29" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:0.9.29" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest_2.11:3.0.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.scalactic:scalactic_2.11:3.0.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang:scala-reflect:2.11.8" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang.modules:scala-xml_2.11:1.0.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest_2.12:3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scalactic:scalactic_2.12:3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang:scala-reflect:2.12.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang.modules:scala-xml_2.12:1.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scala-lang.modules:scala-parser-combinators_2.12:1.0.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.json4s:json4s-ast_2.12:3.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.json4s:json4s-native_2.12:3.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.json4s:json4s-core_2.12:3.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.json4s:json4s-scalap_2.12:3.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.thoughtworks.paranamer:paranamer:2.8" level="project" />
   </component>
 </module>
