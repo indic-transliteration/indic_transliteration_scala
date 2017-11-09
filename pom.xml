@@ -115,6 +115,7 @@
     </distributionManagement>
 
     <build>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
         <outputDirectory>${project.build.directory}/${project.build.finalName}/classes</outputDirectory>
         <plugins>
             <!-- We have scala code..-->
@@ -132,7 +133,7 @@
                 </executions>
             </plugin>
 
-            <!-- disable surefire -->
+            <!-- disable surefire tests so as to use scalatest -->
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-surefire-plugin</artifactId>
