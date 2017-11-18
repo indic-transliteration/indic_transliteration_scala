@@ -31,7 +31,7 @@ object wx extends RomanScript {
     "ḹ" -> "ळ्")
   override val romanToDevaConsonantsNoVirama = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
   override val romanToDevaContextFreeReplacements = Map(
-    "M" -> "ं",  "H" -> "ः",
+    "M" -> "ं",  "H" -> "ः", "z" -> "ँ",
     "'" -> "ऽ", ".." -> "॥", "." -> "।",
     "0" -> "०", "1"-> "१", "2"-> "२",
     "3"-> "३", "4"-> "४", "5"-> "५",
