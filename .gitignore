@@ -1,3 +1,5 @@
 bin
 /target
 data
+/project/project
+/project/target
