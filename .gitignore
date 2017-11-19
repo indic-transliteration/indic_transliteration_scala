@@ -3,3 +3,7 @@ bin
 data
 /project/project
 /project/target
+/.idea
+/*.ipr
+/*.iws
+/*.iml

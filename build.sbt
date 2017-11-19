@@ -1,5 +1,3 @@
-
-// This file is a result of a partial attempt at switching to sbt from pom.xml (because it supposedly generates docs for scala code).
 // Source instrctions: http://www.scala-sbt.org/1.0/docs/Using-Sonatype.html . Not completed.
 
 name := "indic-transliteration"
