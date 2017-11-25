@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sanskrit-coders/indic-transliteration.svg?branch=master)](https://travis-ci.org/sanskrit-coders/indic-transliteration)
+
 Table of content generated using [this app](https://tableofcontents.herokuapp.com/):
 
 - [Introduction](#introduction)
