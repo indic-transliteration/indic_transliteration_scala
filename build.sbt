@@ -1,7 +1,7 @@
+
 // Source instrctions: http://www.scala-sbt.org/1.0/docs/Using-Sonatype.html . Not completed.
 
 name := "indic-transliteration"
-version := "1.8"
 
 scalaVersion := "2.12.3"
 
