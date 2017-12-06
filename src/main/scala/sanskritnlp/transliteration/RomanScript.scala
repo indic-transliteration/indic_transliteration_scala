@@ -2,7 +2,7 @@ package sanskritnlp.transliteration
 
 import java.util.Collections
 
-import org.slf4j.LoggerFactory
+import org.slf4j.{Logger, LoggerFactory}
 
 import scala.util.matching.Regex
 import scala.util.matching.Regex.Match
@@ -11,7 +11,7 @@ import scala.util.matching.Regex.Match
 // Read that function, and the logic will be clear.
 
 trait RomanScript extends IndicScript {
-  val log = LoggerFactory.getLogger(this.getClass)
+  private val log: Logger = LoggerFactory.getLogger(this.getClass)
   val romanToDevaIndependentVowels: Map[String, String] = null
 
   val romanToDevaDependentVowels: Map[String, String] = null
@@ -42,7 +42,7 @@ trait RomanScript extends IndicScript {
     "ऐ" ->  "ै",
     "ओ" -> "ो",  "औ" -> "ौ")
 
-  def debugString() = {
+  def debugString(): Unit = {
     println(romanToDevaIndependentVowels)
     println(romanToDevaDependentVowels)
     println(romanToDevaConsonants)
@@ -142,7 +142,7 @@ trait RomanScript extends IndicScript {
       output
     } catch {
       case e: java.util.NoSuchElementException => {
-        return str_in
+        str_in
       }
     }
   }
@@ -162,7 +162,7 @@ trait RomanScript extends IndicScript {
         + s"(?=[^$VIRAMA" + devaDependentVowelsToRoman.keys.mkString("") + "])").r
     // log.info(consonantNonVowelPattern)
     output = consonantNonVowelPattern.replaceAllIn(output, (m:Match) => {m.group(0) + VIRAMA + aToRoman})
-    if(romanToDevaConsonantsNoVirama.values.toList.contains(output.last.toString)) {
+    if(!output.isEmpty && romanToDevaConsonantsNoVirama.values.toList.contains(output.last.toString)) {
       output = output + VIRAMA + aToRoman
     }
     // log.info("After virAma addition: " + output.mkString("-"))
@@ -171,7 +171,7 @@ trait RomanScript extends IndicScript {
   }
 
   def isEncoding(str_in: String): Boolean = {
-    return  distinctCharacters.map(x => str_in.contains(x)).contains(true)
+    distinctCharacters.map(x => str_in.contains(x)).contains(true)
   }
 
   override def fromDevanagari(str_in: String): String = {
@@ -194,7 +194,7 @@ trait RomanScript extends IndicScript {
     output = escapePattern.replaceAllIn(output, _ match { case escapePattern(matched) => """\\""" + fromDevanagari(matched) })
     output
   }
-  def test_restoreEscapeSequences() = {
+  def test_restoreEscapeSequences(): Unit = {
     val str1 = """हरिः ॐ १ 1ad\न् \त्"""
     log.info(restoreEscapeSequences(str1))
   }
@@ -206,18 +206,18 @@ trait RomanScript extends IndicScript {
     output = escapePattern.replaceAllIn(output, _ match { case escapePattern(matched) => romanStart + fromDevanagari(matched) + romanEnd})
     output
   }
-  def test_restoreRomanBetweenStrings() = {
+  def test_restoreRomanBetweenStrings(): Unit = {
     val str1 = """हरिः ॐ १ {#Pअगे#} 1ad {#आन्द्#} \न् \त्"""
     log.info(restoreRomanBetweenStrings(str1, "\\{#", "#\\}"))
   }
 
-  def test_toDevanagari(str_in : String) = {
+  def test_toDevanagari(str_in : String): Unit = {
     test_replaceRomanDependentVowels(str_in)
     test_replaceRomanConsonantsFollowedByVowels(str_in)
     log.info(toDevanagari(str_in))
   }
 
-  def test_fromDevanagari(str_in : String = "असय औषधिः ग्रन्थः! ॡकारो।ऽस्ति। नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५.. ॐ तत्।") = {
+  def test_fromDevanagari(str_in : String = "असय औषधिः ग्रन्थः! ॡकारो।ऽस्ति। नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५.. ॐ तत्।"): Unit = {
     log.info("Input: " + str_in)
     log.info("Output: " + fromDevanagari(str_in))
   }
