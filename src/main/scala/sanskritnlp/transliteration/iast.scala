@@ -1,6 +1,10 @@
 package sanskritnlp.transliteration
 
+import org.slf4j.{Logger, LoggerFactory}
+
 class IastBase extends RomanScript {
+  private val log: Logger = LoggerFactory.getLogger(this.getClass)
+
   override val caseNeutral = true
   override val distinctCharacters = List("ṇ", "ṃ", "ś", "ñ", "u1", "ṣ", "ḥ", "ṭ", "ī", "ṝ", "ḍ", "ḷ", "ḹ", "ṛ", "ā", "ṅ")
   override val romanToDevaIndependentVowels = Map(
