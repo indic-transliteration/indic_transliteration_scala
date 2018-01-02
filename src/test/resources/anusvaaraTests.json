@@ -1,0 +1,31 @@
+{
+  "canonical_source": "https://github.com/sanskrit-coders/indic-transliteration/blob/master/src/test/resources/anusvaaraTests.json",
+  "valid_variants": [
+    {
+      "form_with_anusvaara": "रामंगृह्णाति",
+      "form_without_anusvaara": "रामङ्गृह्णाति"
+    },
+    {
+      "form_with_anusvaara": "रामं गृह्णाति",
+      "form_without_anusvaara": "रामङ् गृह्णाति"
+    },
+    {
+      "form_with_anusvaara": "ग्रामं चलति",
+      "form_without_anusvaara": "ग्रामञ् चलति"
+    },
+    {
+      "form_with_anusvaara": "व्रतं तिष्ठति",
+      "form_without_anusvaara": "व्रतन् तिष्ठति"
+    },
+    {
+      "form_with_anusvaara": "जनं ठगति",
+      "form_without_anusvaara": "जनण् ठगति"
+    },
+    {
+      "form_with_anusvaara": "जलं पिबति",
+      "form_without_anusvaara": "जलम् पिबति"
+    }
+  ],
+  "anusvaara_non_variants": [
+  ]
+}

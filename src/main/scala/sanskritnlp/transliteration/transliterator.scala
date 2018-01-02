@@ -1,15 +1,15 @@
 package sanskritnlp.transliteration
 
-import org.slf4j.LoggerFactory
+import org.slf4j.{Logger, LoggerFactory}
 
 /**
   * General transliteration utilities.
   */
 object transliterator {
-  val log = LoggerFactory.getLogger(getClass.getName)
-  val scriptDevanAgarI = "dev"
-  val scriptUnknown = null
-  val codeToSchemeMap = Map(
+  private val log: Logger = LoggerFactory.getLogger(getClass.getName)
+  val scriptDevanAgarI: String = "dev"
+  val scriptUnknown: Null = null
+  val codeToSchemeMap: Map[String, IndicScript] = Map(
     "hk" -> harvardKyoto,
     "iast" -> iast,
     "iastDcs" -> iastDcs,
@@ -37,6 +37,15 @@ object transliterator {
 
   }
 
+  def getNonAnusvaaraVariant(in_str: String): String = {
+    in_str
+      .replaceAll("ं(\\s*[क-ङ])", "ङ्$1")
+      .replaceAll("ं(\\s*[च-ञ])", "ञ्$1")
+      .replaceAll("ं(\\s*[त-न])", "न्$1")
+      .replaceAll("ं(\\s*[ट-ण])", "ण्$1")
+      .replaceAll("ं(\\s*[प-म])", "म्$1")
+  }
+
   // Transliterate among roman schemes + devanAgarI via devanAgarI.
   def transliterate(in_str: String, sourceScheme: String, destScheme: String): String = {
     // println("input string: " + in_str)
@@ -54,9 +63,11 @@ object transliterator {
 
     schemeOption = codeToSchemeMap.get(destScheme)
     if (schemeOption.isDefined) {
+      //noinspection RemoveRedundantReturn
       return schemeOption.get.fromDevanagari(devanAgarIout)
     } else {
       if (destScheme == scriptDevanAgarI) {
+        //noinspection RemoveRedundantReturn
         return devanAgarIout
       } else {
         throw new IllegalArgumentException(s"Unrecognized scheme $destScheme")
@@ -120,7 +131,7 @@ object transliterator {
         return key
       }
       case unknownScript => {
-        log warn (s"got script $unknownScript for text [$text]")
+        log warn s"got script $unknownScript for text [$text]"
         return text.replaceAll("\\s", "")
       }
     }
