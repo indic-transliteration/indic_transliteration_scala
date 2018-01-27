@@ -90,6 +90,9 @@ object kannaDa extends NativeIndicScript{
 object telugu extends NativeIndicScript{
   // Produced using shrI vinod rAjan's
   // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
+  // Refer to https://en.wikipedia.org/wiki/Telugu_(Unicode_block)
+
+  // We just use the kannada L and LL glyphs.
 
   override val mapFromDevanagari = Map(
     'अ' -> 'అ', 'आ' -> 'ఆ',  'इ' -> 'ఇ', 'ई' -> 'ఈ',
@@ -100,16 +103,16 @@ object telugu extends NativeIndicScript{
     'ऐ' -> 'ఐ',
     'ऒ' -> 'ఒ',
     'ओ' -> 'ఓ', 'औ' -> 'ఔ',
-    'ा' -> 'ಾ',
-    'ि' -> 'ಿ',
-    'ी' -> 'ೀ',
-    'ु' -> 'ು', 'ू' -> 'ೂ',
-    'ृ' -> 'ೃ', 'ॄ' -> 'ೄ', 'ॣ' -> 'ೄ',
-    'ॢ' -> 'ೄ', 'ॆ' -> 'ೆ',
-    'े' -> 'ೇ',
-    'ै' ->  'ೈ',
-    'ॊ' -> 'ೊ',
-    'ो' -> 'ೋ',  'ौ' -> 'ೌ',
+    'ा' -> 'ా',
+    'ि' -> 'ి',
+    'ी' -> 'ీ',
+    'ु' -> 'ు', 'ू' -> 'ూ',
+    'ृ' -> 'ృ', 'ॄ' -> 'ౄ', 'ॣ' -> 'ೄ',
+    'ॢ' -> 'ೄ', 'ॆ' -> 'ె',
+    'े' -> 'ే',
+    'ै' ->  'ై',
+    'ॊ' -> 'ొ',
+    'ो' -> 'ో',  'ौ' -> 'ౌ',
     'ह' -> 'హ', 'य' -> 'య', 'व' -> 'వ', 'र' -> 'ర', 'ल' -> 'ల',
     'ञ' -> 'ఞ',
     'ङ' -> 'ఙ',
@@ -141,6 +144,7 @@ object telugu extends NativeIndicScript{
 
 object gurmukhi extends NativeIndicScript{
   // Compare with http://bazaar.launchpad.net/~vinodh-vinodh/aksharamukha/trunk/view/head:/diCrunch/diCrunch_punjabi.php
+  // and https://en.wikipedia.org/wiki/Gurmukhi_(Unicode_block)
 
   // gurmikhI lacks glyphs for several devanAgarI marks.
   // For hrasva e and o, we just use the dIrgha glyphs.
