@@ -15,14 +15,14 @@ trait NativeIndicScript extends IndicScript {
   val distinctCharacters: Set[Char] = null
 
   def isEncoding(str_in: String): Boolean = {
-    return str_in.map(x => distinctCharacters.contains(x)).contains(true)
+    return str_in.exists(x => distinctCharacters.contains(x))
   }
 
   override def fromDevanagari(str: String): String = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
 
-  override def toDevanagari(str: String) = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
+  override def toDevanagari(str: String): String = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
 
-  def test = {
+  def test: Unit = {
     val devanAgarI_str = devanAgarI.allSymbols.mkString("-")
     println(devanAgarI_str)
     println(fromDevanagari(devanAgarI_str))
@@ -81,7 +81,7 @@ object kannaDa extends NativeIndicScript{
   '६'-> '೬', '७'-> '೭', '८'-> '೮', '९'-> '೯'
   )
 
-  override val mapToDevanagari = mapFromDevanagari.map(_.swap)
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
   override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
 
 
@@ -136,7 +136,7 @@ object telugu extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters = mapFromDevanagari.values.toSet
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
 
 
 }
@@ -200,8 +200,160 @@ object gurmukhi extends NativeIndicScript{
     'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/
   )
 
-  override val mapToDevanagari = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters = mapFromDevanagari.values.toSet
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
 
 }
 
+object oriya extends NativeIndicScript{
+  // https://en.wikipedia.org/wiki/Oriya_(Unicode_block)
+
+  override val mapFromDevanagari = Map(
+    'अ' -> 'ଅ', 'आ' -> 'ଆ',  'इ' -> 'ଇ', 'ई' -> 'ଈ',
+    'उ' -> 'ଉ', 'ऊ' -> 'ଊ',
+    'ऋ' -> 'ଋ', 'ॠ' -> 'ୠ', 'ऌ' -> 'ଌ', 'ॡ' -> 'ୡ',
+    'ऎ' -> 'ಎ',
+    'ए' -> 'ଏ',
+    'ऐ' -> 'ଐ',
+    'ऒ' -> 'ಒ',
+    'ओ' -> 'ଓ', 'औ' -> 'ଔ',
+    'ा' -> 'ା',
+    'ि' -> 'ି',
+    'ी' -> 'ୀ',
+    'ु' -> 'ୁ', 'ू' -> 'ୂ',
+    'ृ' -> 'ୃ', 'ॄ' -> 'ୄ',
+    'ॢ' -> 'ୢ', 'ॣ' -> 'ୣ',
+    'ॆ' -> 'େ', /* diirgha reused*/
+    'े' -> 'େ',
+    'ै' ->  'ୈ',
+    'ॊ' -> 'ୋ', /* diirgha reused*/
+    'ो' -> 'ୋ',  'ौ' -> 'ୌ',
+    'ह' -> 'ହ', 'य' -> 'ଯ', 'व' -> 'ଵ', 'र' -> 'ର', 'ल' -> 'ଲ',
+    'ञ' -> 'ଞ',
+    'ङ' -> 'ଙ',
+    'म' -> 'ମ',
+    'ण' -> 'ଣ',
+    'न' -> 'ନ',
+    'झ' -> 'ଝ', 'भ' -> 'ଭ',
+    'घ' -> 'ଘ', 'ढ' -> 'ଢ', 'ध' -> 'ଧ',
+    'ज' -> 'ଜ', 'ब' -> 'ବ', 'ग' -> 'ଗ',
+    'ड' -> 'ଡ', 'द' -> 'ଦ',
+    'ख' -> 'ଖ',
+    'फ' -> 'ଫ', 'छ' -> 'ଛ', 'ठ' -> 'ଠ',
+    'थ' -> 'ଥ', 'च' -> 'ଚ', 'ट' -> 'ଟ', 'त' -> 'ତ',
+    'क' -> 'କ', 'प' -> 'ପ',
+    'श' -> 'ଶ', 'ष' -> 'ଷ', 'स' -> 'ସ',
+    'ळ' -> 'ଳ', '्' -> '୍', 'ं' -> 'ଂ',  'ः' -> 'ଃ',
+    'ऽ' -> 'ଽ', '़' -> '಼',
+    '०' -> '୦', '१'-> '୧', '२'-> '୨',
+    '३'-> '୩', '४'-> '୪', '५'-> '୫',
+    '६'-> '୬', '७'-> '୭', '८'-> '୮', '९'-> '୯',
+    'ୱ' -> 'ୱ' // wa - non-devanAgarI
+  )
+
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
+
+
+}
+
+object malayalam extends NativeIndicScript{
+  // https://en.wikipedia.org/wiki/Malayalam_(Unicode_block)
+  override val mapFromDevanagari = Map(
+    'अ' -> 'അ', 'आ' -> 'ആ',  'इ' -> 'ഇ', 'ई' -> 'ഈ',
+    'उ' -> 'ഉ', 'ऊ' -> 'ഊ',
+    'ऋ' -> 'ഋ', 'ॠ' -> 'ൠ', 'ऌ' -> 'ഌ', 'ॡ' -> 'ൡ',
+    'ऎ' -> 'എ',
+    'ए' -> 'ഏ',
+    'ऐ' -> 'ഐ',
+    'ऒ' -> 'ഒ',
+    'ओ' -> 'ഓ', 'औ' -> 'ഔ',
+    'ा' -> 'ാ',
+    'ि' -> 'ി',
+    'ी' -> 'ീ',
+    'ु' -> 'ു', 'ू' -> 'ൂ',
+    'ृ' -> 'ൃ', 'ॄ' -> 'ൄ',
+    'ॢ' -> 'ൢ', 'ॣ' -> 'ൣ',
+    'ॆ' -> 'െ',
+    'े' -> 'േ',
+    'ै' ->  'ൊ',
+    'ॊ' -> 'ൈ',
+    'ो' -> 'ോ',  'ौ' -> 'ൌ',
+    'ह' -> 'ഹ', 'य' -> 'യ', 'व' -> 'വ', 'र' -> 'ര', 'ल' -> 'ല',
+    'ञ' -> 'ഞ',
+    'ङ' -> 'ങ',
+    'म' -> 'മ',
+    'ण' -> 'ണ',
+    'न' -> 'ന',
+    'झ' -> 'ഝ', 'भ' -> 'ഭ',
+    'घ' -> 'ഘ', 'ढ' -> 'ഢ', 'ध' -> 'ധ',
+    'ज' -> 'ജ', 'ब' -> 'ബ', 'ग' -> 'ഗ',
+    'ड' -> 'ഡ', 'द' -> 'ദ',
+    'ख' -> 'ഖ',
+    'फ' -> 'ഫ', 'छ' -> 'ഛ', 'ठ' -> 'ഠ',
+    'थ' -> 'ഥ', 'च' -> 'ച', 'ट' -> 'ട', 'त' -> 'ത',
+    'क' -> 'ക', 'प' -> 'പ',
+    'श' -> 'ശ', 'ष' -> 'ഷ', 'स' -> 'സ',
+    'ळ' -> 'ള', '्' -> '്', 'ं' -> 'ം',  'ः' -> 'ഃ',
+    'ऽ' -> 'ഽ', '़' -> '಼',
+    '०' -> '൦', '१'-> '൧', '२'-> '൨',
+    '३'-> '൩', '४'-> '൪', '५'-> '൫',
+    '६'-> '൬', '७'-> '൭', '८'-> '൮', '९'-> '൯'
+  )
+
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
+
+
+}
+
+object gujarati extends NativeIndicScript{
+
+  // https://en.wikipedia.org/wiki/Gujarati_(Unicode_block)
+  override val mapFromDevanagari = Map(
+    'अ' -> 'અ', 'आ' -> 'આ',  'इ' -> 'ઇ', 'ई' -> 'ઈ',
+    'उ' -> 'ઉ', 'ऊ' -> 'ઊ',
+    'ऋ' -> 'ઋ', 'ॠ' -> 'ૠ', 'ऌ' -> 'ઌ', 'ॡ' -> 'ૡ',
+    'ऎ' -> 'ઍ',
+    'ए' -> 'એ',
+    'ऐ' -> 'ઐ',
+    'ऒ' -> 'ઑ',
+    'ओ' -> 'ઓ', 'औ' -> 'ઔ',
+    'ा' -> 'ા',
+    'ि' -> 'િ',
+    'ी' -> 'ી',
+    'ु' -> 'ુ', 'ू' -> 'ૂ',
+    'ृ' -> 'ૃ', 'ॄ' -> 'ૄ',
+    'ॢ' -> 'ૢ', 'ॣ' -> 'ૣ',
+    'ॆ' -> 'ૅ',
+    'े' -> 'ે',
+    'ै' ->  'ૈ',
+    'ॊ' -> 'ૉ',
+    'ो' -> 'ો',  'ौ' -> 'ૌ',
+    'ह' -> 'હ', 'य' -> 'ય', 'व' -> 'વ', 'र' -> 'ર', 'ल' -> 'લ',
+    'ञ' -> 'ઞ',
+    'ङ' -> 'ઙ',
+    'म' -> 'મ',
+    'ण' -> 'ણ',
+    'न' -> 'ન',
+    'झ' -> 'ઝ', 'भ' -> 'ભ',
+    'घ' -> 'ઘ', 'ढ' -> 'ઢ', 'ध' -> 'ધ',
+    'ज' -> 'જ', 'ब' -> 'બ', 'ग' -> 'ગ',
+    'ड' -> 'ડ', 'द' -> 'દ',
+    'ख' -> 'ખ',
+    'फ' -> 'ફ', 'छ' -> 'છ', 'ठ' -> 'ઠ',
+    'थ' -> 'થ', 'च' -> 'ચ', 'ट' -> 'ટ', 'त' -> 'ત',
+    'क' -> 'ક', 'प' -> 'પ',
+    'श' -> 'શ', 'ष' -> 'ષ', 'स' -> 'સ',
+    'ळ' -> 'ળ', '्' -> '્', 'ं' -> 'ં',  'ः' -> 'ઃ',
+    'ऽ' -> 'ઽ', '़' -> '಼',
+    '०' -> '૦', '१'-> '૧', '२'-> '૨',
+    '३'-> '૩', '४'-> '૪', '५'-> '૫',
+    '६'-> '૬', '७'-> '૭', '८'-> '૮', '९'-> '૯'
+  )
+
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
+
+
+}
