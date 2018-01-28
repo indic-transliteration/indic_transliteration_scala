@@ -1,8 +1,5 @@
 package sanskritnlp.transliteration
 
-package sanskritnlp.transliteration
-
-
 import org.json4s._
 import org.json4s.native.Serialization
 import org.scalatest.FlatSpec
@@ -10,8 +7,7 @@ import org.slf4j.{Logger, LoggerFactory}
 
 import scala.io.Source
 
-case class TransliterationTests(
-                                 canonical_source: Option[String],
+case class ScriptDetectionTests(canonical_source: Option[String],
                                  tests: Map[String, String],
                                  unmatchables: Seq[String]
                                )
@@ -19,8 +15,8 @@ case class TransliterationTests(
 class ScriptDetectionTest extends FlatSpec {
   private val log: Logger = LoggerFactory.getLogger(this.getClass)
   private val source = Source.fromResource("scriptDetectionTests.json")
-  private implicit val formats = DefaultFormats
-  private val testJson = Serialization.read[TransliterationTests](source.mkString)
+  private implicit val formats: DefaultFormats.type = DefaultFormats
+  private val testJson = Serialization.read[ScriptDetectionTests](source.mkString)
   private val nonSchemeKeys = Seq(transliterator.scriptDevanAgarI, "description", "TODO", "comments")
 
   "Shared script detection tests " should "match the correct script" in {
