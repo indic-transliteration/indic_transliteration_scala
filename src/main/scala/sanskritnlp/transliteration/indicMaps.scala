@@ -156,7 +156,7 @@ object gurmukhi extends NativeIndicScript{
   // For hrasva e and o, we just use the dIrgha glyphs.
   // Elsewhere, for R, RR, L, LL, we just use the devanAgarI glyph.
 
-  // gurmikhI has some glyphs which devanAgarI lacks. There, we just retain them.
+  // gurmukhI has some glyphs which devanAgarI lacks. There, we just retain them.
 
   override val mapFromDevanagari = Map(
     'अ' -> 'ਅ', 'आ' -> 'ਆ',  'इ' -> 'ਇ', 'ई' -> 'ਈ',
@@ -202,12 +202,27 @@ object gurmukhi extends NativeIndicScript{
     '३'-> '੩', '४'-> '੪', '५'-> '੫',
     '६'-> '੬', '७'-> '੭', '८'-> '੮', '९'-> '੯',
     'ॐ' -> 'ੴ', '॑' -> 'ੑ', /*udAtta*/
-    'ੰ' -> 'ੰ' /*Tippi*/, 'ੱ' -> 'ੱ' /*aDDak*/, 'ੵ' -> 'ੵ', /*yakaSh*/
+    'ं' -> 'ੰ' /*Tippi - ਅਭੰਗ|अभੰग|abhanga*/, 'ੱ' -> 'ੱ' /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka*/, 'ੵ' -> 'ੵ', /*yakaSh*/
     'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
   override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
+  override def fromDevanagari(str: String): String = {
+    val partialTransliteration = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
+    partialTransliteration
+      .replaceAll("ੱ([कख])", "क्$1")
+      .replaceAll("ੱ([गघ])", "ग्$1")
+      .replaceAll("ੱ([चछ])", "च्$1")
+      .replaceAll("ੱ([जझ])", "ज्$1")
+      .replaceAll("ੱ([टठ])", "ट्$1")
+      .replaceAll("ੱ([डढ])", "ड्$1")
+      .replaceAll("ੱ([तथ])", "त्$1")
+      .replaceAll("ੱ([दध])", "द्$1")
+      .replaceAll("ੱ([पफ])", "प्$1")
+      .replaceAll("ੱ([बभ])", "ब्$1")
+      .replaceAll("ੱ([यरऱलळऴवशषसहङञणनऩम])", "$1्$1")
+  }
 }
 
 object oriya extends NativeIndicScript{
