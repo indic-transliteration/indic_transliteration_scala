@@ -1,5 +1,6 @@
 package sanskritnlp.transliteration
 
+import org.slf4j.{Logger, LoggerFactory}
 import sanskritnlp.vyAkaraNa.devanAgarI
 
 trait IndicScript {
@@ -136,7 +137,7 @@ object telugu extends NativeIndicScript{
     'थ' -> 'థ', 'च' -> 'చ', 'ट' -> 'ట', 'त' -> 'త',
     'क' -> 'క', 'प' -> 'ప',
     'श' -> 'శ', 'ष' -> 'ష', 'स' -> 'స',
-    'ळ' -> 'ళ', '्' -> '್', 'ं' -> 'ం',  'ः' -> 'ః',
+    'ळ' -> 'ళ', '्' -> '్', 'ं' -> 'ం',  'ः' -> 'ః',
     'ऽ' -> 'ఽ', '़' -> '़', 'ँ' -> 'ఁ',
     '०' -> '౦', '१'-> '౧', '२'-> '౨',
     '३'-> '౩', '४'-> '౪', '५'-> '౫',
@@ -149,6 +150,7 @@ object telugu extends NativeIndicScript{
 
 
 object gurmukhi extends NativeIndicScript{
+  private val log: Logger = LoggerFactory.getLogger(this.getClass)
   // Compare with http://bazaar.launchpad.net/~vinodh-vinodh/aksharamukha/trunk/view/head:/diCrunch/diCrunch_punjabi.php
   // and https://en.wikipedia.org/wiki/Gurmukhi_(Unicode_block)
 
@@ -192,12 +194,12 @@ object gurmukhi extends NativeIndicScript{
     'फ' -> 'ਫ', 'छ' -> 'ਛ', 'ठ' -> 'ਠ',
     'थ' -> 'ਥ', 'च' -> 'ਚ', 'ट' -> 'ਟ', 'त' -> 'ਤ',
     'क' -> 'ਕ', 'प' -> 'ਪ',
-    'ख़' -> 'ਖ਼', 'ग़' -> 'ਗ਼',
+    'ख़' -> 'ਖ਼', 'ग़' -> 'ਗ਼', 'ज़' -> 'ਜ਼',
     'ड़' -> 'ੜ' /*.DA or .RHA*/, 'फ़' -> 'ਫ਼',
     '़' -> '़',
     'ੜ' -> 'ਕ', 'ਫ਼' -> 'ਪ',
-    'श' -> 'ਸ਼', 'ष' -> 'ਸ਼', 'स' -> 'ਸ',
-    'ळ' -> 'ਲ਼', '्' -> '್', 'ं' -> 'ਂ',  'ः' -> 'ਃ',
+    'श' -> 'ਸ਼', 'ष' -> 'ਸ਼', /*Reusing sha*/ 'स' -> 'ਸ',
+    'ळ' -> 'ਲ਼', '्' -> '੍', 'ं' -> 'ਂ',  'ः' -> 'ਃ',
     'ऽ' -> 'ఽ', '़' -> '़', 'ँ' -> 'ਁ',
     '०' -> '੦', '१'-> '੧', '२'-> '੨',
     '३'-> '੩', '४'-> '੪', '५'-> '੫',
@@ -210,7 +212,8 @@ object gurmukhi extends NativeIndicScript{
       'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/)
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
   override def toDevanagari(str: String): String = {
-    val partialTransliteration = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
+    val partialTransliteration = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
+//    log.debug(partialTransliteration)
     partialTransliteration
       .replaceAll("ੱ([कख])", "क्$1")
       .replaceAll("ੱ([गघ])", "ग्$1")
@@ -223,6 +226,17 @@ object gurmukhi extends NativeIndicScript{
       .replaceAll("ੱ([पफ])", "प्$1")
       .replaceAll("ੱ([बभ])", "ब्$1")
       .replaceAll("ੱ([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])", "$1्$1")
+      .replaceAll("([कख])ੱ", "क्$1")
+      .replaceAll("([गघ])ੱ", "ग्$1")
+      .replaceAll("([चछ])ੱ", "च्$1")
+      .replaceAll("([जझ])ੱ", "ज्$1")
+      .replaceAll("([टठ])ੱ", "ट्$1")
+      .replaceAll("([डढ])ੱ", "ड्$1")
+      .replaceAll("([तथ])ੱ", "त्$1")
+      .replaceAll("([दध])ੱ", "द्$1")
+      .replaceAll("([पफ])ੱ", "प्$1")
+      .replaceAll("([बभ])ੱ", "ब्$1")
+      .replaceAll("([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])ੱ", "$1्$1")
   }
 }
 
@@ -264,14 +278,17 @@ object oriya extends NativeIndicScript{
     'थ' -> 'ଥ', 'च' -> 'ଚ', 'ट' -> 'ଟ', 'त' -> 'ତ',
     'क' -> 'କ', 'प' -> 'ପ',
     'श' -> 'ଶ', 'ष' -> 'ଷ', 'स' -> 'ସ',
-    'ळ' -> 'ଳ', '्' -> '୍', 'ं' -> 'ଂ',  'ः' -> 'ଃ', 'ँ' -> 'ଁ',
+    'ळ' -> 'ଳ',
+    'ड़' -> 'ଡ଼', 'ਫ਼' -> 'ଢ଼', 'य़' -> 'ୟ',
+    '्' -> '୍', 'ं' -> 'ଂ',  'ः' -> 'ଃ', 'ँ' -> 'ଁ',
     'ऽ' -> 'ଽ', '़' -> '಼',
     '०' -> '୦', '१'-> '୧', '२'-> '୨',
     '३'-> '୩', '४'-> '୪', '५'-> '୫',
     '६'-> '୬', '७'-> '୭', '८'-> '୮', '९'-> '୯',
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++ Map('ୱ' /* wa - non-devanAgarI*/ -> 'व')
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++
+    Map('ୱ' /* wa - non-devanAgarI*/ -> 'व')
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
