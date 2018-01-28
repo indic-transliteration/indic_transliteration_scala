@@ -36,8 +36,8 @@ trait RomanScript extends IndicScript {
     "ऎ" -> "ॆ",
     "ए" -> "े",
     "ऐ" ->  "ै",
-    "ओ" -> "ୋ",
-    "ऒ" -> "ो",
+    "ओ" -> "ो",
+    "ऒ" -> "ॊ",
     "औ" -> "ौ")
 
   def debugString(): Unit = {
