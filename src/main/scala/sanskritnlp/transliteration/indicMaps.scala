@@ -29,6 +29,14 @@ trait NativeIndicScript extends IndicScript {
   }
 }
 
+object devanagarii extends NativeIndicScript{
+  override val distinctCharacters: Set[Char] = kannaDa.mapToDevanagari.values.toSet
+
+  override def fromDevanagari(str: String): String = str
+
+  override def toDevanagari(str: String): String = str
+}
+
 object kannaDa extends NativeIndicScript{
   // Unicode chars copied from kn-itrans.mim
   // http://www.koders.com/noncode/fid696F9AB94B6D1DB0A554AFA7D5E5C07F132E6CF9.aspx
@@ -82,7 +90,7 @@ object kannaDa extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 
 
 }
@@ -136,9 +144,7 @@ object telugu extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
-
-
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
 
@@ -201,8 +207,7 @@ object gurmukhi extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
-
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
 object oriya extends NativeIndicScript{
@@ -252,9 +257,7 @@ object oriya extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
-
-
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
 object malayalam extends NativeIndicScript{
@@ -302,9 +305,7 @@ object malayalam extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
-
-
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
 object gujarati extends NativeIndicScript{
@@ -353,7 +354,5 @@ object gujarati extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.toSet
-
-
+  override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }

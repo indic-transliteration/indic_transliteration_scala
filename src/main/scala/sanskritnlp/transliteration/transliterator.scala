@@ -46,6 +46,17 @@ object transliterator {
       .replaceAll("ं(\\s*[प-म])", "म्$1")
   }
 
+  def getScriptHandler(in_str: String): Option[NativeIndicScript] = {
+    // The more distinct and constrained script should appear fist.
+    val indicMaps = Seq(gurmukhi, oriya, kannaDa, telugu, malayalam, gujarati, devanagarii)
+    indicMaps.find(script => script.isEncoding(in_str))
+  }
+
+  def getDevanagariiFromOtherIndicString(in_str: String): Option[String] = {
+    val scriptHandler = getScriptHandler(in_str = in_str)
+    scriptHandler.map(_.toDevanagari(in_str))
+  }
+
   // Transliterate among roman schemes + devanAgarI via devanAgarI.
   def transliterate(in_str: String, sourceScheme: String, destScheme: String): String = {
     // println("input string: " + in_str)
