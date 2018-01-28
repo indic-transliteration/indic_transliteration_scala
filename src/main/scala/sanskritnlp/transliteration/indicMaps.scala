@@ -16,7 +16,7 @@ trait NativeIndicScript extends IndicScript {
   val distinctCharacters: Set[Char] = null
 
   def isEncoding(str_in: String): Double = {
-    str_in.map(x => if (distinctCharacters.contains(x)) 1.0 else 0).sum/str_in.length
+    str_in.map(x => if (distinctCharacters.contains(x)) 1.0 else 0).sum/Seq(str_in.length, 1.0).max /* No 0 denominator */
   }
 
   override def fromDevanagari(str: String): String = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
