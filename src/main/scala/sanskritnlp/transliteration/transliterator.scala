@@ -44,6 +44,7 @@ object transliterator {
       .replaceAll("ं(\\s*[त-न])", "न्$1")
       .replaceAll("ं(\\s*[ट-ण])", "ण्$1")
       .replaceAll("ं(\\s*[प-म])", "म्$1")
+      .replaceAll("ं$", "म्")
   }
 
   def getScriptHandler(in_str: String): Option[NativeIndicScript] = {
