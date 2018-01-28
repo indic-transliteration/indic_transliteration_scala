@@ -17,6 +17,7 @@ object transliterator {
     "slp" -> slp,
     "wx" -> wx,
     "optitrans" -> optitrans,
+//    "kolkata" -> kolkata,
     "kn" -> kannaDa
   )
 

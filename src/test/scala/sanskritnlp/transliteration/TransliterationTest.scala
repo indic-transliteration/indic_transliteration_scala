@@ -12,6 +12,7 @@ case class Test(
                  dev: Option[String],
                  iast: Option[String],
                  iastDcs: Option[String],
+                 kolkata: Option[String],
                  hk: Option[String],
                  optitrans: Option[String],
                  slp: Option[String],
@@ -49,11 +50,15 @@ class TransliterationTest extends FlatSpec {
       }
       if (test.wx.isDefined) {
         assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "wx") == test.wx.get)
-        assert(transliterator.transliterate(in_str = test.wx.get, sourceScheme = "wx", destScheme = "dev") == test.wx.get)
+        assert(transliterator.transliterate(in_str = test.wx.get, sourceScheme = "wx", destScheme = "dev") == test.dev.get)
       }
       if (test.iastDcs.isDefined) {
         assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "iastDcs") == test.iastDcs.get)
         assert(transliterator.transliterate(in_str = test.iastDcs.get, sourceScheme = "iastDcs", destScheme = "dev") == test.dev.get)
+      }
+      if (test.kolkata.isDefined) {
+        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "kolkata") == test.kolkata.get)
+        assert(transliterator.transliterate(in_str = test.kolkata.get, sourceScheme = "kolkata", destScheme = "dev") == test.dev.get)
       }
     })
   }

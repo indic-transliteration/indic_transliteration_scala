@@ -10,8 +10,6 @@ object wx extends RomanScript {
     "E" -> "ऐ",
     "o" -> "ओ", "O" -> "औ")
 
-  override val romanToDevaDependentVowels = romanToDevaIndependentVowels.mapValues(devaIndependentToDependent(_)).filterKeys(_ != "a")
-
   override val romanToDevaConsonants = Map(
     "h" -> "ह्", "y" -> "य्", "v" -> "व्", "r" -> "र्", "l" -> "ल्",
     "F" -> "ञ्",
@@ -28,7 +26,7 @@ object wx extends RomanScript {
     "W" -> "थ्", "c" -> "च्", "t" -> "ट्", "w" -> "त्",
     "k" -> "क्", "p" -> "प्",
     "S" -> "श्", "R" -> "ष्", "s" -> "स्",
-    "ḹ" -> "ळ्")
+    "ḻ" -> "ळ्")
   override val romanToDevaConsonantsNoVirama = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
   override val romanToDevaContextFreeReplacements = Map(
     "M" -> "ं",  "H" -> "ः", "z" -> "ँ",
@@ -37,11 +35,7 @@ object wx extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "oM" -> "ॐ")
 
-  override val devaDependentVowelsToRoman = romanToDevaDependentVowels.map(_.swap)
   override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-  override val aToRoman = devaIndependentVowelsToRoman("अ")
-  override val devaConsonantsNoViramaToRomanVirama = romanToDevaConsonantsNoVirama.map(_.swap)
-  override val devaConsonantsNoViramaToRoman = devaConsonantsNoViramaToRomanVirama.mapValues(_ + aToRoman)
   override val devaConsonantsToRoman = romanToDevaConsonants.map(_.swap)
   override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap)
 

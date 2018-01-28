@@ -62,8 +62,6 @@ object as extends RomanScript {
     "ai" -> "ऐ",
     "o" -> "ओ", "au" -> "औ")
 
-  override val romanToDevaDependentVowels = romanToDevaIndependentVowels.mapValues(devaIndependentToDependent(_)).filterKeys(_ != "a")
-
   override val romanToDevaConsonants = Map(
     "h" -> "ह्", "y" -> "य्", "v" -> "व्", "r" -> "र्", "l" -> "ल्",
     "n5" -> "ञ्",
@@ -88,11 +86,7 @@ object as extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "aum" -> "ॐ")
 
-  override val devaDependentVowelsToRoman = romanToDevaDependentVowels.map(_.swap)
   override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-  override val aToRoman = devaIndependentVowelsToRoman("अ")
-  override val devaConsonantsNoViramaToRomanVirama = romanToDevaConsonantsNoVirama.map(_.swap)
-  override val devaConsonantsNoViramaToRoman = devaConsonantsNoViramaToRomanVirama.mapValues(_ + aToRoman)
   override val devaConsonantsToRoman = romanToDevaConsonants.map(_.swap)
   override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap) ++ Map("ऽ" -> "")
 

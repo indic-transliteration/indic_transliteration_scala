@@ -3,22 +3,22 @@
   "comments": "Shared transliteration tests. In each test, the dev field is compulsory.",
   "tests": [
     {
-      "dev": "असय औषधिः ग्रन्थः! ॡकारो।ऽस्ति। नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५।। ॐ तत्।",
-      "iast_avagrahaDoesntWork": "asaya auṣadhiḥ granthaḥ! ḹkāro.`sti. nāsti leś`opi saṃśayaḥ. kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ. śaṅkara! jñānam.  sañjīvaya. 12345.. aum tat.",
-      "iastDcs": "asaya auṣadhiḥ granthaḥ! ḹkāro/'sti/ nāsti leśo'pi saṃśayaḥ/ kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ/ śaṅkara! jñānam/  sañjīvaya/ 12345.. aum tat/",
-      "hk": "asaya auSadhiH granthaH! lRRkAro|sti| nAsti lezopi saMzayaH| kIlakam? kUpiH?  kaSThaM bhoH| za.Nkara! jJAnam|  saJjIvaya| 12345.. OM tat|",
-      "optitrans": "asaya auShadhiH granthaH! LLIkaaro..asti. naasti lesho.api saMshayaH. kiilakam? kuupiH?  kaShThaM bhoH. shankara! JNaanam.  sanjiivaya. 12345.. OM tat.",
-      "slp": "asaya OzaDiH granTaH! XkAro.'sti. nAsti leSo'pi saMSayaH. kIlakam? kUpiH?  kazWaM BoH. SaNkara! jYAnam.  saYjIvaya. 12345.. oM tat.",
-      "wx": "asaya ORaXiH granWaH! ḹkAro.'swi. nAswi leSo'pi saMSayaH. kIlakam? kUpiH?  kaRTaM BoH. Safkara! jFAnam.  saFjIvaya. 12345.. oM waw."
+      "dev": "असय औषधिः ग्रन्थः! ॡकारो नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५॥ ॐ तत्।",
+      "iast_avagrahaDoesntWork": "asaya auṣadhiḥ granthaḥ! ḹkāro nāsti leś`opi saṃśayaḥ. kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ. śaṅkara! jñānam.  sañjīvaya. 12345.. aum tat.",
+      "iastDcs": "asaya auṣadhiḥ granthaḥ! ḹkāro nāsti leśo'pi saṃśayaḥ/ kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ/ śaṅkara! jñānam/  sañjīvaya/ 12345// aum tat/",
+      "hk": "asaya auSadhiH granthaH! lRRkAro nAsti lezo'pi saMzayaH| kIlakam? kUpiH?  kaSThaM bhoH| za.Nkara! jJAnam|  saJjIvaya| 12345|| OM tat|",
+      "optitrans": "asaya auShadhiH granthaH! LLIkaaro naasti lesho.api saMshayaH. kiilakam? kuupiH?  kaShThaM bhoH. shankara! JNaanam.  sanjiivaya. 12345.. OM tat.",
+      "slp": "asaya OzaDiH granTaH! XkAro nAsti leSo'pi saMSayaH. kIlakam? kUpiH?  kazWaM BoH. SaNkara! jYAnam.  saYjIvaya. 12345.. oM tat.",
+      "wx": "asaya ORaXiH granWaH! ḹkAro nAswi leSo'pi saMSayaH. kIlakam? kUpiH?  kaRTaM BoH. Safkara! jFAnam.  saFjIvaya. 12345.. oM waw."
     },
     {
       "dev": "अग्निमीळे पुरोहितं यज्ञस्य देवमृत्विजम्",
-      "iast": "",
-      "iastDcs": "",
-      "hk": "",
-      "optitrans": "",
-      "slp": "",
-      "wx": ""
+      "iast": "agnimīḻe purohitaṃ yajñasya devamṛtvijam",
+      "iastDcs": "agnimīḻe purohitaṃ yajñasya devamṛtvijam",
+      "hk": "agnimILe purohitaM yajJasya devamRtvijam",
+      "optitrans": "agnimiiLe purohitaM yaJNasya devamRtvijam",
+      "slp": "agnimILe purohitaM yajYasya devamftvijam",
+      "wx": "agnimIḻe purohiwaM yajFasya xevamqwvijam"
     }
   ]
 }

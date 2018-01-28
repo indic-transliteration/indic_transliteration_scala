@@ -12,8 +12,6 @@ object optitrans extends RomanScript {
     "ai" -> "ऐ",
     "o" -> "ओ", "au" -> "औ")
 
-  override val romanToDevaDependentVowels: Map[String, String] = romanToDevaIndependentVowels.mapValues(devaIndependentToDependent(_)).filterKeys(_ != "a")
-
   override val romanToDevaConsonants = Map(
     "h" -> "ह्", "y" -> "य्", "v" -> "व्", "r" -> "र्", "l" -> "ल्",
     "NJ" -> "ञ्",
@@ -21,7 +19,6 @@ object optitrans extends RomanScript {
     "m" -> "म्",
     "N" -> "ण्",
     "n" -> "न्",
-    "n" -> "ँ",
     "jh" -> "झ्", "J" -> "झ्", "bh" -> "भ्", "B" -> "भ्",
     "gh" -> "घ्", "G" -> "घ्", "Dh" -> "ढ्", "dh" -> "ध्",
     "j" -> "ज्", "b" -> "ब्", "g" -> "ग्",
@@ -31,7 +28,7 @@ object optitrans extends RomanScript {
     "th" -> "थ्", "c" -> "च्", "ch" -> "च्", "T" -> "ट्", "t" -> "त्",
     "k" -> "क्", "p" -> "प्",
     "sh" -> "श्", "S" -> "ष्", "Sh" -> "ष्", "s" -> "स्",
-    // "L" -> "ळ्", // Removed to prevent erroneous output.
+     "L" -> "ळ्",
     "x" -> "क्ष्",
     "nk" -> "ङ्क्", "nK" -> "ङ्ख््", "nkh" -> "ङ्ख््",
     "ng" -> "ङ्ग्", "nG" -> "ङ्ख््",  "ngh" -> "ङ्ख््",
@@ -46,18 +43,13 @@ object optitrans extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "OM" -> "ॐ")
 
-  override val devaDependentVowelsToRoman = romanToDevaDependentVowels.filterKeys(key => !(List("A", "I", "U") contains key)).map(_.swap)
-  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-  override val aToRoman = devaIndependentVowelsToRoman("अ")
+  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.filterKeys(key => !(List("A", "I", "U") contains key)).map(_.swap)
   override val devaConsonantsToRoman = romanToDevaConsonants.filterKeys(key => !(List("K", "G", "c", "C", "J", "S") contains key)).map(_.swap)
-  override val devaConsonantsNoViramaToRomanVirama = romanToDevaConsonantsNoVirama.filterKeys(key => !(List("K", "G", "c", "C", "J", "S") contains key)).map(_.swap)
-  override val devaConsonantsNoViramaToRoman = devaConsonantsNoViramaToRomanVirama.mapValues(_ + aToRoman)
   override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap)
 
 
   def test_toDevanagari(): Unit = {
     val text = "asaya auSadhiH auShadhiH granthaH! LLIkAro.asti. nAsti lesho.api saMshayaH. kaSThaM bhoH. shankara! sanjIvaya. 12345"
-    // Error output if L=ळ is enabled: असय औषधिः औषधिः ग्रन्थः! ळ्ळीकारोऽस्ति। नास्ति लेशोऽपि संशयः। कष्ठं भोः। शङ्कर! सञ्जीवय। १२३४५
     println("OPTITRANS Tests.")
     test_toDevanagari(text)
   }
