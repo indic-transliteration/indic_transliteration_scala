@@ -57,13 +57,16 @@ trait RomanScript extends IndicScript {
       ("(" + keys.map(escapeWildcardsForRegex).mkString("|") + ")").r
     }
     var output = str_in
+//    log.debug(output)
     val keyLengths = mapping.keys.map(_.length).toList.distinct.sorted.reverse
     // The above yields List(3, 2, 1) for HK.
     keyLengths.foreach(x => {
       val mapping_length_x = mapping.filter(t => (t._1.length() == x))
-//      log.info(mapping_length_x.toString())
+//      log.debug(mapping_length_x.toString())
       val regexFromKeys = makeRegexFromKeys(mapping_length_x.keys)
+//      log.debug(regexFromKeys.toString())
       output = regexFromKeys.replaceAllIn(output, _ match { case regexFromKeys(key) => mapping(key) })
+//      log.debug(output)
     })
     output
   }
@@ -102,40 +105,43 @@ trait RomanScript extends IndicScript {
     }
   }
 
-  def replaceDependentVowelsWithIndepedentVowels(str_in: String): String = {
-    // In doing so, we add a few virAma-s. So, ग्रा becomes ग्र्आ. This will make devanAgarI consonants uniform as far as replacement with roman glyphs is concerned.
-    var output = str_in
-
-    val VIRAMA = "्"
-    val DEVANAGARI_CONSONANTS_WITHOUT_VIRAMA_REGEX = "[क-हक़-य़\u0978-ॿ]"
-    val consonantVowelPattern = (
-      s"($DEVANAGARI_CONSONANTS_WITHOUT_VIRAMA_REGEX)"
-      + "([ा-ौॎ-ॏ])").r
-    output = consonantVowelPattern.replaceAllIn(output, _ match { case consonantVowelPattern(consonant, vowel) =>
-      consonant + VIRAMA + devaIndependentToDependent.map(_.swap).getOrElse(vowel, vowel)})
-
-    // Complete the job - add a virAma so that ग्र becomes ग्र्अ.
-    val consonantNonVowelPattern = (
-      s"($DEVANAGARI_CONSONANTS_WITHOUT_VIRAMA_REGEX)"
-        + s"(?!$VIRAMA)").r
-    // log.info(consonantNonVowelPattern)
-    output = consonantNonVowelPattern.replaceAllIn(output, (m:Match) => {m.group(0) + VIRAMA + "अ"})
-    // consonantNonVowelPattern has a problem - it wouldn't match a terminal consonant. Hence the below.
-    if(!output.isEmpty && romanToDevaConsonantsNoVirama.values.toList.contains(output.last.toString)) {
-      output = output + VIRAMA + "अ"
-    }
-    output
-  }
-
   def isEncoding(str_in: String): Boolean = distinctCharacters.exists(x => str_in.contains(x))
 
   override def fromDevanagari(str_in: String): String = {
+    def replaceDependentVowelsWithIndepedentVowels(str_in: String): String = {
+      // In doing so, we add a few virAma-s. So, ग्रा becomes ग्र्आ. This will make devanAgarI consonants uniform as far as replacement with roman glyphs is concerned.
+      var output = str_in
+
+      val VIRAMA = "्"
+      val DEVANAGARI_CONSONANTS_WITHOUT_VIRAMA_REGEX = "[क-हक़-य़\u0978-ॿ]़?"
+      val consonantVowelPattern = (
+        s"($DEVANAGARI_CONSONANTS_WITHOUT_VIRAMA_REGEX)"
+          + "([ा-ौॎ-ॏ])").r
+      output = consonantVowelPattern.replaceAllIn(output, _ match { case consonantVowelPattern(consonant, vowel) =>
+        consonant + VIRAMA + devaIndependentToDependent.map(_.swap).getOrElse(vowel, vowel)})
+//      log.debug(output)
+
+      // Complete the job - add a virAma so that ग्र becomes ग्र्अ.
+      val consonantNonVowelPattern = (
+        s"($DEVANAGARI_CONSONANTS_WITHOUT_VIRAMA_REGEX)"
+          + s"(?![${VIRAMA}़])").r
+      // log.info(consonantNonVowelPattern)
+      output = consonantNonVowelPattern.replaceAllIn(output, (m:Match) => {m.group(0) + VIRAMA + "अ"})
+//      log.debug(output)
+      // consonantNonVowelPattern has a problem - it wouldn't match a terminal consonant. Hence the below.
+      if(!output.isEmpty && romanToDevaConsonantsNoVirama.values.toList.contains(output.last.toString)) {
+        output = output + VIRAMA + "अ"
+      }
+      output
+    }
+
     var output = str_in
     // Here too we need to prefer longest sequences first.
     output = replaceDependentVowelsWithIndepedentVowels(output)
-//     log.info("replaceDependentVowelsWithIndepedentVowels : " + output)
+     log.info("replaceDependentVowelsWithIndepedentVowels : " + output)
 
     val replacementMap = devaIndependentVowelsToRoman ++ devaToRomanGeneral ++ devaConsonantsToRoman
+    log.debug(devaConsonantsToRoman.toString())
     output = replaceKeysLongestFirst(output, replacementMap)
     output
   }

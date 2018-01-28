@@ -40,13 +40,24 @@
       "oriya": "ଅଗ୍ନିମୀଳେ ପୁରୋହିତଂ ଯଜ୍ଞସ୍ଯ ଦେଵମୃତ୍ଵିଜମ୍"
     },
     {
-      "description": "Tests .Da",
+      "description": "Tests nuTka",
       "TODO": "Fix gujrataati test",
       "dev": "अएल् अंशाइ पड़िब",
       "oriya": "ଅଏଲ୍ ଅଂଶାଇ ପଡ଼ିବ",
       "gujarati": "અએલ્ અંશાઇ પड़િબ",
       "assamese": "অএল্ অংশাই পড়িৱ",
       "gurmukhi": "ਅਏਲ੍ ਅਂਸ਼ਾਇ ਪੜਿਬ"
+    },
+    {
+      "description": "Tests nuTka",
+      "comments": "malayalam and telugu have no nuTka",
+      "dev": "छीड़ा",
+      "oriya": "ଛୀଡ଼ା",
+      "gujarati": "છીડ઼ા",
+      "assamese": "ছীড়া",
+      "bengali": "ছীড়া",
+      "kannada": "ಛೀಡ಼ಾ",
+      "gurmukhi": "ਛੀਡ़ਾ"
     },
     {
       "description": "Tests anunAsika",
@@ -75,9 +86,9 @@
       "gurmukhi": "ਅਸਯ ਔਸ਼ਧਿਃ ਗ੍ਰਨ੍ਥਃ! ॡਕਾਰੋ ਨਾਸ੍ਤਿ ਲੇਸ਼ੋఽਪਿ ਸਂਸ਼ਯਃ। ਕੀਲਕਮ੍? ਕੂਪਿਃ?  ਕਸ਼੍ਠਂ ਭੋਃ। ਸ਼ਙ੍ਕਰ! ਜ੍ਞਾਨਮ੍।  ਸਞ੍ਜੀਵਯ। ੧੨੩੪੫॥ ੴ ਤਤ੍। ਅਬ ਅਵ"
     },
     {
-      "description": "A general test for scripts without equivalents for some devanAgarI letters, like gurmukhI, bengali and tamil",
-      "dev": "पड़िब",
-      "optitrans": "paDRiba"
+      "description": "A general test for Roman scripts without equivalents for some devanAgarI letters, like optitrans",
+      "dev": "पड़िब छीड़ा",
+      "optitrans": "paDRiba ChiiDRaa"
     }
   ]
 }
