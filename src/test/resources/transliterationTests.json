@@ -1,7 +1,7 @@
 {
   "canonical_source": "https://github.com/sanskrit-coders/indic-transliteration/blob/master/src/test/resources/transliterationTests.json",
   "comments": "Shared transliteration tests. In each test, the dev field is compulsory.",
-  "tests": [
+  "devanaagarii_round_trip": [
     {
       "dev": "असय औषधिः ग्रन्थः! ॡकारो नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५॥ ॐ तत्।",
       "iast": "asaya auṣadhiḥ granthaḥ! ḹkāro nāsti leśo`pi saṃśayaḥ. kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ. śaṅkara! jñānam.  sañjīvaya. 12345.. aum tat.",
