@@ -221,7 +221,7 @@ object gurmukhi extends NativeIndicScript{
       .replaceAll("ੱ([दध])", "द्$1")
       .replaceAll("ੱ([पफ])", "प्$1")
       .replaceAll("ੱ([बभ])", "ब्$1")
-      .replaceAll("ੱ([यरऱलळऴवशषसहङञणनऩम])", "$1्$1")
+      .replaceAll("ੱ([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])", "$1्$1")
   }
 }
 
