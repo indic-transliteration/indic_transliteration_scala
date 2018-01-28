@@ -12,7 +12,7 @@ object optitrans extends RomanScript {
     "ai" -> "ऐ",
     "o" -> "ओ", "au" -> "औ")
 
-  override val romanToDevaDependentVowels = romanToDevaIndependentVowels.mapValues(devaIndependentToDependent(_)).filterKeys(_ != "a")
+  override val romanToDevaDependentVowels: Map[String, String] = romanToDevaIndependentVowels.mapValues(devaIndependentToDependent(_)).filterKeys(_ != "a")
 
   override val romanToDevaConsonants = Map(
     "h" -> "ह्", "y" -> "य्", "v" -> "व्", "r" -> "र्", "l" -> "ल्",
@@ -21,6 +21,7 @@ object optitrans extends RomanScript {
     "m" -> "म्",
     "N" -> "ण्",
     "n" -> "न्",
+    "n" -> "ँ",
     "jh" -> "झ्", "J" -> "झ्", "bh" -> "भ्", "B" -> "भ्",
     "gh" -> "घ्", "G" -> "घ्", "Dh" -> "ढ्", "dh" -> "ध्",
     "j" -> "ज्", "b" -> "ब्", "g" -> "ग्",
