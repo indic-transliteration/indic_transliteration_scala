@@ -202,12 +202,11 @@ object gurmukhi extends NativeIndicScript{
     '३'-> '੩', '४'-> '੪', '५'-> '੫',
     '६'-> '੬', '७'-> '੭', '८'-> '੮', '९'-> '੯',
     'ॐ' -> 'ੴ', '॑' -> 'ੑ', /*udAtta*/
-    'ं' -> 'ੰ' /*Tippi - ਅਭੰਗ|अभੰग|abhanga*/,
-    'ੱ' -> 'ੱ' /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka. Handled specially in fromDevanagari.*/, 'ੵ' -> 'ੵ', /*yakaSh*/
-    'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap) ++ Map('ੰ' /*Tippi - ਅਭੰਗ|अभੰग|abhanga*/ -> 'ं',
+      'ੱ' -> 'ੱ' /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka. Handled specially in fromDevanagari.*/, 'ੵ' -> 'ੵ', /*yakaSh*/
+      'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/)
   override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
   override def fromDevanagari(str: String): String = {
     val partialTransliteration = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
@@ -269,10 +268,9 @@ object oriya extends NativeIndicScript{
     '०' -> '୦', '१'-> '୧', '२'-> '୨',
     '३'-> '୩', '४'-> '୪', '५'-> '୫',
     '६'-> '୬', '७'-> '୭', '८'-> '୮', '९'-> '୯',
-    'ୱ' -> 'ୱ' // wa - non-devanAgarI
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++ Map('ୱ' /* wa - non-devanAgarI*/ -> 'व')
   override val distinctCharacters: Set[Char] = mapFromDevanagari.values.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 

@@ -33,9 +33,12 @@ trait RomanScript extends IndicScript {
     "उ" -> "ु", "ऊ" -> "ू",
     "ऋ" -> "ृ", "ॠ" -> "ॄ",
     "ऌ" -> "ॢ", "ॡ" -> "ॣ",
+    "ऎ" -> "ॆ",
     "ए" -> "े",
     "ऐ" ->  "ै",
-    "ओ" -> "ो",  "औ" -> "ौ")
+    "ओ" -> "ୋ",
+    "ऒ" -> "ो",
+    "औ" -> "ौ")
 
   def debugString(): Unit = {
     println(romanToDevaIndependentVowels)

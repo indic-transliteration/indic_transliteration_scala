@@ -10,7 +10,8 @@ object optitrans extends RomanScript {
     "LLi" -> "ऌ", "LLI" -> "ॡ",
     "e" -> "ए",
     "ai" -> "ऐ",
-    "o" -> "ओ", "au" -> "औ")
+    "o" -> "ओ",
+    "au" -> "औ")
 
   override val romanToDevaConsonants = Map(
     "h" -> "ह्", "y" -> "य्", "v" -> "व्", "r" -> "र्", "l" -> "ल्",

@@ -90,16 +90,16 @@ If the below is uncommented, and the kolkata line in transliterator is also unco
 [info]   at sanskritnlp.transliteration.IastBase.$init$(iast.scala:42)
 [info]   at sanskritnlp.transliteration.kolkata$.<init>(iast.scala:81)
  */
-//object kolkata extends IastBase {
-//  override val romanToDevaIndependentVowels = Map(
-//    "a" -> "अ", "ā" -> "आ",  "i" -> "इ", "ī" -> "ई",
-//    "u" -> "उ", "ū" -> "ऊ",
-//    "ṛ" -> "ऋ", "ṝ" -> "ॠ", "ḷ" -> "ऌ", "ḹ" -> "ॡ",
-//    "ē" -> "ए",
-//    "ai" -> "ऐ",
-//    "ō" -> "ओ", "au" -> "औ")
-//  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-//}
+object kolkata extends IastBase {
+  override val romanToDevaIndependentVowels = Map(
+    "a" -> "अ", "ā" -> "आ",  "i" -> "इ", "ī" -> "ई",
+    "u" -> "उ", "ū" -> "ऊ",
+    "ṛ" -> "ऋ", "ṝ" -> "ॠ", "ḷ" -> "ऌ", "ḹ" -> "ॡ",
+    "ē" -> "ए",
+    "ai" -> "ऐ",
+    "ō" -> "ओ", "au" -> "औ")
+  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
+}
 
 object iastTest {
   def main(args: Array[String]): Unit = {
