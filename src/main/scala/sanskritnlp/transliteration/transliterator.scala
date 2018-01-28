@@ -23,6 +23,8 @@ object transliterator {
     "malayalam" -> malayalam,
     "oriya" -> oriya,
     "gurmukhi" -> gurmukhi,
+    "assamese" -> assamese,
+    "bengali" -> bengali,
     "gujarati" -> gujarati
   )
 
@@ -54,9 +56,12 @@ object transliterator {
   }
 
   def getScriptHandler(in_str: String): Option[NativeIndicScript] = {
-    // The more distinct and constrained script should appear fist.
     val indicMaps = Seq(gurmukhi, oriya, kannaDa, telugu, malayalam, gujarati, devanagarii)
-    indicMaps.find(script => script.isEncoding(in_str))
+    val idScores = indicMaps.map(script => script.isEncoding(in_str))
+    idScores.max match {
+      case 0 => None
+      case maxScore => Some(indicMaps(idScores.indexOf(maxScore)))
+    }
   }
 
   def getDevanagariiFromOtherIndicString(in_str: String): Option[String] = {

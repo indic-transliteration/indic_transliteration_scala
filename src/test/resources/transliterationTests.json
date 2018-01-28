@@ -1,7 +1,10 @@
 {
   "canonical_source": "https://github.com/sanskrit-coders/indic-transliteration/blob/master/src/test/resources/transliterationTests.json",
   "comments": "Shared transliteration tests. In each test, the dev field is compulsory.",
-  "TODO": "Add tests for ॐ, handling of .Da in kannada.",
+  "TODO": [
+    "Add tests for ॐ, handling of .Da in kannada.",
+    "various fraction symbols in various scripts"
+  ],
   "devanaagarii_round_trip": [
     {
       "description": "A general test. Checks punctuations, OM.",
@@ -16,6 +19,7 @@
       "malayalam": "അസയ ഔഷധിഃ ഗ്രന്ഥഃ! ൡകാരോ നാസ്തി ലേശോഽപി സംശയഃ। കീലകമ്? കൂപിഃ?  കഷ്ഠം ഭോഃ। ശങ്കര! ജ്ഞാനമ്।  സഞ്ജീവയ। ൧൨൩൪൫॥ ॐ തത്।",
       "telugu": "అసయ ఔషధిః గ్రన్థః! ఌకారో నాస్తి లేశోఽపి సంశయః। కీలకమ్? కూపిః?  కష్ఠం భోః। శఙ్కర! జ్ఞానమ్।  సఞ్జీవయ। ౧౨౩౪౫॥ ॐ తత్।",
       "gujarati": "અસય ઔષધિઃ ગ્રન્થઃ! ૡકારો નાસ્તિ લેશોઽપિ સંશયઃ। કીલકમ્? કૂપિઃ?  કષ્ઠં ભોઃ। શઙ્કર! જ્ઞાનમ્।  સઞ્જીવય। ૧૨૩૪૫॥ ॐ તત્।",
+      "assamese": "অসয ঔষধিঃ গ্ৰন্থঃ! ৡকাৰো নাস্তি লেশোঽপি সংশযঃ। কীলকম্? কূপিঃ?  কষ্ঠং ভোঃ। শঙ্কৰ! জ্ঞানম্।  সঞ্জীবয। ১২৩৪৫॥ ॐ তত্।",
       "oriya": "ଅସଯ ଔଷଧିଃ ଗ୍ରନ୍ଥଃ! ୡକାରୋ ନାସ୍ତି ଲେଶୋଽପି ସଂଶଯଃ। କୀଲକମ୍? କୂପିଃ?  କଷ୍ଠଂ ଭୋଃ। ଶଙ୍କର! ଜ୍ଞାନମ୍।  ସଞ୍ଜୀଵଯ। ୧୨୩୪୫॥ ॐ ତତ୍।"
     },
     {
@@ -32,6 +36,7 @@
       "gurmukhi": "ਅਗ੍ਨਿਮੀਲ਼ੇ ਪੁਰੋਹਿਤਂ ਯਜ੍ਞਸ੍ਯ ਦੇਵਮृਤ੍ਵਿਜਮ੍",
       "telugu": "అగ్నిమీళే పురోహితం యజ్ఞస్య దేవమృత్విజమ్",
       "gujarati": "અગ્નિમીળે પુરોહિતં યજ્ઞસ્ય દેવમૃત્વિજમ્",
+      "assamese": "অগ্নিমীळে পুৰোহিতং যজ্ঞস্য দেবমৃত্বিজম্",
       "oriya": "ଅଗ୍ନିମୀଳେ ପୁରୋହିତଂ ଯଜ୍ଞସ୍ଯ ଦେଵମୃତ୍ଵିଜମ୍"
     },
     {
@@ -40,6 +45,7 @@
       "dev": "अएल् अंशाइ पड़िब",
       "oriya": "ଅଏଲ୍ ଅଂଶାଇ ପଡ଼ିବ",
       "gujarati": "અએલ્ અંશાઇ પड़િબ",
+      "assamese": "অএল্ অংশাই পড়িৱ",
       "gurmukhi": "ਅਏਲ੍ ਅਂਸ਼ਾਇ ਪੜਿਬ"
     },
     {
@@ -49,6 +55,8 @@
       "kannada": "ಅಁಅಳಾ",
       "malayalam": "അഁഅളാ",
       "gujarati": "અઁઅળા",
+      "assamese": "অঁঅळা",
+      "bengali": "অঁঅळা",
       "gurmukhi": "ਅਁਅਲ਼ਾ"
     }
   ],
@@ -61,9 +69,10 @@
   ],
   "from_devanaagarii": [
     {
-      "description": "A general test for defective scripts like gurmukhI and tamil",
-      "dev": "असय औषधिः ग्रन्थः! ॡकारो नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५॥ ॐ तत्।",
-      "gurmukhi": "ਅਸਯ ਔਸ਼ਧਿਃ ਗ੍ਰਨ੍ਥਃ! ॡਕਾਰੋ ਨਾਸ੍ਤਿ ਲੇਸ਼ੋఽਪਿ ਸਂਸ਼ਯਃ। ਕੀਲਕਮ੍? ਕੂਪਿਃ?  ਕਸ਼੍ਠਂ ਭੋਃ। ਸ਼ਙ੍ਕਰ! ਜ੍ਞਾਨਮ੍।  ਸਞ੍ਜੀਵਯ। ੧੨੩੪੫॥ ੴ ਤਤ੍।"
+      "description": "A general test for scripts without equivalents for some devanAgarI letters, like gurmukhI, bengali and tamil",
+      "dev": "असय औषधिः ग्रन्थः! ॡकारो नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५॥ ॐ तत्। अब अव",
+      "bengali": "অসয ঔষধিঃ গ্রন্থঃ! ৡকারো নাস্তি লেশোঽপি সংশযঃ। কীলকম্? কূপিঃ?  কষ্ঠং ভোঃ। শঙ্কর! জ্ঞানম্।  সঞ্জীবয। ১২৩৪৫॥ ॐ তত্। অব অব",
+      "gurmukhi": "ਅਸਯ ਔਸ਼ਧਿਃ ਗ੍ਰਨ੍ਥਃ! ॡਕਾਰੋ ਨਾਸ੍ਤਿ ਲੇਸ਼ੋఽਪਿ ਸਂਸ਼ਯਃ। ਕੀਲਕਮ੍? ਕੂਪਿਃ?  ਕਸ਼੍ਠਂ ਭੋਃ। ਸ਼ਙ੍ਕਰ! ਜ੍ਞਾਨਮ੍।  ਸਞ੍ਜੀਵਯ। ੧੨੩੪੫॥ ੴ ਤਤ੍। ਅਬ ਅਵ"
     }
   ]
 }
