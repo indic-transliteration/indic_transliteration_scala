@@ -1,7 +1,6 @@
 package sanskritnlp.transliteration
 
 import org.slf4j.{Logger, LoggerFactory}
-import sanskritnlp.vyAkaraNa.devanAgarI
 
 trait IndicScript {
   def fromDevanagari(str: String): String = null
@@ -22,23 +21,17 @@ trait NativeIndicScript extends IndicScript {
   override def fromDevanagari(str: String): String = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
 
   override def toDevanagari(str: String): String = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
-
-  def test(): Unit = {
-    val devanAgarI_str = devanAgarI.allSymbols.mkString("-")
-    println(devanAgarI_str)
-    println(fromDevanagari(devanAgarI_str))
-  }
 }
 
-object devanagarii extends NativeIndicScript{
-  override val distinctCharacters: Set[Char] = kannaDa.mapToDevanagari.values.toSet
+object devanaagarii extends NativeIndicScript{
+  override val distinctCharacters: Set[Char] = kannada.mapToDevanagari.values.toSet
 
   override def fromDevanagari(str: String): String = str
 
   override def toDevanagari(str: String): String = str
 }
 
-object kannaDa extends NativeIndicScript{
+object kannada extends NativeIndicScript{
   // Unicode chars copied from kn-itrans.mim
   // http://www.koders.com/noncode/fid696F9AB94B6D1DB0A554AFA7D5E5C07F132E6CF9.aspx
   // Links for other languages *-itrans.mim are also found there.

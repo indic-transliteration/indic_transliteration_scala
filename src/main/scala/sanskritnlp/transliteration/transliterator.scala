@@ -18,7 +18,7 @@ object transliterator {
     "wx" -> wx,
     "optitrans" -> optitrans,
 //    "kolkata" -> kolkata,
-    "kannada" -> kannaDa,
+    "kannada" -> kannada,
     "telugu" -> telugu,
     "malayalam" -> malayalam,
     "oriya" -> oriya,
@@ -56,7 +56,7 @@ object transliterator {
   }
 
   def getScriptHandler(in_str: String): Option[NativeIndicScript] = {
-    val indicMaps = Seq(gurmukhi, oriya, kannaDa, telugu, malayalam, gujarati, devanagarii)
+    val indicMaps = Seq(gurmukhi, oriya, kannada, telugu, malayalam, gujarati, devanaagarii, bengali, assamese)
     val idScores = indicMaps.map(script => script.isEncoding(in_str))
     idScores.max match {
       case 0 => None
