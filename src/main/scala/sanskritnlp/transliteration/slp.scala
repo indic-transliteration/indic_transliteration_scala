@@ -27,7 +27,7 @@ object slp extends RomanScript {
     "k" -> "क्", "p" -> "प्",
     "S" -> "श्", "z" -> "ष्", "s" -> "स्",
     "L" -> "ळ्")
-  override val romanToDevaConsonantsNoVirama = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
+  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
   override val romanToDevaContextFreeReplacements = Map(
     "M" -> "ं",  "H" -> "ः",
     "'" -> "ऽ", ".." -> "॥", "." -> "।",
@@ -35,9 +35,9 @@ object slp extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "oM" -> "ॐ")
 
-  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-  override val devaConsonantsToRoman = romanToDevaConsonants.map(_.swap)
-  override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap)
+  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
+  override val devaConsonantsToRoman: Map[String, String] = romanToDevaConsonants.map(_.swap)
+  override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap)
 
   def test_toDevanagari(): Unit = {
     val text = "aH, puM, (atati sarvvaM vyApnoti iti ataterqaH) vizRuH . iti medinI .  “akAro vizRuruddizwa ukArastu maheSvaraH . makAra ucyate brahmA praRavena trayo matAH” .. iti durgAdAsaDftavacanaM . (klI . brahma . yaTA, -- a i u e o om kalASca mUlaM brahma iti kIrttitam, iti agnipurARam .)"

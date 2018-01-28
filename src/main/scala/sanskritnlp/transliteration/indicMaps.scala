@@ -22,7 +22,7 @@ trait NativeIndicScript extends IndicScript {
 
   override def toDevanagari(str: String): String = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
 
-  def test: Unit = {
+  def test(): Unit = {
     val devanAgarI_str = devanAgarI.allSymbols.mkString("-")
     println(devanAgarI_str)
     println(fromDevanagari(devanAgarI_str))

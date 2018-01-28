@@ -1,12 +1,14 @@
 package sanskritnlp.vyAkaraNa
 
-import org.slf4j.LoggerFactory
+import org.slf4j.{Logger, LoggerFactory}
+
+import scala.collection.immutable
 
 class Syllable (strIn: String){
-  var svara = ""
-  var vyanjana = ""
+  val svara = ""
+  val vyanjana = ""
   // TODO: deduce svara and vyanjana from strIn
-  override def toString = vyanjana + svara
+  override def toString: String = vyanjana + svara
 }
 
 object symbols{
@@ -38,58 +40,58 @@ object symbols{
 
 object devanAgarI{
   val saMkhyA = Set('०', '१', '२', '३', '४', '५', '६', '७', '८', '९')
-  val allSymbols = saMkhyA ++ consonants.vyanjana_symbols ++ vowels.svarAH ++ vowels.mAtrA ++ Set(vowels.virAma, vowels.avagraha,  vowels.anusvAra, vowels.visarga, vowels.chandrabindu, symbols.toneMarkers.verticalBar, symbols.toneMarkers.anudAtta)
-  def isEncoding(str_in: String): Boolean = allSymbols.map(str_in.contains(_)).contains(true)
+  val allSymbols: Set[Any] = saMkhyA ++ consonants.vyanjana_symbols ++ vowels.svarAH ++ vowels.mAtrA ++ Set(vowels.virAma, vowels.avagraha,  vowels.anusvAra, vowels.visarga, vowels.chandrabindu, symbols.toneMarkers.verticalBar, symbols.toneMarkers.anudAtta)
+  def isEncoding(str_in: String): Boolean = allSymbols.exists(str_in.contains(_))
 }
 
 object consonants{
-  val vyanjana_symbols = shivasUtra.get_symbols(start = "ह", endIn = "र्") ++ List('ळ')
-  val vyanjanAni = vyanjana_symbols map (_.toString + vowels.virAma)
+  val vyanjana_symbols: String = shivasUtra.get_symbols(start = "ह", endIn = "र्") ++ List('ळ')
+  val vyanjanAni: immutable.IndexedSeq[String] = vyanjana_symbols map (_.toString + vowels.virAma)
 }
 
 object vowels {
   // Symbols are assumed to occur in the following order:
   // (sthAna mAtrA tone nasalization).
-  val log = LoggerFactory.getLogger(this.getClass)
+  val log: Logger = LoggerFactory.getLogger(this.getClass)
 
-  val hrasva = shivasUtra.get_symbols("अ", "क्") ++ List("ऎ", "ऒ")
+  val hrasva: immutable.IndexedSeq[Any] = shivasUtra.get_symbols("अ", "क्") ++ List("ऎ", "ऒ")
 
-  val hrasva2pluta = hrasva.map(x => (x, x match {
+  val hrasva2pluta: Map[Any, String] = hrasva.map(x => (x, x match {
     case "ऌ" => "ॡ"
     case _ => x+"३"
   })).toMap
 
-  val dIrgha = "आईऊॠ".map(_.toString) ++ shivasUtra.get_symbols("ए", "च्")
+  val dIrgha: immutable.IndexedSeq[Any] = "आईऊॠ".map(_.toString) ++ shivasUtra.get_symbols("ए", "च्")
 
-  val dIrgha2hrasva = (dIrgha zip hrasva.filterNot(_ == "ऌ")).toMap
+  val dIrgha2hrasva: Map[Any, Any] = (dIrgha zip hrasva.filterNot(_ == "ऌ")).toMap
 
-  val hrasva2dIrgha = (hrasva.filterNot(_ == "ऌ") zip dIrgha).toMap
+  val hrasva2dIrgha: Map[Any, Any] = (hrasva.filterNot(_ == "ऌ") zip dIrgha).toMap
 
-  val dIrgha2pluta = (dIrgha zip dIrgha.map(x => x.toString match {
+  val dIrgha2pluta: Map[Any, String] = (dIrgha zip dIrgha.map(x => x.toString match {
     case "ऐ" | "औ" => x + "३"
     case _ => hrasva2pluta(dIrgha2hrasva(x))
   })).toMap
 
-  val pluta = hrasva2pluta.values //++ List("ऐ३", "औ३")
+  val pluta: Iterable[String] = hrasva2pluta.values //++ List("ऐ३", "औ३")
 
-  val svarAH = hrasva ++ dIrgha  ++ pluta
+  val svarAH: immutable.IndexedSeq[Any] = hrasva ++ dIrgha  ++ pluta
 
-  val hrasvamAtrA = "िुृॢॆॊ".toIndexedSeq
+  val hrasvamAtrA: immutable.IndexedSeq[Char] = "िुृॢॆॊ".toIndexedSeq
 
-  val dIrghamAtrA = "ाीूॄेोैौ".toIndexedSeq
+  val dIrghamAtrA: immutable.IndexedSeq[Char] = "ाीूॄेोैौ".toIndexedSeq
 
-  val plutamAtrA = IndexedSeq("ा३") ++ hrasvamAtrA.map(x => x match {
+  val plutamAtrA: IndexedSeq[String] = IndexedSeq("ा३") ++ hrasvamAtrA.map {
     case 'ऌ' => "ॡ"
-    case _ => x+"३"
-  }) //++ List("ै३", "ौ३")
+    case x => x + "३"
+  } //++ List("ै३", "ौ३")
 
-  val mAtrA = hrasvamAtrA ++ dIrghamAtrA ++plutamAtrA
+  val mAtrA: immutable.IndexedSeq[Any] = hrasvamAtrA ++ dIrghamAtrA ++plutamAtrA
 
-  val svara2mAtrA = (svarAH.drop(1) zip mAtrA).toMap
+  val svara2mAtrA: Map[Any, Any] = (svarAH.drop(1) zip mAtrA).toMap
 
   val glottalStop = "ॽ"
 
-  val mAtrA2svara = (mAtrA zip svarAH.drop(1)).toMap
+  val mAtrA2svara: Map[Any, Any] = (mAtrA zip svarAH.drop(1)).toMap
 
   val virAma = "्"
 
@@ -102,8 +104,8 @@ object vowels {
   val chandrabindu = "ँ"
 
   /// TODO: Incomplete
-  def getAllForms(base: String) = {
-    var forms = IndexedSeq(base)
+  def getAllForms(base: String): IndexedSeq[String] = {
+    val forms = IndexedSeq(base)
     if(hrasva contains base) {
       println("asdf "+IndexedSeq(hrasva2dIrgha(base), hrasva2pluta(base)))
     }
@@ -115,12 +117,12 @@ object vowels {
   }
 
   object tone {
-    val svarita = symbols.toneMarkers.verticalBar
-    val anudAtta = symbols.toneMarkers.anudAtta
+    val svarita: Char = symbols.toneMarkers.verticalBar
+    val anudAtta: Char = symbols.toneMarkers.anudAtta
   }
 
 
-  def test = {
+  def test(): Unit = {
     log info("svarAH " + svarAH.mkString(" "))
     log info("hrasva " + hrasva.mkString(" "))
     log info("dIrgha " + dIrgha.mkString(" "))

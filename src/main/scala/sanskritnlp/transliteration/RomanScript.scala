@@ -93,7 +93,7 @@ trait RomanScript extends IndicScript {
       output = replaceViraamaFollowedByIndependentVowels(output)
       output
     } catch {
-      case e: java.util.NoSuchElementException => {
+      case _: java.util.NoSuchElementException => {
         str_in
       }
     }
@@ -124,9 +124,7 @@ trait RomanScript extends IndicScript {
     output
   }
 
-  def isEncoding(str_in: String): Boolean = {
-    distinctCharacters.map(x => str_in.contains(x)).contains(true)
-  }
+  def isEncoding(str_in: String): Boolean = distinctCharacters.exists(x => str_in.contains(x))
 
   override def fromDevanagari(str_in: String): String = {
     var output = str_in

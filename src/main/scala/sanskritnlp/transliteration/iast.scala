@@ -31,7 +31,7 @@ trait IastBase extends RomanScript {
     "th" -> "थ्", "c" -> "च्", "ṭ" -> "ट्", "t" -> "त्",
     "k" -> "क्", "p" -> "प्",
     "ś" -> "श्", "ṣ" -> "ष्", "s" -> "स्", "ḻ" -> "ळ्")
-  override val romanToDevaConsonantsNoVirama = romanToDevaConsonants.mapValues(_.replaceAll("(.+)्$", "$1"))
+  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("(.+)्$", "$1"))
   override val romanToDevaContextFreeReplacements = Map(
     "ṃ" -> "ं",  "ḥ" -> "ः",
     "`" -> "ऽ", "." -> "।",
@@ -39,17 +39,17 @@ trait IastBase extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "aum" -> "ॐ")
 
-  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-  override val devaConsonantsToRoman = romanToDevaConsonants.map(_.swap)
+  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
+  override val devaConsonantsToRoman: Map[String, String] = romanToDevaConsonants.map(_.swap)
 
-  def test_isEncoding() = {
+  def test_isEncoding(): Unit = {
     log info isEncoding("Aṃkuśeśvaram").toString
     log.info(isEncoding("Aṃkuśeśvaram").toString)
   }
 }
 
 object iast extends IastBase {
-  override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap) ++ Map("ऽ" -> "")
+  override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap) ++ Map("ऽ" -> "")
 
   def test_toDevanagari(): Unit = {
     val romanText = "Asaya auṣadhiḥ granthaḥ! l2kAro`sti. nāsti les4o`pi saṃśayaḥ. Kaaṣṭhaḥ bhoḥ. 12345" +
@@ -67,7 +67,7 @@ object iastDcs extends IastBase {
     "0" -> "०", "1"-> "१", "2"-> "२",
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "aum" -> "ॐ")
-  override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap)
+  override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap)
 
   def test_toDevanagari(): Unit = {
     val romanText = "Asaya auṣadhiḥ granthaḥ! l2kAro'sti. nāsti les4o'pi saṃśayaḥ. Kaaṣṭhaḥ bhoḥ/ 12345 10.2" +

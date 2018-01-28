@@ -1,24 +1,25 @@
 package sanskritnlp.vyAkaraNa
 
+import scala.collection.{immutable, mutable}
 import scala.collection.mutable.{ArrayBuffer, HashMap}
 
 object shivasUtra {
-  var sUtra = "अइउण् ऋऌक् एओङ् ऐऔच् हयवरट् लँण् ञमङणनम् झभञ् घढधष् जबगडदश् खफछठथचटतव् कपय् शषसर् हल्"
-  val sUtra_groups = sUtra.split(" ").toIndexedSeq
+  val sUtra = "अइउण् ऋऌक् एओङ् ऐऔच् हयवरट् लँण् ञमङणनम् झभञ् घढधष् जबगडदश् खफछठथचटतव् कपय् शषसर् हल्"
+  val sUtra_groups: immutable.IndexedSeq[String] = sUtra.split(" ").toIndexedSeq
 
   // Letters representing indices, aka halitaH markers, anubandha
   // Eg: ण् क् ङ्. Note ण् is repeated.
-  var halitaH = sUtra_groups.map(x => x.takeRight(2).toString)
+  val halitaH: immutable.IndexedSeq[String] = sUtra_groups.map(x => x.takeRight(2).toString)
 
   // Eg: उ ऌ ओ. There is no ambiguity with this.
-  val gaNAntimAkShara = sUtra_groups.map(x => {
+  val gaNAntimAkShara: immutable.IndexedSeq[String] = sUtra_groups.map(x => {
     if(x == "लँण्") "ल"
     else x.takeRight(3).head.toString
   })
 
-  val itaH = halitaH ++ List("अँ")
+  val itaH: immutable.IndexedSeq[String] = halitaH ++ List("अँ")
   
-  var sUtra_symbols = sUtra.replaceAll(" ", "")
+  var sUtra_symbols: String = sUtra.replaceAll(" ", "")
   // तस्य  लोपः॥ - तस्य इतो लोपः।
   itaH.foreach(y => {
     var x = y;
@@ -26,14 +27,14 @@ object shivasUtra {
     sUtra_symbols = sUtra_symbols.replaceAll(x, "")
     })
 
-  val itsaMkhyA = gaNAntimAkShara.map(x => sUtra_symbols.lastIndexOf(x)) ++ List(sUtra_symbols.indexOf("ल"))
-  val saMkhyA_map = (itaH zip itsaMkhyA).toMap
+  val itsaMkhyA: immutable.IndexedSeq[Int] = gaNAntimAkShara.map(x => sUtra_symbols.lastIndexOf(x)) ++ List(sUtra_symbols.indexOf("ल"))
+  val saMkhyA_map: Map[String, Int] = (itaH zip itsaMkhyA).toMap
 
 //   Example Input: pratyAhAra(start = "इ", end = "क्")
 // Aka pratyAhAra
 // Confidence in correctness: Low
 // Reason: Well tested. Doesn't yet return all vowel forms.
-  def get_symbols(start: String, endIn: String, bShortestMatch: Boolean = true) = {
+  def get_symbols(start: String, endIn: String, bShortestMatch: Boolean = true): String = {
     println(start + endIn)
     val beginPos = sUtra_symbols.indexOf(start)
     val end  = if(endIn == "ँ") "अँ" else endIn
@@ -63,7 +64,7 @@ object shivasUtra {
 
   def pratyAhAra(strIn: String, bShortestMatch: Boolean = true): IndexedSeq[String] = pratyAhAra(strIn(0).toString, strIn.substring(1), bShortestMatch)
   
-  def test = {
+  def test(): Unit = {
     println("sUtra_symbols" + sUtra_symbols)
     println(gaNAntimAkShara zip itsaMkhyA)
     println("halitaH " + halitaH.mkString(" "))
@@ -78,7 +79,7 @@ object shivasUtra {
 }
 
 object akSharasaMjJNA {
-  val map: HashMap[String, IndexedSeq[String]] = HashMap(
+  val map: mutable.HashMap[String, IndexedSeq[String]] = mutable.HashMap(
     // 'eShAm antyaa itaH'
     // लण्मध्ये त्वित्सञ्ज्ञकः॥
     // Their use as markers: हलन्त्यं॥ with अनुवृत्ति - उपदेशे हल्-अन्त्यं इत् स्यात्।

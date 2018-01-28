@@ -27,7 +27,7 @@ object wx extends RomanScript {
     "k" -> "क्", "p" -> "प्",
     "S" -> "श्", "R" -> "ष्", "s" -> "स्",
     "ḻ" -> "ळ्")
-  override val romanToDevaConsonantsNoVirama = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
+  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
   override val romanToDevaContextFreeReplacements = Map(
     "M" -> "ं",  "H" -> "ः", "z" -> "ँ",
     "'" -> "ऽ", ".." -> "॥", "." -> "।",
@@ -35,9 +35,9 @@ object wx extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "oM" -> "ॐ")
 
-  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-  override val devaConsonantsToRoman = romanToDevaConsonants.map(_.swap)
-  override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap)
+  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
+  override val devaConsonantsToRoman: Map[String, String] = romanToDevaConsonants.map(_.swap)
+  override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap)
 
   def test_toDevanagari(): Unit = {
     val text = "aH, puM, awwi axXA atawi"

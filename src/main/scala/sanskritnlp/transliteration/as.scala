@@ -78,7 +78,7 @@ object as extends RomanScript {
     "th" -> "थ्", "c" -> "च्", "t2" -> "ट्", "t" -> "त्",
     "k" -> "क्", "p" -> "प्",
     "s4" -> "श्", "s2" -> "ष्", "s" -> "स्")
-  override val romanToDevaConsonantsNoVirama = romanToDevaConsonants.mapValues(_.replaceAll("(.+)्$", "$1"))
+  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("(.+)्$", "$1"))
   override val romanToDevaContextFreeReplacements = Map(
     "m2" -> "ं",  "h2" -> "ः",
     "`" -> "ऽ", "." -> "।",
@@ -86,11 +86,11 @@ object as extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "aum" -> "ॐ")
 
-  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
-  override val devaConsonantsToRoman = romanToDevaConsonants.map(_.swap)
-  override val devaToRomanGeneral = romanToDevaContextFreeReplacements.map(_.swap) ++ Map("ऽ" -> "")
+  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
+  override val devaConsonantsToRoman: Map[String, String] = romanToDevaConsonants.map(_.swap)
+  override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap) ++ Map("ऽ" -> "")
 
-  override val distinctCharacters = (romanToDevaIndependentVowels ++ romanToDevaConsonants ++ romanToDevaContextFreeReplacements) .keys.filter(_.matches(""".+?\d""")).toList
+  override val distinctCharacters: List[String] = (romanToDevaIndependentVowels ++ romanToDevaConsonants ++ romanToDevaContextFreeReplacements) .keys.filter(_.matches(""".+?\d""")).toList
 
   def test_toDevanagari(): Unit = {
     val romanText = "asaya auS2adhih2 granthah2! l2kAro`sti. na1sti les4o`pi sam2s4ayah2. Kas2t2ham2 bhoh2. 12345" +
@@ -107,6 +107,6 @@ object asTest {
     as.test_toDevanagari()
     as.test_fromDevanagari()
     println(as.distinctCharacters)
-    println(as.distinctCharacters.toList.map(x => iast.fromDevanagari(as.toDevanagari(x))) )
+    println(as.distinctCharacters.map(x => iast.fromDevanagari(as.toDevanagari(x))) )
   }
 }
