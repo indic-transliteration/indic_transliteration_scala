@@ -34,7 +34,7 @@ trait IastBase extends RomanScript {
   override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("(.+)्$", "$1"))
   override val romanToDevaContextFreeReplacements = Map(
     "ṃ" -> "ं",  "ḥ" -> "ः",
-    "`" -> "ऽ", "." -> "।",
+    "`" -> "ऽ", "." -> "।", ".." -> "॥",
     "0" -> "०", "1"-> "१", "2"-> "२",
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "aum" -> "ॐ")
@@ -49,7 +49,7 @@ trait IastBase extends RomanScript {
 }
 
 object iast extends IastBase {
-  override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap) ++ Map("ऽ" -> "")
+  override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap)
 
   def test_toDevanagari(): Unit = {
     val romanText = "Asaya auṣadhiḥ granthaḥ! l2kAro`sti. nāsti les4o`pi saṃśayaḥ. Kaaṣṭhaḥ bhoḥ. 12345" +

@@ -4,7 +4,7 @@
   "tests": [
     {
       "dev": "असय औषधिः ग्रन्थः! ॡकारो नास्ति लेशोऽपि संशयः। कीलकम्? कूपिः?  कष्ठं भोः। शङ्कर! ज्ञानम्।  सञ्जीवय। १२३४५॥ ॐ तत्।",
-      "iast_avagrahaDoesntWork": "asaya auṣadhiḥ granthaḥ! ḹkāro nāsti leś`opi saṃśayaḥ. kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ. śaṅkara! jñānam.  sañjīvaya. 12345.. aum tat.",
+      "iast": "asaya auṣadhiḥ granthaḥ! ḹkāro nāsti leśo`pi saṃśayaḥ. kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ. śaṅkara! jñānam.  sañjīvaya. 12345.. aum tat.",
       "iastDcs": "asaya auṣadhiḥ granthaḥ! ḹkāro nāsti leśo'pi saṃśayaḥ/ kīlakam? kūpiḥ?  kaṣṭhaṃ bhoḥ/ śaṅkara! jñānam/  sañjīvaya/ 12345// aum tat/",
       "hk": "asaya auSadhiH granthaH! lRRkAro nAsti lezo'pi saMzayaH| kIlakam? kUpiH?  kaSThaM bhoH| za.Nkara! jJAnam|  saJjIvaya| 12345|| OM tat|",
       "optitrans": "asaya auShadhiH granthaH! LLIkaaro naasti lesho.api saMshayaH. kiilakam? kuupiH?  kaShThaM bhoH. shankara! JNaanam.  sanjiivaya. 12345.. OM tat.",

@@ -8,19 +8,9 @@ import org.slf4j.LoggerFactory
 
 import scala.io.Source
 
-case class Test(
-                 dev: Option[String],
-                 iast: Option[String],
-                 iastDcs: Option[String],
-                 kolkata: Option[String],
-                 hk: Option[String],
-                 optitrans: Option[String],
-                 slp: Option[String],
-                 wx: Option[String]
-               )
 case class TransliterationTests(
                                  canonical_source: Option[String],
-                                 tests: List[Test]
+                                 tests: List[Map[String, String]]
                                )
 
 class TransliterationTest extends FlatSpec {
@@ -32,33 +22,12 @@ class TransliterationTest extends FlatSpec {
     val testJson = Serialization.read[TransliterationTests](source.mkString)
     testJson.tests.foreach(test => {
       log.debug(test.toString)
-      if (test.iast.isDefined) {
-        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "iast") == test.iast.get)
-        assert(transliterator.transliterate(in_str = test.iast.get, sourceScheme =  "iast", destScheme = "dev") == test.dev.get)
-      }
-      if (test.hk.isDefined) {
-        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "hk") == test.hk.get)
-        assert(transliterator.transliterate(in_str = test.hk.get, sourceScheme = "hk", destScheme = "dev") == test.dev.get)
-      }
-      if (test.optitrans.isDefined) {
-        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "optitrans") == test.optitrans.get)
-        assert(transliterator.transliterate(in_str = test.optitrans.get, sourceScheme = "optitrans", destScheme = "dev") == test.dev.get)
-      }
-      if (test.slp.isDefined) {
-        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "slp") == test.slp.get)
-        assert(transliterator.transliterate(in_str = test.slp.get, sourceScheme = "slp", destScheme = "dev") == test.dev.get)
-      }
-      if (test.wx.isDefined) {
-        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "wx") == test.wx.get)
-        assert(transliterator.transliterate(in_str = test.wx.get, sourceScheme = "wx", destScheme = "dev") == test.dev.get)
-      }
-      if (test.iastDcs.isDefined) {
-        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "iastDcs") == test.iastDcs.get)
-        assert(transliterator.transliterate(in_str = test.iastDcs.get, sourceScheme = "iastDcs", destScheme = "dev") == test.dev.get)
-      }
-      if (test.kolkata.isDefined) {
-        assert(transliterator.transliterate(in_str = test.dev.get, sourceScheme = transliterator.scriptDevanAgarI, destScheme = "kolkata") == test.kolkata.get)
-        assert(transliterator.transliterate(in_str = test.kolkata.get, sourceScheme = "kolkata", destScheme = "dev") == test.dev.get)
+      test.filterKeys(_ != transliterator.scriptDevanAgarI).foreach {
+        case (scheme: String, value: String) => {
+          log.info(scheme)
+          assert(transliterator.transliterate(in_str = test(transliterator.scriptDevanAgarI), sourceScheme = transliterator.scriptDevanAgarI, destScheme = scheme) == test(scheme))
+          assert(transliterator.transliterate(in_str = test(scheme), sourceScheme = scheme, destScheme = transliterator.scriptDevanAgarI) == test(transliterator.scriptDevanAgarI))
+        }
       }
     })
   }

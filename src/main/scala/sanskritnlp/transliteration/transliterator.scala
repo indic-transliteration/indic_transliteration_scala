@@ -18,7 +18,12 @@ object transliterator {
     "wx" -> wx,
     "optitrans" -> optitrans,
 //    "kolkata" -> kolkata,
-    "kn" -> kannaDa
+    "kannada" -> kannaDa,
+    "telugu" -> telugu,
+    "malayalam" -> malayalam,
+    "oriya" -> oriya,
+    "gurmukhi" -> gurmukhi,
+    "gujarati" -> gujarati
   )
 
   // Assumes that words are space separable.
