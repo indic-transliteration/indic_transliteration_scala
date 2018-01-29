@@ -18,7 +18,9 @@ trait NativeIndicScript extends IndicScript {
     str_in.map(x => if (distinctCharacters.contains(x)) 1.0 else 0).sum/Seq(str_in.length, 1.0).max /* No 0 denominator */
   }
 
-  override def fromDevanagari(str: String): String = str.map(x => mapFromDevanagari.getOrElse(x, x)).mkString("")
+  override def fromDevanagari(str: String): String = str.map(x =>
+    mapFromDevanagari.getOrElse(x, x)
+  ).mkString("")
 
   override def toDevanagari(str: String): String = str.map(x => mapToDevanagari.getOrElse(x, x)).mkString("")
 }
@@ -131,7 +133,9 @@ object telugu extends NativeIndicScript{
     'क' -> 'క', 'प' -> 'ప',
     'श' -> 'శ', 'ष' -> 'ష', 'स' -> 'స',
     'ळ' -> 'ళ', '्' -> '్', 'ं' -> 'ం',  'ः' -> 'ః',
-    'ऽ' -> 'ఽ', '़' -> '़', 'ँ' -> 'ఁ',
+    'ऽ' -> 'ఽ',
+    // '़' -> '़', No Nukta
+    'ँ' -> 'ఁ',
     '०' -> '౦', '१'-> '౧', '२'-> '౨',
     '३'-> '౩', '४'-> '౪', '५'-> '౫',
     '६'-> '౬', '७'-> '౭', '८'-> '౮', '९'-> '౯'
@@ -193,14 +197,15 @@ object gurmukhi extends NativeIndicScript{
     'ੜ' -> 'ਕ', 'ਫ਼' -> 'ਪ',
     'श' -> 'ਸ਼', 'ष' -> 'ਸ਼', /*Reusing sha*/ 'स' -> 'ਸ',
     'ळ' -> 'ਲ਼', '्' -> '੍', 'ं' -> 'ਂ',  'ः' -> 'ਃ',
-    'ऽ' -> 'ఽ', '़' -> '़', 'ँ' -> 'ਁ',
+    'ऽ' -> 'ఽ', 'ँ' -> 'ਁ',
     '०' -> '੦', '१'-> '੧', '२'-> '੨',
     '३'-> '੩', '४'-> '੪', '५'-> '੫',
     '६'-> '੬', '७'-> '੭', '८'-> '੮', '९'-> '੯',
     'ॐ' -> 'ੴ', '॑' -> 'ੑ', /*udAtta*/
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++ Map('ੰ' /*Tippi - ਅਭੰਗ|अभੰग|abhanga*/ -> 'ं',
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++
+    Map('ੰ' /*Tippi - ਅਭੰਗ|अभੰग|abhanga*/ -> 'ं',
       'ੱ' -> 'ੱ' /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka. Handled specially in toDevanagari.*/, 'ੵ' -> 'ੵ', /*yakaSh*/
       'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/)
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
@@ -276,8 +281,9 @@ object oriya extends NativeIndicScript{
     'श' -> 'ଶ', 'ष' -> 'ଷ', 'स' -> 'ସ',
     'ळ' -> 'ଳ',
     'ड़' -> 'ଡ଼', 'ਫ਼' -> 'ଢ଼', 'य़' -> 'ୟ',
+    '़' -> '଼',
     '्' -> '୍', 'ं' -> 'ଂ',  'ः' -> 'ଃ', 'ँ' -> 'ଁ',
-    'ऽ' -> 'ଽ', '़' -> '଼',
+    'ऽ' -> 'ଽ',
     '०' -> '୦', '१'-> '୧', '२'-> '୨',
     '३'-> '୩', '४'-> '୪', '५'-> '୫',
     '६'-> '୬', '७'-> '୭', '८'-> '୮', '९'-> '୯',
@@ -326,7 +332,7 @@ object malayalam extends NativeIndicScript{
     'क' -> 'ക', 'प' -> 'പ',
     'श' -> 'ശ', 'ष' -> 'ഷ', 'स' -> 'സ',
     'ळ' -> 'ള', '्' -> '്', 'ं' -> 'ം',  'ः' -> 'ഃ', 'ँ' -> 'ഁ',
-    'ऽ' -> 'ഽ', '़' -> '಼',
+    'ऽ' -> 'ഽ',
     '०' -> '൦', '१'-> '൧', '२'-> '൨',
     '३'-> '൩', '४'-> '൪', '५'-> '൫',
     '६'-> '൬', '७'-> '൭', '८'-> '൮', '९'-> '൯'
@@ -494,3 +500,11 @@ object assamese extends NativeIndicScript {
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
+object indicMaps {
+
+  private val log: Logger = LoggerFactory.getLogger(this.getClass)
+
+  def main (args: Array[String] ): Unit = {
+    log.debug(gurmukhi.fromDevanagari("छीड़ा चुदाकड़"))
+  }
+}

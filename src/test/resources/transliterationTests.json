@@ -51,13 +51,13 @@
     {
       "description": "Tests nuTka",
       "comments": "malayalam and telugu have no nuTka",
-      "dev": "छीड़ा",
-      "oriya": "ଛୀଡ଼ା",
-      "gujarati": "છીડ઼ા",
-      "assamese": "ছীড়া",
-      "bengali": "ছীড়া",
-      "kannada": "ಛೀಡ಼ಾ",
-      "gurmukhi": "ਛੀਡ़ਾ"
+      "dev": "छीड़ा चुदाकड़",
+      "oriya": "ଛୀଡ଼ା ଚୁଦାକଡ଼",
+      "gujarati": "છીડ઼ા ચુદાકડ઼",
+      "assamese": "ছীড়া চুদাকড়",
+      "bengali": "ছীড়া চুদাকড়",
+      "kannada": "ಛೀಡ಼ಾ ಚುದಾಕಡ಼",
+      "gurmukhi": "ਛੀਡ਼ਾ ਚੁਦਾਕਡ਼"
     },
     {
       "description": "Tests anunAsika",
