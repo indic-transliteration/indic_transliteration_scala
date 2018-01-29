@@ -1,14 +1,10 @@
-package sanskritnlp.transliteration
-
-import java.util.Collections
+package sanskritnlp.transliteration.roman
 
 import org.slf4j.{Logger, LoggerFactory}
+import sanskritnlp.transliteration.indic.IndicScript
 
 import scala.util.matching.Regex
 import scala.util.matching.Regex.Match
-
-// Point of entry: toDevanagari()
-// Read that function, and the logic will be clear.
 
 trait RomanScript extends IndicScript {
   private val log: Logger = LoggerFactory.getLogger(this.getClass)

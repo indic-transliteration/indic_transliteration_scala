@@ -1,4 +1,4 @@
-package sanskritnlp.transliteration
+package sanskritnlp.transliteration.roman
 
 // Partial implementation of a variant of https://sites.google.com/site/sanskritcode/optitrans
 object optitrans extends RomanScript {
@@ -61,13 +61,4 @@ object optitrans extends RomanScript {
     test_toDevanagari(text)
   }
 
-}
-
-object optitransTest {
-  def main(args: Array[String]): Unit = {
-    optitrans.test_toDevanagari()
-    optitrans.test_fromDevanagari()
-    optitrans.test_restoreEscapeSequences()
-    optitrans.test_restoreRomanBetweenStrings()
-  }
 }

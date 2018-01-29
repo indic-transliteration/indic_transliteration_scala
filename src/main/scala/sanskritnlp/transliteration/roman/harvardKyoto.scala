@@ -1,4 +1,4 @@
-package sanskritnlp.transliteration
+package sanskritnlp.transliteration.roman
 
 object harvardKyoto extends RomanScript {
   override val romanToDevaIndependentVowels = Map(
@@ -49,14 +49,4 @@ object harvardKyoto extends RomanScript {
     test_toDevanagari(hkText)
   }
 
-}
-
-object harvardKyotoTest {
-  def main(args: Array[String]): Unit = {
-    harvardKyoto.debugString()
-    harvardKyoto.test_toDevanagari()
-    harvardKyoto.test_fromDevanagari()
-    harvardKyoto.test_restoreEscapeSequences()
-    harvardKyoto.test_restoreRomanBetweenStrings()
-  }
 }

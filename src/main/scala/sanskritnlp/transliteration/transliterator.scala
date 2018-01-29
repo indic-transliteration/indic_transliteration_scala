@@ -1,6 +1,8 @@
 package sanskritnlp.transliteration
 
 import org.slf4j.{Logger, LoggerFactory}
+import sanskritnlp.transliteration.indic._
+import sanskritnlp.transliteration.roman._
 
 /**
   * General transliteration utilities.
