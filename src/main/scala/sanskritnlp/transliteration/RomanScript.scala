@@ -138,10 +138,10 @@ trait RomanScript extends IndicScript {
     var output = str_in
     // Here too we need to prefer longest sequences first.
     output = replaceDependentVowelsWithIndepedentVowels(output)
-     log.info("replaceDependentVowelsWithIndepedentVowels : " + output)
+//     log.info("replaceDependentVowelsWithIndepedentVowels : " + output)
 
     val replacementMap = devaIndependentVowelsToRoman ++ devaToRomanGeneral ++ devaConsonantsToRoman
-    log.debug(devaConsonantsToRoman.toString())
+//    log.debug(devaConsonantsToRoman.toString())
     output = replaceKeysLongestFirst(output, replacementMap)
     output
   }
