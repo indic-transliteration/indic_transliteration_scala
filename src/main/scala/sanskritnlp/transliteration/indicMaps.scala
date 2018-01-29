@@ -218,18 +218,21 @@ object gurmukhi extends NativeIndicScript{
       .replaceAll("ੱ([दध])", "द्$1")
       .replaceAll("ੱ([पफ])", "प्$1")
       .replaceAll("ੱ([बभ])", "ब्$1")
+      // Note that the below includes glyphs with nukta as well.
       .replaceAll("ੱ([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])", "$1्$1")
-      .replaceAll("([कख])([ा-ॏऀ-ः]*?)ੱ", "क्$1")
-      .replaceAll("([गघ])([ा-ॏऀ-ः]*?)ੱ", "ग्$1")
-      .replaceAll("([चछ])([ा-ॏऀ-ः]*?)ੱ", "च्$1")
-      .replaceAll("([जझ]([ा-ॏऀ-ः]*?))ੱ", "ज्$1")
-      .replaceAll("([टठ])([ा-ॏऀ-ः]*?)ੱ", "ट्$1")
-      .replaceAll("([डढ])([ा-ॏऀ-ः]*?)ੱ", "ड्$1")
-      .replaceAll("([तथ])([ा-ॏऀ-ः]*?)ੱ", "त्$1")
-      .replaceAll("([दध])([ा-ॏऀ-ः]*?)ੱ", "द्$1")
-      .replaceAll("([पफ])([ा-ॏऀ-ः]*?)ੱ", "प्$1")
-      .replaceAll("([बभ])([ा-ॏऀ-ः]*?)ੱ", "ब्$1")
-      .replaceAll(s"([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])([ा-ॏऀ-ः]*?)ੱ", "$1्$1$2")
+      // At this point, only terminal ੱ will remain.
+      // The below handles nuktas and various other dependent signs as well.
+      .replaceAll("([कख])([ऺ-ॏऀ-ः]*?)ੱ", "क्$1")
+      .replaceAll("([गघ])([ऺ-ॏऀ-ः]*?)ੱ", "ग्$1")
+      .replaceAll("([चछ])([ऺ-ॏऀ-ः]*?)ੱ", "च्$1")
+      .replaceAll("([जझ]([ऺ-ॏऀ-ः]*?))ੱ", "ज्$1")
+      .replaceAll("([टठ])([ऺ-ॏऀ-ः]*?)ੱ", "ट्$1")
+      .replaceAll("([डढ])([ऺ-ॏऀ-ः]*?)ੱ", "ड्$1")
+      .replaceAll("([तथ])([ऺ-ॏऀ-ः]*?)ੱ", "त्$1")
+      .replaceAll("([दध])([ऺ-ॏऀ-ः]*?)ੱ", "द्$1")
+      .replaceAll("([पफ])([ऺ-ॏऀ-ः]*?)ੱ", "प्$1")
+      .replaceAll("([बभ])([ऺ-ॏऀ-ः]*?)ੱ", "ब्$1")
+      .replaceAll(s"([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])([ऺ-ॏऀ-ः]*?)ੱ", "$1्$1$2")
   }
 }
 
