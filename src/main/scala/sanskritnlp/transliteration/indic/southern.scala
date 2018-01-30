@@ -161,3 +161,63 @@ object malayalam extends NativeIndicScript{
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
   override val distinctCharacters: Set[Char] =mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
+
+object sinhala extends NativeIndicScript{
+  // Produced using shrI vinod rAjan's
+  // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
+  // Refer to https://en.wikipedia.org/wiki/Sinhalese_alphabet
+
+  // We just use the kannada L and LL glyphs.
+
+  override val mapFromDevanagari = Map(
+  'ऄ'->'ඇ',
+  'अ' -> 'අ', 'आ' -> 'ආ',  'इ' -> 'ඉ', 'ई' -> 'ඊ',
+  'उ' -> 'උ', 'ऊ' -> 'ඌ',
+  'ऋ' -> 'ඍ', 'ॠ' -> 'ඎ', 'ऌ' -> 'ඏ', 'ॡ' -> 'ඐ',
+  'ऎ' -> 'එ',
+  'ए' -> 'ඒ',
+  'ऐ' -> 'ඓ',
+  'ऒ' -> 'ඔ',
+  'ओ' -> 'ඕ', 'औ' -> 'ඖ',
+    'ऻ' -> 'ැ',
+  'ा' -> 'ා',
+  'ि' -> 'ි',
+  'ी' -> 'ී',
+  'ु' -> 'ු', 'ू' -> 'ූ',
+  'ृ' -> 'ෘ', 'ॄ' -> 'ෲ', 'ॣ' -> 'ෟ',
+  'ॢ' -> 'ෳ', 'ॆ' -> 'ෙ',
+  'े' -> 'ේ',
+  'ै' ->  'ෛ',
+  'ॊ' -> 'ො',
+  'ो' -> 'ෝ',  'ौ' -> 'ෞ',
+  'ह' -> 'හ', 'य' -> 'ය', 'व' -> 'ව', 'र' -> 'ර', 'ल' -> 'ල',
+  'ञ' -> 'ඤ',
+  'ङ' -> 'ඞ',
+  'म' -> 'ම',
+  'ण' -> 'ණ',
+  'न' -> 'න',
+  'झ' -> 'ඣ', 'भ' -> 'භ',
+  'घ' -> 'ඝ', 'ढ' -> 'ඪ', 'ध' -> 'ධ',
+  'ज' -> 'ජ', 'ब' -> 'බ', 'ग' -> 'ග',
+  'ड' -> 'ඩ', 'द' -> 'ද',
+  'ख' -> 'ඛ',
+  'फ' -> 'ඵ', 'छ' -> 'ඡ', 'ठ' -> 'ඨ',
+  'थ' -> 'ථ', 'च' -> 'ච', 'ट' -> 'ට', 'त' -> 'ත',
+  'क' -> 'ක', 'प' -> 'ප',
+  'श' -> 'ශ', 'ष' -> 'ෂ', 'स' -> 'ස',
+  'ळ' -> 'ළ',
+    'फ़' ->  'ෆ',
+  '्' -> '්', 'ं' -> 'ං',  'ः' -> 'ඃ',
+  // 'ऽ' -> ''', No avagraha
+  // '़' -> '़', No Nukta
+  'ँ' -> 'ං', // Reuse anusvAra
+  '०' -> '෦', '१'-> '෧', '२'-> '෨',
+  '३'-> '෩', '४'-> '෪', '५'-> '෫',
+  '६'-> '෬', '७'-> '෭', '८'-> '෮', '९'-> '෯'
+  )
+
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap) ++
+    Map('ඈ' -> 'आ', 'ෑ' -> 'ा', 'ඟ' -> 'ङ', 'ඬ' -> 'ण', 'ඳ' -> 'न', 'ඹ' -> 'म')
+  val mapToDevanagariStrings: Map[String, String] = Map()
+  override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
+}
