@@ -50,6 +50,12 @@
       "gurmukhi": "ਅਏਲ੍ ਅਂਸ਼ਾਇ ਪੜਿਬ"
     },
     {
+      "description": "Tests glyphs with nuTka - ऱ set",
+      "dev": "ऱ ऴ",
+      "malayalam": "റ ഴ",
+      "kannada": "ಱ ऴ",
+    },
+    {
       "description": "Tests nuTka",
       "comments": "malayalam and telugu have no nuTka",
       "dev": "छीड़ा चुदाकड़",
