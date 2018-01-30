@@ -70,11 +70,6 @@
       "assamese": "অঁঅळা",
       "bengali": "অঁঅळা",
       "gurmukhi": "ਅਁਅਲ਼ਾ"
-    },
-    {
-      "description": "hrasva e and o",
-      "dev": "ऎट ऒट कॆकॊकि",
-       "optitrans": "ETa OTa kEkOki"
     }
   ],
   "to_devanaagarii": [
@@ -95,6 +90,11 @@
       "description": "A general test for Roman scripts without equivalents for some devanAgarI letters, like optitrans",
       "dev": "पड़िब छीड़ा ऴ",
       "optitrans": "paDRiba ChiiDRaa La"
+    },
+    {
+      "description": "hrasva e and o",
+      "dev": "ऎट ऒट कॆकॊकि",
+      "optitrans": "ETa OTa kEkOki"
     }
   ]
 }
