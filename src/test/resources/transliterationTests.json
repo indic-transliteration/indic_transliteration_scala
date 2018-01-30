@@ -99,8 +99,8 @@
     },
     {
       "description": "A general test for Roman scripts without equivalents for some devanAgarI letters, like optitrans",
-      "dev": "पड़िब छीड़ा ऴ",
-      "optitrans": "paDRiba ChiiDRaa La"
+      "dev": "पड़िब छीड़ा ऴ ऱ",
+      "optitrans": "paDRiba ChiiDRaa La ra"
     },
     {
       "description": "hrasva e and o",
