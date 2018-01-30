@@ -145,3 +145,76 @@ object gujarati extends NativeIndicScript{
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
+
+object tibetan extends NativeIndicScript{
+  // Produced using shrI vinod rAjan྅s
+  // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
+  // Refer to https://en.wikipedia.org/wiki/Telugu(Unicodeblock)
+
+  // We just use the kannada L and LL glyphs.
+
+  override val mapFromDevanagari = Map(
+  'अ' -> 'ཨ',
+  'ु' -> 'ུ', 'ू' -> 'ཱུ',
+  'ृ' -> 'ྲྀ', 'ॄ' -> 'ཷ', 'ॣ' -> 'ླྀ',
+  'ॢ' -> 'ཹ',
+  'े' -> 'ེ',
+  'ै' -> 'ཻ',
+  'ो' -> 'ོ', 'ौ' -> 'ཽ',
+  'ह' -> 'ཧ', 'य' -> 'ཡ', 'व' -> 'ཝ', 'र' -> 'ར', 'ल' -> 'ལ',
+  'ञ' -> 'ཉ',
+  'ङ' -> 'ང',
+  'म' -> 'མ',
+  'ण' -> 'ཎ',
+  'न' -> 'ན',
+  'झ' -> 'ཛྷ', 'भ' -> 'བྷ',
+  'घ' -> 'གྷ', 'ढ' -> 'ཌྷ', 'ध' -> 'དྷ',
+  'ज' -> 'ཛ', 'ब' -> 'བ', 'ग' -> 'ག',
+  'ड' -> 'ཌ', 'द' -> 'ད',
+  'ख' -> 'ཁ',
+  'फ' -> 'ཕ', 'छ' -> 'ཚ', 'ठ' -> 'ཋ',
+  'थ' -> 'ཐ', 'च' -> 'ཙ', 'ट' -> 'ཊ', 'त' -> 'ཏ',
+  'क' -> 'ཀ', 'प' -> 'པ',
+  'श' -> 'ཤ', 'ष' -> 'ཥ', 'स' -> 'ས',
+  'ळ' -> 'ལ', '्' -> '྄',
+    'ं' -> 'ཾ', 'ः' -> 'ཿ',
+    'ज़' -> 'ཟ',
+//  'ऽ' -> ''',
+  // '़' -> '़', No Nukta
+  'ँ' -> 'ྃ',
+  '०' -> '༠', '१'-> '༡', '२'-> '༢',
+  '३'-> '༣', '४'-> '༤', '५'-> '༥',
+  '६'-> '༦', '७'-> '༧', '८'-> '༨', '९'-> '༩'
+  )
+
+  val mapFromDevanagariToStrings: Map[Char, String] = Map(
+    'आ' -> "ཨཱ", 'इ' -> "ཨི", 'ई' -> "ཨཱི",
+  'उ' -> "ཨུ", 'ऊ' -> "ཨཱུ",
+    'ऋ' -> "ཨྲྀ", 'ॠ' -> "ཨྲཱྀ", 'ऌ' -> "ཨླྀ", 'ॡ' -> "ཨླྀ",
+  'ऎ' -> "ཨེ",
+  'ए' -> "ཨེ",
+  'ऐ' -> "ཨཻ",
+  'ऒ' -> "ཨོ",
+  'ओ' -> "ཨོ", 'औ' -> "ཨཽ",
+  'ा' -> "ཱ",
+  'ि' -> "ི",
+  'ी' -> "ཱི"
+  )
+
+  // TODO : འ -A, ཀྵ KSa, ཪ RA, ཫ Ka, ཬ RRa
+// Subjoined letters  ྐ	ྑ	ྒ	ྒྷ	ྔ	ྕ	ྖ	ྗ		ྙ	ྚ	ྛ	ྜ	ྜྷ	ྞ	ྟ
+//  U+0FAx	ྠ	ྡ	ྡྷ	ྣ	ྤ	ྥ	ྦ	ྦྷ	ྨ	ྩ	ྪ	ྫ	ྫྷ	ྭ	ྮ	ྯ
+//  U+0FBx	ྰ	ྱ	ྲ	ླ	ྴ	ྵ	ྶ	ྷ	ྸ	ྐྵ	ྺ	ྻ	ྼ
+  // Pluta - ྅
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap) ++
+  Map(
+    'ཅ' -> 'च','ཆ' -> 'छ', 'ཇ' -> 'ज',
+    'ཞ' -> 'ज़')
+  // TODO: Override from devanAgarI
+
+  val mapTibetanStringToDevanagariString = Map(
+    "ཇྷ" -> "झ"
+  )
+  // Override transliteration methods.
+  override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
+}
