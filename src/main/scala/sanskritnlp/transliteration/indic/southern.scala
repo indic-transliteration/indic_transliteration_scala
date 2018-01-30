@@ -167,8 +167,6 @@ object sinhala extends NativeIndicScript{
   // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
   // Refer to https://en.wikipedia.org/wiki/Sinhalese_alphabet
 
-  // We just use the kannada L and LL glyphs.
-
   override val mapFromDevanagari = Map(
   'ऄ'->'ඇ',
   'अ' -> 'අ', 'आ' -> 'ආ',  'इ' -> 'ඉ', 'ई' -> 'ඊ',
@@ -219,5 +217,55 @@ object sinhala extends NativeIndicScript{
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ँ').contains(_)).map(_.swap) ++
     Map('ඈ' -> 'आ', 'ෑ' -> 'ा', 'ඟ' -> 'ङ', 'ඬ' -> 'ण', 'ඳ' -> 'न', 'ඹ' -> 'म')
   val mapToDevanagariStrings: Map[String, String] = Map()
+  override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
+}
+
+object thai extends NativeIndicScript{
+  // Produced using shrI vinod rAjan's
+  // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
+  // There are many issues here- For starters, we should use string to string mapping for thai.
+
+
+  override val mapFromDevanagari = Map(
+//    'अ' -> ' ', 'आ' -> 'า',  'इ' -> 'ิ', 'ई' -> 'ี',
+//  'उ' -> 'ุ', 'ऊ' -> 'ู',
+////  'ऋ' -> 'ฺฤ', 'ॠ' -> 'ฺฤา', 'ऌ' -> 'ฺฦ', 'ॡ' -> 'ฺฦ',
+////  'ऎ' -> เ'ะ',
+////  'ए' -> เ'',
+////  'ऐ' -> ไ'',
+////  'ऒ' -> โ'ะ',
+////  'ओ' -> โ'', 'औ' -> เ'า',
+//  'ा' -> 'า',
+//  'ि' -> 'ิ',
+//  'ी' -> 'ี',
+//  'ु' -> 'ุ', 'ू' -> 'ู',
+//  'ृ' -> 'ฺฤ', 'ॄ' -> 'ฺฤา', 'ॣ' -> 'ೄ',
+//  'ॢ' -> 'ೄ', 'ॆ' -> 'เะ',
+//  'े' -> 'เ',
+//  'ै' ->  'ไ',
+//  'ॊ' -> 'โะ',
+////  'ो' -> 'โ',  'ौ' -> 'เา',
+//  'ह' -> 'ห', 'य' -> 'ย', 'व' -> 'ว', 'र' -> 'ร', 'ल' -> 'ล',
+//  'ञ' -> 'ญ',
+//  'ङ' -> 'ง',
+//  'म' -> 'ม',
+//  'ण' -> 'ณ',
+//  'न' -> 'น',
+//  'झ' -> 'ฌ', 'भ' -> 'ภ',
+//  'घ' -> 'ฆ', 'ढ' -> 'ฒ', 'ध' -> 'ธ',
+//  'ज' -> 'ช', 'ब' -> 'พ', 'ग' -> 'ค',
+//  'ड' -> 'ฑ', 'द' -> 'ท',
+//  'ख' -> 'ข',
+//  'फ' -> 'ผ', 'छ' -> 'ฉ', 'ठ' -> 'ฐ',
+//  'थ' -> 'ถ', 'च' -> 'จ', 'ट' -> 'ฏ', 'त' -> 'ต',
+//  'क' -> 'ก', 'प' -> 'ป',
+//  'श' -> 'ศ', 'ष' -> 'ษ', 'स' -> 'ส',
+//  'ळ' -> 'ฬ', '्' -> '్', 'ं' -> 'ํ',
+//  'ः' -> ':' // No visarga
+  // 'ऽ' -> ''', NO avagraha
+  // '़' -> '़', No Nukta
+  )
+
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(.swap)
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
