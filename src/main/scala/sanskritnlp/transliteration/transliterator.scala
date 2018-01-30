@@ -27,7 +27,8 @@ object transliterator {
     "gurmukhi" -> gurmukhi,
     "assamese" -> assamese,
     "bengali" -> bengali,
-    "gujarati" -> gujarati
+    "gujarati" -> gujarati,
+    "sinhala" -> sinhala
   )
 
   // Assumes that words are space separable.
@@ -58,7 +59,7 @@ object transliterator {
   }
 
   def getScriptHandler(in_str: String): Option[NativeIndicScript] = {
-    val indicMaps = Seq(gurmukhi, oriya, kannada, telugu, malayalam, gujarati, devanaagarii, bengali, assamese)
+    val indicMaps = Seq(gurmukhi, oriya, kannada, telugu, malayalam, gujarati, devanaagarii, bengali, assamese, sinhala)
     val idScores = indicMaps.map(script => script.isEncoding(in_str))
     idScores.max match {
       case 0 => None
