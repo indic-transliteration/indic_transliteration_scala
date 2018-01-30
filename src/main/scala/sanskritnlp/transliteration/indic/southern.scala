@@ -234,7 +234,7 @@ object burmese extends NativeIndicScript{
   'ऋ' -> 'ၖ', 'ऌ' -> 'ၘ',
   'ए' -> 'ေ',
   'ऐ' -> 'ဲ',
-//  'ओ' -> 'ော', 'औ' -> 'ော်',
+//  'ओ' -> 'ော', 'औ' -> 'ော်', <-- String values
   'ा' -> 'ာ',
   'ि' -> 'ိ',
   'ी' -> 'ီ',
@@ -320,6 +320,6 @@ object thai extends NativeIndicScript{
   // '़' -> '़', No Nukta
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(.swap)
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
