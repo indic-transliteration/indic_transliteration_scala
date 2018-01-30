@@ -70,6 +70,11 @@
       "assamese": "অঁঅळা",
       "bengali": "অঁঅळা",
       "gurmukhi": "ਅਁਅਲ਼ਾ"
+    },
+    {
+      "description": "hrasva e and o",
+      "dev": "ऎट ऒट कॆकॊकि",
+       "optitrans": "ETa OTa kEkOki"
     }
   ],
   "to_devanaagarii": [
