@@ -31,7 +31,7 @@ object optitrans extends RomanScript {
     "th" -> "थ्", "c" -> "च्", "ch" -> "च्", "T" -> "ट्", "t" -> "त्",
     "k" -> "क्", "p" -> "प्",
     "sh" -> "श्", "S" -> "ष्", "Sh" -> "ष्", "s" -> "स्",
-    "L" -> "ळ्", ".L" -> "ऴ", "f" -> "फ़्", "z" -> "ज़्",
+    "L" -> "ळ्", "f" -> "फ़्", "z" -> "ज़्",
     "x" -> "क्ष्",
     "nk" -> "ङ्क्", "nK" -> "ङ्ख्", "nkh" -> "ङ्ख्",
     "ng" -> "ङ्ग्", "nG" -> "ङ्ख्",  "ngh" -> "ङ्ख्",
@@ -47,7 +47,7 @@ object optitrans extends RomanScript {
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "OM" -> "ॐ")
 
   override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.filterKeys(key => !(List("A", "I", "U") contains key)).map(_.swap)
-  private val devaConsantsToRomanWithoutNutka = romanToDevaConsonants.filterKeys(key => !(List("K", "G", "c", "C", "J", "S") contains key)).map(_.swap) ++ Map("ड़्" -> "DR", "ढ़्" -> "DhR", "य़्" -> "Y", "क़्" -> "k", "ख़्" -> "kh", "ग़्" -> "g")
+  private val devaConsantsToRomanWithoutNutka = romanToDevaConsonants.filterKeys(key => !(List("K", "G", "c", "C", "J", "S") contains key)).map(_.swap) ++ Map("ड़्" -> "DR", "ढ़्" -> "DhR", "य़्" -> "Y", "क़्" -> "k", "ख़्" -> "kh", "ग़्" -> "g", "ऴ" -> "L")
   override val devaConsonantsToRoman: Map[String, String] = devaConsantsToRomanWithoutNutka ++ devaConsantsToRomanWithoutNutka.map({
     case (deva: String, roman: String) => {
       (deva.head + "़्", roman + "R")
