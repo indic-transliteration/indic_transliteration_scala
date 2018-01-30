@@ -220,6 +220,60 @@ object sinhala extends NativeIndicScript{
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
+object burmese extends NativeIndicScript{
+  // Produced using shrI vinod rAjan's
+  // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
+  // Refer to https://en.wikipedia.org/wiki/Burmese_alphabet
+
+  // We just use the kannada L and LL glyphs.
+
+  // TODO: Fix the below
+  override val mapFromDevanagari = Map(
+    'अ' -> ' ', 'आ' -> 'ာ',  'इ' -> 'ိ', 'ई' -> 'ီ',
+  'उ' -> 'ု', 'ऊ' -> 'ူ',
+  'ऋ' -> 'ၖ', 'ऌ' -> 'ၘ',
+  'ए' -> 'ေ',
+  'ऐ' -> 'ဲ',
+//  'ओ' -> 'ော', 'औ' -> 'ော်',
+  'ा' -> 'ာ',
+  'ि' -> 'ိ',
+  'ी' -> 'ီ',
+  'ु' -> 'ု', 'ू' -> 'ူ',
+  'ृ' -> 'ၖ', 'ॄ' -> 'ၗ', 'ॣ' -> 'ೄ',
+  'ॢ' -> 'ೄ', 'ॆ' -> 'ေ',
+  'े' -> 'ေ',
+  'ै' ->  'ဲ',
+//  'ो' -> 'ော',  'ौ' -> 'ော်',
+  'ह' -> 'ဟ', 'य' -> 'ယ', 'व' -> 'ဝ', 'र' -> 'ရ', 'ल' -> 'လ',
+  'ञ' -> 'ဉ',
+  'ङ' -> 'င',
+  'म' -> 'မ',
+  'ण' -> 'ဏ',
+  'न' -> 'န',
+  'झ' -> 'ဈ', 'भ' -> 'ဘ',
+  'घ' -> 'ဃ', 'ढ' -> 'ဎ', 'ध' -> 'ဓ',
+  'ज' -> 'ဇ', 'ब' -> 'ဗ', 'ग' -> 'ဂ',
+  'ड' -> 'ဍ', 'द' -> 'ဒ',
+  'ख' -> 'ခ',
+  'फ' -> 'ဖ', 'छ' -> 'ဆ', 'ठ' -> 'ဌ',
+  'थ' -> 'ထ', 'च' -> 'စ', 'ट' -> 'ဋ', 'त' -> 'တ',
+  'क' -> 'က', 'प' -> 'ပ',
+  'श' -> 'ၑ', 'ष' -> 'ၐ', 'स' -> 'သ',
+  'ळ' -> 'ဠ', 'ं' -> 'ံ',  'ः' -> 'း',
+    //  '्' -> ' ်', <--FIX
+//  'ऽ' -> ''',
+  // '़' -> '़', No Nukta
+  'ँ' -> 'ံ',
+  '०' -> '౦', '१'-> '౧', '२'-> '౨',
+  '३'-> '౩', '४'-> '౪', '५'-> '౫',
+  '६'-> '౬', '७'-> '౭', '८'-> '౮', '९'-> '౯'
+  )
+
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
+}
+
+
 object thai extends NativeIndicScript{
   // Produced using shrI vinod rAjan's
   // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
