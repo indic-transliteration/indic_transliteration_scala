@@ -53,7 +53,12 @@
       "description": "Tests glyphs with nuTka - ऱ set",
       "dev": "ऱ ऴ",
       "malayalam": "റ ഴ",
-      "kannada": "ಱ ऴ",
+      "kannada": "ಱ ऴ"
+    },
+    {
+      "description": "ᳵ ᳶ",
+      "dev": "ᳵ ᳶ",
+      "kannada": "ೱ ೲ"
     },
     {
       "description": "Tests nuTka",
