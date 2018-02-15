@@ -46,17 +46,10 @@ Some notable facilities:
 - PHP: [Dicrunch ](https://github.com/nareshv/aksharamukha/tree/master/diCrunch) and its use by [akSharamukhA](https://github.com/nareshv/aksharamukha/blob/master/transliterate.php) .
 
 # Contributors
-## Setup
-* Strongly recomment Intellij Idea IDE.
-  * Just point it to the IML file files.
-  * If it complains about missing maven dependencies:
-     * just open the *Maven projects* widget, refresh and do a full build.
-     * Also try Maven -> reimport and *synchronoze* actions in the context menu.
-* There may also be eclipse files which haven't been used in a long time.
-
 ## Deployment
 ### SBT:
 - Use sbt command `release` to publish to maven repos.
+- Use sbt command `test` and `testOnly` to run tests.
 - You should be able to use it roughly immediately; and after many hours you should see at maven repo listings [here](https://mvnrepository.com/artifact/com.github.sanskrit-coders). 
 
 ### Building a jar.
