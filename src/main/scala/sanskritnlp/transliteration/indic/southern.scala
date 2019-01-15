@@ -11,7 +11,7 @@ object kannada extends NativeIndicScript{
   // Produced using shrI vinod rAjan's
   // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
 
-  override val mapFromDevanagari = Map(
+  override val mapFromDevanagari: Map[Char, Char] = Map(
     'अ' -> 'ಅ', 'आ' -> 'ಆ',  'इ' -> 'ಇ', 'ई' -> 'ಈ',
     'उ' -> 'ಉ', 'ऊ' -> 'ಊ',
     'ऋ' -> 'ಋ', 'ॠ' -> 'ೠ', 'ऌ' -> 'ಌ', 'ॡ' -> 'ೡ',
@@ -46,7 +46,7 @@ object kannada extends NativeIndicScript{
     'थ' -> 'ಥ', 'च' -> 'ಚ', 'ट' -> 'ಟ', 'त' -> 'ತ',
     'क' -> 'ಕ', 'प' -> 'ಪ',
     'श' -> 'ಶ', 'ष' -> 'ಷ', 'स' -> 'ಸ',
-    'ळ' -> 'ಳ',  'ऱ' -> 'ಱ', '्' -> '್',
+    'ळ' -> 'ಳ',  'ऱ' -> 'ಱ', 'ऴ' -> 'ೞ', '्' -> '್',
     'ᳵ' -> 'ೱ', 'ᳶ' -> 'ೲ',
     'ं' -> 'ಂ',  'ः' -> 'ಃ', 'ँ' -> 'ಁ',
     'ऽ' -> 'ಽ', '़' -> '಼',
@@ -68,7 +68,7 @@ object telugu extends NativeIndicScript{
 
   // We just use the kannada L and LL glyphs.
 
-  override val mapFromDevanagari = Map(
+  override val mapFromDevanagari: Map[Char, Char] = Map(
     'अ' -> 'అ', 'आ' -> 'ఆ',  'इ' -> 'ఇ', 'ई' -> 'ఈ',
     'उ' -> 'ఉ', 'ऊ' -> 'ఊ',
     'ऋ' -> 'ఋ', 'ॠ' -> 'ౠ', 'ऌ' -> 'ఌ', 'ॡ' -> 'ఌ',
@@ -118,7 +118,7 @@ object telugu extends NativeIndicScript{
 
 object malayalam extends NativeIndicScript{
   // https://en.wikipedia.org/wiki/Malayalam_(Unicode_block)
-  override val mapFromDevanagari = Map(
+  override val mapFromDevanagari: Map[Char, Char] = Map(
     'अ' -> 'അ', 'आ' -> 'ആ',  'इ' -> 'ഇ', 'ई' -> 'ഈ',
     'उ' -> 'ഉ', 'ऊ' -> 'ഊ',
     'ऋ' -> 'ഋ', 'ॠ' -> 'ൠ', 'ऌ' -> 'ഌ', 'ॡ' -> 'ൡ',
@@ -170,7 +170,7 @@ object sinhala extends NativeIndicScript{
   // akSharamukha service ( http://www.virtualvinodh.com/aksaramukha ).
   // Refer to https://en.wikipedia.org/wiki/Sinhalese_alphabet
 
-  override val mapFromDevanagari = Map(
+  override val mapFromDevanagari: Map[Char, Char] = Map(
   'ऄ'->'ඇ',
   'अ' -> 'අ', 'आ' -> 'ආ',  'इ' -> 'ඉ', 'ई' -> 'ඊ',
   'उ' -> 'උ', 'ऊ' -> 'ඌ',
@@ -231,7 +231,7 @@ object burmese extends NativeIndicScript{
   // We just use the kannada L and LL glyphs.
 
   // TODO: Fix the below
-  override val mapFromDevanagari = Map(
+  override val mapFromDevanagari: Map[Char, Char] = Map(
     'अ' -> ' ', 'आ' -> 'ာ',  'इ' -> 'ိ', 'ई' -> 'ီ',
   'उ' -> 'ု', 'ऊ' -> 'ူ',
   'ऋ' -> 'ၖ', 'ऌ' -> 'ၘ',
@@ -283,7 +283,7 @@ object thai extends NativeIndicScript{
   // There are many issues here- For starters, we should use string to string mapping for thai.
 
 
-  override val mapFromDevanagari = Map(
+  override val mapFromDevanagari: Map[Char, Char] = Map(
 //    'अ' -> ' ', 'आ' -> 'า',  'इ' -> 'ิ', 'ई' -> 'ี',
 //  'उ' -> 'ุ', 'ऊ' -> 'ู',
 ////  'ऋ' -> 'ฺฤ', 'ॠ' -> 'ฺฤา', 'ऌ' -> 'ฺฦ', 'ॡ' -> 'ฺฦ',
