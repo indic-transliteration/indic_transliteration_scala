@@ -3,7 +3,7 @@
 
 name := "indic-transliteration"
 
-scalaVersion := "2.12.6"
+scalaVersion := "2.12.8"
 val logbackVersion = "1.2.3"
 val json4sVersion = "3.6.1"
 val scalatestVersion = "3.0.5"
