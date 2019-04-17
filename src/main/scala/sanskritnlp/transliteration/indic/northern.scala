@@ -62,13 +62,13 @@ object gurmukhi extends NativeIndicScript{
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++
     Map(
-      'ੰ' /*Tippi - ਅਭੰਗ|अभंग|abhangaused with vowels a, i, u, and with final ū, eg. ਮੂੰਡਾ mūŋ̽ɖā muɳɖɑ boy. 
+      'ੰ' -> 'ं', /*Tippi - ਅਭੰਗ|अभंग|abhangaused with vowels a, i, u, and with final ū, eg. ਮੂੰਡਾ mūŋ̽ɖā muɳɖɑ boy. 
       Source: https://r12a.github.io/scripts/gurmukhi/#gemination
-      TODO: Enforce this rule.*/ -> 'ं',
-      'ੱ' -> 'ੱ' /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka. Handled specially in toDevanagari.
+      TODO: Enforce this rule.*/
+      'ੱ' -> 'ੱ', /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka. Handled specially in toDevanagari.
       Source: https://r12a.github.io/scripts/gurmukhi/#gemination
-      */, 
-      'ੵ' -> 'ੵ', /*yakaSh Occasionally, a cluster ending with y is rendered using this diacritic, eg. .ਕਲੵਚਰੈ.
+      */ 
+      'ੵ' -> 'य', /*yakaSh Occasionally, a cluster ending with y is rendered using this diacritic, eg. .ਕਲੵਚਰੈ.
       Source: https://r12a.github.io/scripts/gurmukhi/#gemination
       */
       'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/)
