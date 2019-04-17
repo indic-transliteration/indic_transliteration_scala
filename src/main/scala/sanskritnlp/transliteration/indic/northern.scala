@@ -61,8 +61,16 @@ object gurmukhi extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++
-    Map('ੰ' /*Tippi - ਅਭੰਗ|अभੰग|abhanga*/ -> 'ं',
-      'ੱ' -> 'ੱ' /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka. Handled specially in toDevanagari.*/, 'ੵ' -> 'ੵ', /*yakaSh*/
+    Map(
+      'ੰ' /*Tippi - ਅਭੰਗ|अभंग|abhangaused with vowels a, i, u, and with final ū, eg. ਮੂੰਡਾ mūŋ̽ɖā muɳɖɑ boy. 
+      Source: https://r12a.github.io/scripts/gurmukhi/#gemination
+      TODO: Enforce this rule.*/ -> 'ं',
+      'ੱ' -> 'ੱ' /*aDDak - causes duplication of subsequent consonant - ਅਕੱ|अकੱ|akka. Handled specially in toDevanagari.
+      Source: https://r12a.github.io/scripts/gurmukhi/#gemination
+      */, 
+      'ੵ' -> 'ੵ', /*yakaSh Occasionally, a cluster ending with y is rendered using this diacritic, eg. .ਕਲੵਚਰੈ.
+      Source: https://r12a.github.io/scripts/gurmukhi/#gemination
+      */
       'ੲ' -> 'ੲ' /*ura*/, 'ੳ' -> 'ੳ' /*iri*/)
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
   override def toDevanagari(str: String): String = {
@@ -81,19 +89,6 @@ object gurmukhi extends NativeIndicScript{
       .replaceAll("ੱ([बभ])", "ब्$1")
       // Note that the below includes glyphs with nukta as well.
       .replaceAll("ੱ([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])", "$1्$1")
-      // At this point, only terminal ੱ will remain.
-      // The below handles nuktas and various other dependent signs as well.
-      .replaceAll("([कख])([ऺ-ॏऀ-ः]*?)ੱ", "क्$1")
-      .replaceAll("([गघ])([ऺ-ॏऀ-ः]*?)ੱ", "ग्$1")
-      .replaceAll("([चछ])([ऺ-ॏऀ-ः]*?)ੱ", "च्$1")
-      .replaceAll("([जझ]([ऺ-ॏऀ-ः]*?))ੱ", "ज्$1")
-      .replaceAll("([टठ])([ऺ-ॏऀ-ः]*?)ੱ", "ट्$1")
-      .replaceAll("([डढ])([ऺ-ॏऀ-ः]*?)ੱ", "ड्$1")
-      .replaceAll("([तथ])([ऺ-ॏऀ-ः]*?)ੱ", "त्$1")
-      .replaceAll("([दध])([ऺ-ॏऀ-ः]*?)ੱ", "द्$1")
-      .replaceAll("([पफ])([ऺ-ॏऀ-ः]*?)ੱ", "प्$1")
-      .replaceAll("([बभ])([ऺ-ॏऀ-ः]*?)ੱ", "ब्$1")
-      .replaceAll(s"([यरऱलळऴवशषसहङञणनऩमक़ख़ग़ज़ड़ढ़फ़य़])([ऺ-ॏऀ-ः]*?)ੱ", "$1्$1$2")
   }
 }
 
