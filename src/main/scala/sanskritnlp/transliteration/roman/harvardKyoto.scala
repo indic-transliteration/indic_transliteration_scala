@@ -13,10 +13,10 @@ object harvardKyoto extends RomanScript {
 
   override val romanToDevaConsonants = Map(
     "h" -> "ह्", "y" -> "य्", "v" -> "व्", "r" -> "र्", "l" -> "ल्",
+    "~N" -> "ञ्", // In TITUS. Unusual.
+    ".N" -> "ङ्", // In TITUS.  Unusual.
     "J" -> "ञ्",
-    "~N" -> "ङ्", // In TITUS
     "G" -> "ङ्",
-    ".N" -> "ङ्", // In TITUS
     "m" -> "म्",
     "N" -> "ण्",
     "n" -> "न्",
@@ -40,7 +40,7 @@ object harvardKyoto extends RomanScript {
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "OM" -> "ॐ")
 
   override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
-  override val devaConsonantsToRoman: Map[String, String] = romanToDevaConsonants.map(_.swap)
+  override val devaConsonantsToRoman: Map[String, String] = romanToDevaConsonants.filterKeys(!List(".N", "~N").contains(_)).map(_.swap)
   override val devaToRomanGeneral: Map[String, String] = romanToDevaContextFreeReplacements.map(_.swap)
 
   def test_toDevanagari(): Unit = {

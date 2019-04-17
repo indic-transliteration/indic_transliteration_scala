@@ -56,7 +56,7 @@ object kannada extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
-  override val mapToDevanagariStrings: Map[String, String] = Map("ఓం" -> "ॐ")
+  override val mapToDevanagariStrings: Map[String, String] = Map("ಓಂ" -> "ॐ")
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 

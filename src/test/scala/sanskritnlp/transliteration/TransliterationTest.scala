@@ -26,9 +26,17 @@ class TransliterationTest extends FunSuite {
     test.filterKeys(!nonSchemeKeys.contains(_)).foreach {
       case (scheme: String, value: String) => {
         log.info(s"$scheme : $value")
-        assert(transliterator.transliterate(in_str = test(transliterator.scriptDevanAgarI), sourceScheme = transliterator.scriptDevanAgarI, destScheme = scheme) == test(scheme))
+        assert(transliterator.transliterate(
+          in_str = test(transliterator.scriptDevanAgarI), 
+          sourceScheme = transliterator.scriptDevanAgarI, 
+          destScheme = scheme) == 
+          test(scheme))
         
-        assert(transliterator.transliterate(in_str = test(scheme), sourceScheme = scheme, destScheme = transliterator.scriptDevanAgarI) == test(transliterator.scriptDevanAgarI))
+        assert(transliterator.transliterate(
+          in_str = test(scheme), 
+          sourceScheme = scheme, 
+          destScheme = transliterator.scriptDevanAgarI) == 
+          test(transliterator.scriptDevanAgarI))
       }
     }
   }
