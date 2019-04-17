@@ -219,7 +219,7 @@ object sinhala extends NativeIndicScript{
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ँ').contains(_)).map(_.swap) ++
     Map('ඈ' -> 'आ', 'ෑ' -> 'ा', 'ඟ' -> 'ङ', 'ඬ' -> 'ण', 'ඳ' -> 'न', 'ඹ' -> 'म')
-  val mapToDevanagariStrings: Map[String, String] = Map()
+  override val mapToDevanagariStrings: Map[String, String] = Map("ഓം" -> "ॐ")
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
