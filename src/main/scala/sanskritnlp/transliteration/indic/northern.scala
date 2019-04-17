@@ -139,7 +139,8 @@ object gujarati extends NativeIndicScript{
     'ऽ' -> 'ઽ', '़' -> '઼',
     '०' -> '૦', '१'-> '૧', '२'-> '૨',
     '३'-> '૩', '४'-> '૪', '५'-> '૫',
-    '६'-> '૬', '७'-> '૭', '८'-> '૮', '९'-> '૯'
+    '६'-> '૬', '७'-> '૭', '८'-> '૮', '९'-> '૯',
+    'ॐ' -> 'ૐ',
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)

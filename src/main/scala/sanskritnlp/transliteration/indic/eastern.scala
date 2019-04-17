@@ -50,6 +50,7 @@ object oriya extends NativeIndicScript{
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++
     Map('ୱ' /* wa - non-devanAgarI*/ -> 'व')
+  override val mapToDevanagariStrings: Map[String, String] = Map("ଓଂ" -> "ॐ")
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 

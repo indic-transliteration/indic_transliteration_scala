@@ -56,9 +56,8 @@ object kannada extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val mapToDevanagariStrings: Map[String, String] = Map("ఓం" -> "ॐ")
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
-
-
 }
 
 object telugu extends NativeIndicScript{
@@ -71,7 +70,7 @@ object telugu extends NativeIndicScript{
   override val mapFromDevanagari: Map[Char, Char] = Map(
     'अ' -> 'అ', 'आ' -> 'ఆ',  'इ' -> 'ఇ', 'ई' -> 'ఈ',
     'उ' -> 'ఉ', 'ऊ' -> 'ఊ',
-    'ऋ' -> 'ఋ', 'ॠ' -> 'ౠ', 'ऌ' -> 'ఌ', 'ॡ' -> 'ఌ',
+    'ऋ' -> 'ఋ', 'ॠ' -> 'ౠ', 'ऌ' -> 'ఌ', 'ॡ' -> 'ౡ',
     'ऎ' -> 'ఎ',
     'ए' -> 'ఏ',
     'ऐ' -> 'ఐ',
@@ -112,6 +111,7 @@ object telugu extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val mapToDevanagariStrings: Map[String, String] = Map("ఓం" -> "ॐ")
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
@@ -162,6 +162,7 @@ object malayalam extends NativeIndicScript{
   )
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
+  override val mapToDevanagariStrings: Map[String, String] = Map("ഓം" -> "ॐ")
   override val distinctCharacters: Set[Char] =mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
@@ -219,7 +220,6 @@ object sinhala extends NativeIndicScript{
 
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ँ').contains(_)).map(_.swap) ++
     Map('ඈ' -> 'आ', 'ෑ' -> 'ा', 'ඟ' -> 'ङ', 'ඬ' -> 'ण', 'ඳ' -> 'न', 'ඹ' -> 'म')
-  override val mapToDevanagariStrings: Map[String, String] = Map("ഓം" -> "ॐ")
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
