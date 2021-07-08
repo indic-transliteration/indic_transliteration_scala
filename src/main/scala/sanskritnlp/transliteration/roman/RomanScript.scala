@@ -148,6 +148,13 @@ trait RomanScript extends IndicScript {
     output = escapePattern.replaceAllIn(output, _ match { case escapePattern(matched) => """\\""" + fromDevanagari(matched) })
     output
   }
+  
+  override def getAlternatives(str: String) = {
+    var output = Seq(str)
+    // TODO Fix this.
+    output
+  }
+  
   def test_restoreEscapeSequences(): Unit = {
     val str1 = """हरिः ॐ १ 1ad\न् \त्"""
     log.info(restoreEscapeSequences(str1))

@@ -138,6 +138,7 @@ object gujarati extends NativeIndicScript{
     'ॐ' -> 'ૐ',
   )
 
+  override val mapToDevanagariStrings: Map[String, String] = Map("ડ઼" -> "ड़", "ફ઼" -> "फ़" ,"જ઼" -> "ज़")
   override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.map(_.swap)
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }

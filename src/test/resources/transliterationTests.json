@@ -20,7 +20,8 @@
       "telugu": "అసయ ఔషధిః గ్రన్థః! ౡకారో నాస్తి లేశోఽపి సంశయః। కీలకమ్? కూపిః?  కష్ఠం భోః। శఙ్కర! జ్ఞానమ్।  సఞ్జీవయ। ౧౨౩౪౫॥ ఓం తత్।",
       "gujarati": "અસય ઔષધિઃ ગ્રન્થઃ! ૡકારો નાસ્તિ લેશોઽપિ સંશયઃ। કીલકમ્? કૂપિઃ?  કષ્ઠં ભોઃ। શઙ્કર! જ્ઞાનમ્।  સઞ્જીવય। ૧૨૩૪૫॥ ૐ તત્।",
       "assamese": "অসয ঔষধিঃ গ্ৰন্থঃ! ৡকাৰো নাস্তি লেশোঽপি সংশযঃ। কীলকম্? কূপিঃ?  কষ্ঠং ভোঃ। শঙ্কৰ! জ্ঞানম্।  সঞ্জীবয। ১২৩৪৫॥ ॐ তত্।",
-      "oriya": "ଅସଯ ଔଷଧିଃ ଗ୍ରନ୍ଥଃ! ୡକାରୋ ନାସ୍ତି ଲେଶୋଽପି ସଂଶଯଃ। କୀଲକମ୍? କୂପିଃ?  କଷ୍ଠଂ ଭୋଃ। ଶଙ୍କର! ଜ୍ଞାନମ୍।  ସଞ୍ଜୀଵଯ। ୧୨୩୪୫॥ ଓଂ ତତ୍।"
+      "oriya": "ଅସଯ ଔଷଧିଃ ଗ୍ରନ୍ଥଃ! ୡକାରୋ ନାସ୍ତି ଲେଶୋଽପି ସଂଶଯଃ। କୀଲକମ୍? କୂପିଃ?  କଷ୍ଠଂ ଭୋଃ। ଶଙ୍କର! ଜ୍ଞାନମ୍।  ସଞ୍ଜୀଵଯ। ୧୨୩୪୫॥ ଓଂ ତତ୍।",
+      "titus": "asaya auṣadʰiḥ grantʰaḥ! l̥̄kāro nāsti leśo'pi saṃśayaḥ. kīlakam? kūpiḥ?  kaṣṭʰaṃ bʰoḥ. śaṅkara! jñānam.  sañjīvaya. 12345.. oṃ tat."
     },
     {
       "description": "Tests La",
@@ -47,12 +48,18 @@
     },
     {
       "description": "Tests glyphs with nuTka",
-      "TODO": "Fix gujrataati test",
-      "dev": "अएल् अंशाइ पड़िब",
-      "oriya": "ଅଏଲ୍ ଅଂଶାଇ ପଡ଼ିବ",
-      "gujarati": "અએલ્ અંશાઇ પड़િબ",
-      "assamese": "অএল্ অংশাই পড়িৱ",
-      "gurmukhi": "ਅਏਲ੍ ਅਂਸ਼ਾਇ ਪੜਿਬ"
+      "TODO": "Fix assamese test",
+      "dev": "अंशाइ पड़िब फ़कीर ज़रूर",
+      "oriya": "ଅଂଶାଇ ପଡ଼ିବ ଫ଼କୀର ଜ଼ରୂର",
+      "gujarati": "અંશાઇ પડ઼િબ ફ઼કીર જ઼રૂર",
+      "assamese": "অংশাই পড়িৱ फ़কীৰ ज़ৰূৰ",
+      "gurmukhi": "ਅਂਸ਼ਾਇ ਪੜਿਬ ਫ਼ਕੀਰ ਜ਼ਰੂਰ",
+      "itrans": "aMshaai pa.Diba fakiira zaruura"
+    },
+    {
+      "description": "Tests R RR",
+      "titus": "vr̥kṣyaṃ havīṃṣi gr̥hyanta r̥̄ṇamu pitr̥̄n//",
+      "dev": "वृक्ष्यं हवींषि गृह्यन्त ॠणमु पितॄन्॥"
     },
     {
       "description": "Tests glyphs with nuTka - ऱ ऴ set",
@@ -90,6 +97,11 @@
   ],
   "to_devanaagarii": [
     {
+      "description": "Tests optitrans anunAsikas",
+      "dev": "सङ्क्षेपः",
+      "optitrans": "sanxepaH"
+    },
+    {
       "description": "Check aDDak and tippee",
       "dev": "अब्भर अक्क मूंडा भुल्ला",
       "gurmukhi": "ਅੱਭਰ ਅੱਕ ਮੂੰਡਾ ਭੁੱਲਾ"
@@ -110,12 +122,19 @@
     {
       "description": "A general test for Roman scripts without equivalents for some devanAgarI letters, like optitrans",
       "dev": "पड़िब छीड़ा ऴ ऱ",
-      "optitrans": "paDRiba ChiiDRaa La ra"
+      "optitrans": "pa.Diba ChI.DA .La .Rha",
+      "nonSupportingPrograms": "scala/indic-transliteration"
     },
     {
       "description": "hrasva e and o",
       "dev": "ऎट ऒट कॆकॊकि",
       "optitrans": "ETa OTa kEkOki"
+    },
+    {
+      "description": "ea and oa",
+      "dev": "कॉफी ऍक ऑक",
+      "optitrans": "koaphI eaka oaka",
+      "nonSupportingPrograms": "scala/indic-transliteration"
     }
   ]
 }

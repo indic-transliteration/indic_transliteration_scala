@@ -5,6 +5,7 @@ import org.slf4j.{Logger, LoggerFactory}
 trait IndicScript {
   def fromDevanagari(str: String): String = null
   def toDevanagari(str: String): String = null
+  def getAlternatives(str: String): Seq[String] = Seq(str)
 }
 
 trait NativeIndicScript extends IndicScript {
