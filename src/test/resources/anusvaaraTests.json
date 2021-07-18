@@ -1,5 +1,5 @@
 {
-  "canonical_source": "https://github.com/sanskrit-coders/indic-transliteration/blob/master/src/test/resources/anusvaaraTests.json",
+  "canonical_source": "https://github.com/indic-transliteration/indic_transliteration_scala/blob/master/src/test/resources/anusvaaraTests.json",
   "valid_variants": [
     {
       "form_with_anusvaara": "रामंगृह्णाति",

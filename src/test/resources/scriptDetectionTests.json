@@ -1,5 +1,5 @@
 {
-  "canonical_source": "https://github.com/sanskrit-coders/indic-transliteration/blob/master/src/test/resources/scriptDetectionTests.json",
+  "canonical_source": "https://github.com/indic-transliteration/indic_transliteration_scala/blob/master/src/test/resources/scriptDetectionTests.json",
   "comments": "Shared script detection tests.",
   "TODO": [
   ],

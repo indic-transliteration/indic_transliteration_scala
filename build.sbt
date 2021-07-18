@@ -30,8 +30,8 @@ libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test
 
 scmInfo := Some(
   ScmInfo(
-    url("https://github.com/sanskrit-coders/indic-transliteration"),
-    "scm:git@github.com:sanskrit-coders/indic-transliteration.git"
+    url("https://github.com/indic-transliteration/indic_transliteration_scala"),
+    "scm:git@github.com:indic-transliteration/indic_transliteration_scala.git"
   )
 )
 
