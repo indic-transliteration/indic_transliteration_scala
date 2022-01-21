@@ -2,6 +2,8 @@ package sanskritnlp.transliteration.indic
 
 import org.slf4j.{Logger, LoggerFactory}
 
+import scala.io.Source
+
 object gurmukhi extends NativeIndicScript{
   private val log: Logger = LoggerFactory.getLogger(this.getClass)
   // Compare with http://bazaar.launchpad.net/~vinodh-vinodh/aksharamukha/trunk/view/head:/diCrunch/diCrunch_punjabi.php
@@ -93,7 +95,6 @@ object gurmukhi extends NativeIndicScript{
 }
 
 object gujarati extends NativeIndicScript{
-
   // https://en.wikipedia.org/wiki/Gujarati_(Unicode_block)
   override val mapFromDevanagari = Map(
     'अ' -> 'અ', 'आ' -> 'આ',  'इ' -> 'ઇ', 'ई' -> 'ઈ',

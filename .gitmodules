@@ -1,0 +1,6 @@
+[submodule "src/main/resources/script_maps"]
+	path = src/main/resources/script_maps
+	url = https://github.com/indic-transliteration/common_maps.git
+[submodule "src/test/resources/shared_tests"]
+	path = src/test/resources/shared_tests
+	url = https://github.com/indic-transliteration/common_tests.git
