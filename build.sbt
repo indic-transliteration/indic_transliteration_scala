@@ -3,7 +3,7 @@
 
 name := "indic-transliteration"
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.13.10"
 val logbackVersion = "1.2.3"
 val json4sVersion = "3.6.1"
 val scalatestVersion = "3.0.5"
@@ -15,9 +15,9 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % logbackVersion
   ,"ch.qos.logback" % "logback-core" % logbackVersion
-  ,"org.json4s" % "json4s-ast_2.12" % json4sVersion
-  ,"org.json4s" % "json4s-native_2.12" % json4sVersion
-  ,"tech.sparse" % "toml-scala_2.12" % "0.2.2"
+  ,"org.json4s" % "json4s-ast_2.13" % json4sVersion
+  ,"org.json4s" % "json4s-native_2.13" % json4sVersion
+  ,"tech.sparse" % "toml-scala_2.13" % "0.2.2"
  //    ,"com.github.sanskrit-coders" % "sanskrit-lttoolbox" % "0.1"
   //  ,"com.github.sanskrit-coders" % "indic-transliteration" % "1.8"
 )
