@@ -1,5 +1,7 @@
 
-// Source instrctions: http://www.scala-sbt.org/1.0/docs/Using-Sonatype.html . Not completed.
+// Source instructions:
+// https://github.com/xerial/sbt-sonatype
+// See also sonatype.sbt and ~/.sbt/1.0/sonatype.sbt
 
 name := "indic-transliteration"
 
@@ -8,8 +10,10 @@ val logbackVersion = "1.2.3"
 val json4sVersion = "4.0.6"
 val scalatestVersion = "3.2.14"
 
-resolvers += Resolver.sonatypeRepo("releases")
-resolvers += Resolver.sonatypeRepo("snapshots")
+resolvers +=
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+resolvers +=
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/releases"
 resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 
 libraryDependencies ++= Seq(
@@ -29,21 +33,14 @@ libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test
 //unmanagedClasspath in (Compile, run) += file("/home/vvasuki/indic-transliteration/target/indic-transliteration-1.8/classes")
 //unmanagedSources in (Compile, run)  += file("/home/vvasuki/indic-transliteration/src/main/scala")
 
-scmInfo := Some(
-  ScmInfo(
-    url("https://github.com/indic-transliteration/indic_transliteration_scala"),
-    "scm:git@github.com:indic-transliteration/indic_transliteration_scala.git"
-  )
-)
 
-useGpg := true
 publishMavenStyle := true
-publishTo := Some(
-  if (isSnapshot.value)
-    Opts.resolver.sonatypeSnapshots
-  else
-    Opts.resolver.sonatypeStaging
-)
+//publishTo := Some(
+//  if (isSnapshot.value)
+//    Opts.resolver.sonatypeSnapshots
+//  else
+//    Opts.resolver.sonatypeStaging
+//)
 
 import ReleaseTransformations._
 
@@ -56,8 +53,8 @@ releaseProcess := Seq[ReleaseStep](
   commitReleaseVersion,
   tagRelease,
   releaseStepCommand("publishSigned"),
+  releaseStepCommand("sonatypeBundleRelease"),
   setNextVersion,
   commitNextVersion,
-  releaseStepCommand("sonatypeReleaseAll"),
   pushChanges
 )
