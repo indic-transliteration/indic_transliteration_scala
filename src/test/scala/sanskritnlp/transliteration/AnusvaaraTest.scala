@@ -2,7 +2,7 @@ package sanskritnlp.transliteration
 
 import org.json4s._
 import org.json4s.native.Serialization
-import org.scalatest.FlatSpec
+import org.scalatest.funsuite.AnyFunSuite
 import org.slf4j.{Logger, LoggerFactory}
 
 import scala.io.Source
@@ -18,10 +18,10 @@ case class AnusvaaraTests(
                            valid_variants: Seq[VariantPair]
                          )
 
-class AnusvaaraVariantTestSpec extends FlatSpec {
+class AnusvaaraVariantTestSpec extends AnyFunSuite {
   private val log: Logger = LoggerFactory.getLogger(this.getClass)
 
-  "getNonAnusvaaraVariant" should "provide the expected variant for certain cases" in {
+  test("getNonAnusvaaraVariant provide the expected variant for certain cases") {
     val source = Source.fromResource("anusvaaraTests.json")
     implicit val formats: DefaultFormats.type = DefaultFormats
     val anusvaaraTests = Serialization.read[AnusvaaraTests](source.mkString)

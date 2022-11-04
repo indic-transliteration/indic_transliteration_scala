@@ -3,7 +3,7 @@ package sanskritnlp.transliteration
 
 import org.json4s._
 import org.json4s.native.Serialization
-import org.scalatest.FlatSpec
+import org.scalatest.funsuite.AnyFunSuite
 import org.slf4j.{Logger, LoggerFactory}
 
 import scala.io.Source
@@ -14,10 +14,10 @@ case class ApproxDeduplicationTests(
                            non_duplicates: Seq[Seq[String]]
                          )
 
-class GetApproxDeduplicatingKeySpec extends FlatSpec {
+class GetApproxDeduplicatingKeySpec extends AnyFunSuite {
   private val log: Logger = LoggerFactory.getLogger(this.getClass)
 
-  "getApproxDeduplicatingKey" should "provide the same key for certain cases" in {
+  test("getApproxDeduplicatingKey provides the same key for certain cases") {
     val source = Source.fromResource("approxDeduplicationTests.json")
     implicit val formats: DefaultFormats.type = DefaultFormats
     val approxDeduplicationTests = Serialization.read[ApproxDeduplicationTests](source.mkString)

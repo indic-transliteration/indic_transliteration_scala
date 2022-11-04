@@ -3,7 +3,7 @@ package sanskritnlp.transliteration
 
 import org.json4s._
 import org.json4s.native.Serialization
-import org.scalatest.{FlatSpec, FunSuite}
+import org.scalatest.funsuite.AnyFunSuite
 import org.slf4j.{Logger, LoggerFactory}
 import sanskritnlp.transliteration.transliterator.codeToSchemeMap
 
@@ -15,7 +15,7 @@ case class TransliterationTests(canonical_source: Option[String],
                                 from_devanaagarii: List[Map[String, String]]
                                )
 
-class TransliterationTest extends FunSuite {
+class TransliterationTest extends AnyFunSuite {
   private val log: Logger = LoggerFactory.getLogger(this.getClass)
   private val source = Source.fromResource("transliterationTests.json")
   private implicit val formats = DefaultFormats
@@ -25,7 +25,7 @@ class TransliterationTest extends FunSuite {
 
   testJson.devanaagarii_round_trip.foreach(test => {
     log.info(test.toString)
-    test.filterKeys(x => !nonSchemeKeys.contains(x) && !unimplementedSchemes.contains(x)).foreach {
+    test.view.filterKeys(x => !nonSchemeKeys.contains(x) && !unimplementedSchemes.contains(x)).foreach {
       case (scheme: String, value: String) => {
         log.info(s"$scheme : $value")
         assert(transliterator.transliterate(
@@ -46,7 +46,7 @@ class TransliterationTest extends FunSuite {
 
   testJson.to_devanaagarii.foreach(test => {
     log.info(test.toString)
-    test.filterKeys(!nonSchemeKeys.contains(_)).foreach {
+    test.view.filterKeys(!nonSchemeKeys.contains(_)).foreach {
       case (scheme: String, value: String) => {
         log.info(s"$scheme : $value")
         assert(transliterator.transliterate(in_str = test(scheme), sourceScheme = scheme, destScheme = transliterator.scriptDevanAgarI) == test(transliterator.scriptDevanAgarI))
@@ -60,7 +60,7 @@ class TransliterationTest extends FunSuite {
     if (test.getOrElse("nonSupportingPrograms", "").contains("scala/indic-transliteration")) {
       log.info("Skipping because not implemented")
     } else {
-      test.filterKeys(!nonSchemeKeys.contains(_)).foreach {
+      test.view.filterKeys(!nonSchemeKeys.contains(_)).foreach {
         case (scheme: String, value: String) => {
           log.info(s"$scheme : $value")
           val transliteration = transliterator.transliterate(in_str = test(transliterator.scriptDevanAgarI), sourceScheme = transliterator.scriptDevanAgarI, destScheme = scheme)
