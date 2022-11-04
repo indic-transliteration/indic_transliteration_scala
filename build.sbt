@@ -5,7 +5,7 @@ name := "indic-transliteration"
 
 scalaVersion := "2.13.10"
 val logbackVersion = "1.2.3"
-val json4sVersion = "3.6.1"
+val json4sVersion = "4.0.6"
 val scalatestVersion = "3.0.5"
 
 resolvers += Resolver.sonatypeRepo("releases")
