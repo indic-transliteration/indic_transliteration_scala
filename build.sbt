@@ -2,6 +2,7 @@
 // Source instructions:
 // https://github.com/xerial/sbt-sonatype
 // See also sonatype.sbt and ~/.sbt/1.0/sonatype.sbt
+// Currently stuck at https://github.com/xerial/sbt-sonatype/issues/330 .
 
 name := "indic-transliteration"
 
