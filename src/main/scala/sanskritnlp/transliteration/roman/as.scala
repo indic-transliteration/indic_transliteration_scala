@@ -78,7 +78,7 @@ object as extends RomanScript {
     "th" -> "थ्", "c" -> "च्", "t2" -> "ट्", "t" -> "त्",
     "k" -> "क्", "p" -> "प्",
     "s4" -> "श्", "s2" -> "ष्", "s" -> "स्")
-  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("(.+)्$", "$1"))
+  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.view.mapValues(_.replaceAll("(.+)्$", "$1")).toMap
   override val romanToDevaContextFreeReplacements = Map(
     "m2" -> "ं",  "h2" -> "ः",
     "`" -> "ऽ", "." -> "।",
