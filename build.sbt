@@ -22,8 +22,8 @@ libraryDependencies ++= Seq(
   //  ,"com.github.sanskrit-coders" % "indic-transliteration" % "1.8"
 )
 
-libraryDependencies += "org.scalactic" %% "scalactic" % scalatestVersion
-libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test"
+//libraryDependencies += "org.scalactic" %% "scalactic" % scalatestVersion
+//libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test"
 
 //unmanagedJars in (Compile, run) += file("/home/vvasuki/indic-transliteration/target/indic-transliteration-1.8.jar")
 //unmanagedClasspath in (Compile, run) += file("/home/vvasuki/indic-transliteration/target/indic-transliteration-1.8/classes")
