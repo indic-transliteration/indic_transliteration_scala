@@ -27,7 +27,7 @@ object slp extends RomanScript {
     "k" -> "क्", "p" -> "प्",
     "S" -> "श्", "z" -> "ष्", "s" -> "स्",
     "L" -> "ळ्")
-  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("्", ""))
+  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.view.mapValues(_.replaceAll("्", "")).toMap
   override val romanToDevaContextFreeReplacements = Map(
     "M" -> "ं",  "H" -> "ः",
     "'" -> "ऽ", ".." -> "॥", "." -> "।",
