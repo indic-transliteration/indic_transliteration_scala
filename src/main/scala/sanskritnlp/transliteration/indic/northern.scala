@@ -62,7 +62,7 @@ object gurmukhi extends NativeIndicScript{
     'ॐ' -> 'ੴ', '॑' -> 'ੑ', /*udAtta*/
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.view.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap).toMap ++
     Map(
       'ੰ' -> 'ं', /*Tippi - ਅਭੰਗ|अभंग|abhangaused with vowels a, i, u, and with final ū, eg. ਮੂੰਡਾ mūŋ̽ɖā muɳɖɑ boy. 
       Source: https://r12a.github.io/scripts/gurmukhi/#gemination

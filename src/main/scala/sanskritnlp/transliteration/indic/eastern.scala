@@ -48,7 +48,7 @@ object oriya extends NativeIndicScript{
     '६'-> '୬', '७'-> '୭', '८'-> '୮', '९'-> '୯',
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap) ++
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.view.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap).toMap ++
     Map('ୱ' /* wa - non-devanAgarI*/ -> 'व')
   override val mapToDevanagariStrings: Map[String, String] = Map("ଓଂ" -> "ॐ", "ଫ଼" -> "फ़", "ଜ଼" -> "ज़")
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
@@ -104,7 +104,7 @@ object bengali extends NativeIndicScript {
     '६'-> '৬', '७'-> '৭', '८'-> '৮', '९'-> '৯'
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ', 'व').contains(_)).map(_.swap)
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ', 'व').contains(_)).map(_.swap).toMap
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }
 
@@ -159,6 +159,6 @@ object assamese extends NativeIndicScript {
     '६'-> '৬', '७'-> '৭', '८'-> '৮', '९'-> '৯'
   )
 
-  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap)
+  override val mapToDevanagari: Map[Char, Char] = mapFromDevanagari.filterKeys(!Seq('ॆ', 'ॊ', 'ऎ', 'ऒ').contains(_)).map(_.swap).toMap
   override val distinctCharacters: Set[Char] = mapToDevanagari.keys.filterNot(x => mapFromDevanagari.keys.toList.contains(x)).toSet
 }

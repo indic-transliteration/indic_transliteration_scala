@@ -31,7 +31,7 @@ trait IastBase extends RomanScript {
     "th" -> "थ्", "c" -> "च्", "ṭ" -> "ट्", "t" -> "त्",
     "k" -> "क्", "p" -> "प्",
     "ś" -> "श्", "ṣ" -> "ष्", "s" -> "स्", "ḻ" -> "ळ्")
-  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.mapValues(_.replaceAll("(.+)्$", "$1"))
+  override val romanToDevaConsonantsNoVirama: Map[String, String] = romanToDevaConsonants.view.mapValues(_.replaceAll("(.+)्$", "$1")).toMap
   override val romanToDevaContextFreeReplacements = Map(
     "ṃ" -> "ं",  "ḥ" -> "ः",
     "'" -> "ऽ", "." -> "।", ".." -> "॥", "||" -> "॥",
