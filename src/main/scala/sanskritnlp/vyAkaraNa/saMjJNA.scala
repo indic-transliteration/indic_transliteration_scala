@@ -54,7 +54,7 @@ object shivasUtra {
     // हकारादिष्वकार उच्चारणार्थः॥
     val groups = symbols.groupBy(x => consonants.vyanjana_symbols contains x)
     println(groups)
-    var akSharAH = ArrayBuffer[String]()
+    var akSharAH = IndexedSeq[String]()
     if(groups.contains(true))
       akSharAH ++= groups(true).map(x => x.toString + vowels.virAma)
     if(groups.contains(false))
