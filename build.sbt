@@ -35,12 +35,13 @@ libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test
 
 
 publishMavenStyle := true
-//publishTo := Some(
-//  if (isSnapshot.value)
-//    Opts.resolver.sonatypeSnapshots
-//  else
-//    Opts.resolver.sonatypeStaging
-//)
+//publishTo := sonatypePublishToBundle.value
+publishTo := Some(
+  if (isSnapshot.value)
+    Opts.resolver.sonatypeSnapshots
+  else
+    Opts.resolver.sonatypeStaging
+)
 
 import ReleaseTransformations._
 
