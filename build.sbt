@@ -6,7 +6,7 @@ name := "indic-transliteration"
 scalaVersion := "2.13.10"
 val logbackVersion = "1.2.3"
 val json4sVersion = "4.0.6"
-val scalatestVersion = "3.0.5"
+val scalatestVersion = "3.2.14"
 
 resolvers += Resolver.sonatypeRepo("releases")
 resolvers += Resolver.sonatypeRepo("snapshots")
@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
 )
 
 //libraryDependencies += "org.scalactic" %% "scalactic" % scalatestVersion
-//libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test"
 
 //unmanagedJars in (Compile, run) += file("/home/vvasuki/indic-transliteration/target/indic-transliteration-1.8.jar")
 //unmanagedClasspath in (Compile, run) += file("/home/vvasuki/indic-transliteration/target/indic-transliteration-1.8/classes")
