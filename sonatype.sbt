@@ -1,4 +1,4 @@
-// See also ~/.sbt/1.0/sonatype.sbt
+// See also ~/.sbt/1.7.3/sonatype.sbt
 
 homepage := Some(url("https://github.com/indic-transliteration/indic_transliteration_scala"))
 
