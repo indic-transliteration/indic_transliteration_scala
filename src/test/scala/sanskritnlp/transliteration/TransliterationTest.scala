@@ -48,8 +48,13 @@ class TransliterationTest extends AnyFunSuite {
     log.info(test.toString)
     test.view.filterKeys(!nonSchemeKeys.contains(_)).foreach {
       case (scheme: String, value: String) => {
-        log.info(s"$scheme : $value")
-        assert(transliterator.transliterate(in_str = test(scheme), sourceScheme = scheme, destScheme = transliterator.scriptDevanAgarI) == test(transliterator.scriptDevanAgarI))
+        if (test.getOrElse("nonSupportingPrograms", "").contains("scala/indic-transliteration")) {
+          log.info("Skipping because not implemented")
+        } else {
+          val devStr  = transliterator.transliterate(in_str = test(scheme), sourceScheme = scheme, destScheme = transliterator.scriptDevanAgarI)
+          log.info(s"$scheme : $value ($devStr)")
+          assert(devStr == test(transliterator.scriptDevanAgarI))
+        }
       }
     }
   })

@@ -1,6 +1,7 @@
 package sanskritnlp.transliteration.roman
 
 import org.slf4j.{Logger, LoggerFactory}
+import sanskritnlp.transliteration.roman.optitrans.romanToDevaContextFreeReplacements
 
 trait IastBase extends RomanScript {
   private val log: Logger = LoggerFactory.getLogger(this.getClass)
