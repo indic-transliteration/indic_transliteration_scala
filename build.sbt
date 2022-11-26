@@ -35,6 +35,11 @@ libraryDependencies += "org.scalatest" %% "scalatest" % scalatestVersion % "test
 //unmanagedSources in (Compile, run)  += file("/home/vvasuki/indic-transliteration/src/main/scala")
 
 
+
+assembly / assemblyOutputPath := file("bin/artifacts/indic-transliteration.jar")
+//assembly / mainClass := Some("stardict_sanskrit.commandInterface")
+
+
 publishMavenStyle := true
 publishTo := sonatypePublishToBundle.value
 
@@ -45,6 +50,7 @@ releaseProcess := Seq[ReleaseStep](
   inquireVersions,
   runClean,
   runTest,
+  releaseStepCommand("assembly"),
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
