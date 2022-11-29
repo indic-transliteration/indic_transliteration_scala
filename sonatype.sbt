@@ -8,3 +8,5 @@ scmInfo := Some(
     "scm:git@github.com:indic-transliteration/indic_transliteration_scala.git"
   )
 )
+
+description := "A collection of scala and java classes for some basic character level processing for the Sanskrit and other Indic (kannada, telugu, etc..) languages"
