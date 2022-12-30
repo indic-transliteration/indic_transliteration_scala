@@ -20,5 +20,5 @@ object kolkata extends IastBase {
     "ē" -> "ए",
     "ai" -> "ऐ",
     "ō" -> "ओ", "au" -> "औ")
-  override val devaIndependentVowelsToRoman = romanToDevaIndependentVowels.map(_.swap)
+  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
 }

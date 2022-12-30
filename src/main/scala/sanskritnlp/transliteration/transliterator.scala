@@ -17,6 +17,7 @@ object transliterator {
     "iastDcs" -> iastDcs,
     "iso" -> iso,
     "unrsgn" -> unrsgn,
+    "kolkata" -> kolkata,
     "as" -> as,
     "slp" -> slp,
     "wx" -> wx,

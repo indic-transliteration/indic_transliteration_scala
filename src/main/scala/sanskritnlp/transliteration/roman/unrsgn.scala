@@ -9,6 +9,7 @@ object unrsgn extends IastBase {
     "e" -> "ए",
     "ai" -> "ऐ",
     "o" -> "ओ", "au" -> "औ")
+  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
   def test_toDevanagari(): Unit = {
     val romanText = "Asaya auṣadhiḥ granthaḥ! l2kAro`sti. nāsti les4o`pi saṃśayaḥ. Kaaṣṭhaḥ bhoḥ. 12345" +
       "Aṃkuśeśvaram. iḍā"

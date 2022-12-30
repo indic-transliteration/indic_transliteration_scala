@@ -40,7 +40,6 @@ trait IastBase extends RomanScript {
     "3"-> "३", "4"-> "४", "5"-> "५",
     "6"-> "६", "7"-> "७", "8"-> "८", "9"-> "९", "oṃ" -> "ॐ")
 
-  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
   override val devaConsonantsToRoman: Map[String, String] = romanToDevaConsonants.map(_.swap)
 
   def test_isEncoding(): Unit = {

@@ -8,6 +8,7 @@ object iso extends IastBase {
     "e" -> "ऎ", "ē" -> "ए",
     "ai" -> "ऐ", "o" -> "ऒ",
     "ō" -> "ओ", "au" -> "औ")
+  override val devaIndependentVowelsToRoman: Map[String, String] = romanToDevaIndependentVowels.map(_.swap)
   override val romanToDevaContextFreeReplacements = Map(
     "ṁ" -> "ं", "m̐" ->  "◌ँ" , "ḥ" -> "ः",
     "'" -> "ऽ", "." -> "।", ".." -> "॥", "||" -> "॥",
