@@ -15,6 +15,8 @@ object transliterator {
     "hk" -> harvardKyoto,
     "iast" -> iast,
     "iastDcs" -> iastDcs,
+    "iso" -> iso,
+    "unrsgn" -> unrsgn,
     "as" -> as,
     "slp" -> slp,
     "wx" -> wx,
